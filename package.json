@@ -4,7 +4,9 @@
   "license": "Apache-2.0",
   "scripts": {
     "serve:gateway": "nx run @akashaorg/api-gateway:serve --verbose",
-    "build:gateway": "nx run @akashaorg/api-gateway:build"
+    "build:gateway": "nx run @akashaorg/api-gateway:build",
+    "serve:gateway:production": "nx run @akashaorg/api-gateway:serve --verbose --configuration=production",
+    "build:gateway:production": "nx run @akashaorg/api-gateway:build --verbose --configuration=production"
   },
   "private": true,
   "type": "module",

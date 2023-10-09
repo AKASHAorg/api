@@ -1,53 +1,23 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-// import { ApolloGateway, IntrospectAndCompose } from '@apollo/gateway';
-//
-//
-// const gateway = new ApolloGateway({
-//   supergraphSdl: new IntrospectAndCompose({
-//     subgraphs: [
-//       { name: 'ceramic', url: 'http://localhost:5001/graphql' },
-//     ],
-//   }),
-// });
+import { ApolloGateway } from '@apollo/gateway';
+import { readFileSync } from 'fs';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-// example
-const typeDefs = `#graphql
-# Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
+const __filename = fileURLToPath(import.meta.url);
 
-# This "Book" type defines the queryable fields for every book in our data source.
-type Book {
-  title: String
-  author: String
-}
+const __dirname = dirname(__filename);
 
-# The "Query" type is special: it lists all of the available queries that
-# clients can execute, along with the return type for each. In this
-# case, the "books" query returns an array of zero or more Books (defined above).
-type Query {
-  books: [Book]
-}
-`;
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
+const supergraph = readFileSync(resolve(__dirname, '../../../config/supergraph.graphql')).toString();
 
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
+const gateway = new ApolloGateway({
+  supergraphSdl: supergraph
+});
+
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  gateway
 });
 
 
