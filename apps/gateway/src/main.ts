@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 
 const __dirname = dirname(__filename);
 
-const supergraph = readFileSync(resolve(__dirname, '../../../config/supergraph.graphql')).toString();
+const supergraph = readFileSync(resolve(__dirname, './supergraph.graphql')).toString();
 
 const gateway = new ApolloGateway({
   supergraphSdl: supergraph
@@ -23,7 +23,7 @@ const server = new ApolloServer({
 
 
 const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
+  listen: { port: process.env.GRAPHQL_GATEWAY_PORT ? parseInt(process.env.GRAPHQL_GATEWAY_PORT) : 4000 },
 });
 
 console.info(`🚀  Server ready at: ${url}`);

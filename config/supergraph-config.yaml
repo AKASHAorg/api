@@ -5,3 +5,7 @@ subgraphs:
     schema:
       file: ./composedb-schema.graphql
       #subgraph_url:
+  streams:
+    routing_url: ${env.STREAMS_URL}
+    schema:
+      file: ./streams-schema.graphql

@@ -1,0 +1,8 @@
+type Query {
+  akashaProfileStreamIndexs: Boolean
+}
+
+
+type Mutation {
+  indexProfile(title: String, author: String): String
+}

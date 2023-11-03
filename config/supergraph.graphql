@@ -2105,7 +2105,8 @@ scalar InterPlanetaryCID
 scalar join__FieldSet
 
 enum join__Graph {
-  COMPOSEDB @join__graph(name: "composedb", url: "http://localhost:5001/graphql")
+  COMPOSEDB @join__graph(name: "composedb", url: "http://localhost:5112/graphql")
+  STREAMS @join__graph(name: "streams", url: "http://localhost:4000/")
 }
 
 scalar link__Import
@@ -2124,37 +2125,39 @@ enum link__Purpose {
 
 type Mutation
   @join__type(graph: COMPOSEDB)
+  @join__type(graph: STREAMS)
 {
-  createAkashaApp(input: CreateAkashaAppInput!): CreateAkashaAppPayload
-  createAkashaAppRelease(input: CreateAkashaAppReleaseInput!): CreateAkashaAppReleasePayload
-  createAkashaAppsStream(input: CreateAkashaAppsStreamInput!): CreateAkashaAppsStreamPayload
-  createAkashaBeam(input: CreateAkashaBeamInput!): CreateAkashaBeamPayload
-  createAkashaBeamStream(input: CreateAkashaBeamStreamInput!): CreateAkashaBeamStreamPayload
-  createAkashaBlockStorage(input: CreateAkashaBlockStorageInput!): CreateAkashaBlockStoragePayload
-  createAkashaContentBlock(input: CreateAkashaContentBlockInput!): CreateAkashaContentBlockPayload
-  createAkashaContentBlockStream(input: CreateAkashaContentBlockStreamInput!): CreateAkashaContentBlockStreamPayload
-  createAkashaFollow(input: CreateAkashaFollowInput!): CreateAkashaFollowPayload
-  createAkashaInterestsStream(input: CreateAkashaInterestsStreamInput!): CreateAkashaInterestsStreamPayload
-  createAkashaProfile(input: CreateAkashaProfileInput!): CreateAkashaProfilePayload
-  createAkashaProfileInterests(input: CreateAkashaProfileInterestsInput!): CreateAkashaProfileInterestsPayload
-  createAkashaProfileStream(input: CreateAkashaProfileStreamInput!): CreateAkashaProfileStreamPayload
-  createAkashaReflect(input: CreateAkashaReflectInput!): CreateAkashaReflectPayload
-  createAkashaReflectStream(input: CreateAkashaReflectStreamInput!): CreateAkashaReflectStreamPayload
-  updateAkashaApp(input: UpdateAkashaAppInput!): UpdateAkashaAppPayload
-  updateAkashaAppRelease(input: UpdateAkashaAppReleaseInput!): UpdateAkashaAppReleasePayload
-  updateAkashaAppsStream(input: UpdateAkashaAppsStreamInput!): UpdateAkashaAppsStreamPayload
-  updateAkashaBeam(input: UpdateAkashaBeamInput!): UpdateAkashaBeamPayload
-  updateAkashaBeamStream(input: UpdateAkashaBeamStreamInput!): UpdateAkashaBeamStreamPayload
-  updateAkashaBlockStorage(input: UpdateAkashaBlockStorageInput!): UpdateAkashaBlockStoragePayload
-  updateAkashaContentBlock(input: UpdateAkashaContentBlockInput!): UpdateAkashaContentBlockPayload
-  updateAkashaContentBlockStream(input: UpdateAkashaContentBlockStreamInput!): UpdateAkashaContentBlockStreamPayload
-  updateAkashaFollow(input: UpdateAkashaFollowInput!): UpdateAkashaFollowPayload
-  updateAkashaInterestsStream(input: UpdateAkashaInterestsStreamInput!): UpdateAkashaInterestsStreamPayload
-  updateAkashaProfile(input: UpdateAkashaProfileInput!): UpdateAkashaProfilePayload
-  updateAkashaProfileInterests(input: UpdateAkashaProfileInterestsInput!): UpdateAkashaProfileInterestsPayload
-  updateAkashaProfileStream(input: UpdateAkashaProfileStreamInput!): UpdateAkashaProfileStreamPayload
-  updateAkashaReflect(input: UpdateAkashaReflectInput!): UpdateAkashaReflectPayload
-  updateAkashaReflectStream(input: UpdateAkashaReflectStreamInput!): UpdateAkashaReflectStreamPayload
+  createAkashaApp(input: CreateAkashaAppInput!): CreateAkashaAppPayload @join__field(graph: COMPOSEDB)
+  createAkashaAppRelease(input: CreateAkashaAppReleaseInput!): CreateAkashaAppReleasePayload @join__field(graph: COMPOSEDB)
+  createAkashaAppsStream(input: CreateAkashaAppsStreamInput!): CreateAkashaAppsStreamPayload @join__field(graph: COMPOSEDB)
+  createAkashaBeam(input: CreateAkashaBeamInput!): CreateAkashaBeamPayload @join__field(graph: COMPOSEDB)
+  createAkashaBeamStream(input: CreateAkashaBeamStreamInput!): CreateAkashaBeamStreamPayload @join__field(graph: COMPOSEDB)
+  createAkashaBlockStorage(input: CreateAkashaBlockStorageInput!): CreateAkashaBlockStoragePayload @join__field(graph: COMPOSEDB)
+  createAkashaContentBlock(input: CreateAkashaContentBlockInput!): CreateAkashaContentBlockPayload @join__field(graph: COMPOSEDB)
+  createAkashaContentBlockStream(input: CreateAkashaContentBlockStreamInput!): CreateAkashaContentBlockStreamPayload @join__field(graph: COMPOSEDB)
+  createAkashaFollow(input: CreateAkashaFollowInput!): CreateAkashaFollowPayload @join__field(graph: COMPOSEDB)
+  createAkashaInterestsStream(input: CreateAkashaInterestsStreamInput!): CreateAkashaInterestsStreamPayload @join__field(graph: COMPOSEDB)
+  createAkashaProfile(input: CreateAkashaProfileInput!): CreateAkashaProfilePayload @join__field(graph: COMPOSEDB)
+  createAkashaProfileInterests(input: CreateAkashaProfileInterestsInput!): CreateAkashaProfileInterestsPayload @join__field(graph: COMPOSEDB)
+  createAkashaProfileStream(input: CreateAkashaProfileStreamInput!): CreateAkashaProfileStreamPayload @join__field(graph: COMPOSEDB)
+  createAkashaReflect(input: CreateAkashaReflectInput!): CreateAkashaReflectPayload @join__field(graph: COMPOSEDB)
+  createAkashaReflectStream(input: CreateAkashaReflectStreamInput!): CreateAkashaReflectStreamPayload @join__field(graph: COMPOSEDB)
+  updateAkashaApp(input: UpdateAkashaAppInput!): UpdateAkashaAppPayload @join__field(graph: COMPOSEDB)
+  updateAkashaAppRelease(input: UpdateAkashaAppReleaseInput!): UpdateAkashaAppReleasePayload @join__field(graph: COMPOSEDB)
+  updateAkashaAppsStream(input: UpdateAkashaAppsStreamInput!): UpdateAkashaAppsStreamPayload @join__field(graph: COMPOSEDB)
+  updateAkashaBeam(input: UpdateAkashaBeamInput!): UpdateAkashaBeamPayload @join__field(graph: COMPOSEDB)
+  updateAkashaBeamStream(input: UpdateAkashaBeamStreamInput!): UpdateAkashaBeamStreamPayload @join__field(graph: COMPOSEDB)
+  updateAkashaBlockStorage(input: UpdateAkashaBlockStorageInput!): UpdateAkashaBlockStoragePayload @join__field(graph: COMPOSEDB)
+  updateAkashaContentBlock(input: UpdateAkashaContentBlockInput!): UpdateAkashaContentBlockPayload @join__field(graph: COMPOSEDB)
+  updateAkashaContentBlockStream(input: UpdateAkashaContentBlockStreamInput!): UpdateAkashaContentBlockStreamPayload @join__field(graph: COMPOSEDB)
+  updateAkashaFollow(input: UpdateAkashaFollowInput!): UpdateAkashaFollowPayload @join__field(graph: COMPOSEDB)
+  updateAkashaInterestsStream(input: UpdateAkashaInterestsStreamInput!): UpdateAkashaInterestsStreamPayload @join__field(graph: COMPOSEDB)
+  updateAkashaProfile(input: UpdateAkashaProfileInput!): UpdateAkashaProfilePayload @join__field(graph: COMPOSEDB)
+  updateAkashaProfileInterests(input: UpdateAkashaProfileInterestsInput!): UpdateAkashaProfileInterestsPayload @join__field(graph: COMPOSEDB)
+  updateAkashaProfileStream(input: UpdateAkashaProfileStreamInput!): UpdateAkashaProfileStreamPayload @join__field(graph: COMPOSEDB)
+  updateAkashaReflect(input: UpdateAkashaReflectInput!): UpdateAkashaReflectPayload @join__field(graph: COMPOSEDB)
+  updateAkashaReflectStream(input: UpdateAkashaReflectStreamInput!): UpdateAkashaReflectStreamPayload @join__field(graph: COMPOSEDB)
+  indexProfile(title: String, author: String): String @join__field(graph: STREAMS)
 }
 
 """An object with an ID"""
@@ -2342,6 +2345,7 @@ input PartialAkashaReflectStreamInput
 
 type Query
   @join__type(graph: COMPOSEDB)
+  @join__type(graph: STREAMS)
 {
   akashaAppIndex(
     """Returns the items in the list that come after the specified cursor."""
@@ -2357,7 +2361,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaAppSortingInput
-  ): AkashaAppConnection
+  ): AkashaAppConnection @join__field(graph: COMPOSEDB)
   akashaAppReleaseIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2372,7 +2376,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaAppReleaseSortingInput
-  ): AkashaAppReleaseConnection
+  ): AkashaAppReleaseConnection @join__field(graph: COMPOSEDB)
   akashaAppsStreamIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2387,7 +2391,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaAppsStreamSortingInput
-  ): AkashaAppsStreamConnection
+  ): AkashaAppsStreamConnection @join__field(graph: COMPOSEDB)
   akashaBeamIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2402,7 +2406,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaBeamSortingInput
-  ): AkashaBeamConnection
+  ): AkashaBeamConnection @join__field(graph: COMPOSEDB)
   akashaBeamStreamIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2417,7 +2421,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaBeamStreamSortingInput
-  ): AkashaBeamStreamConnection
+  ): AkashaBeamStreamConnection @join__field(graph: COMPOSEDB)
   akashaBlockStorageIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2432,7 +2436,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaBlockStorageSortingInput
-  ): AkashaBlockStorageConnection
+  ): AkashaBlockStorageConnection @join__field(graph: COMPOSEDB)
   akashaContentBlockIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2447,7 +2451,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaContentBlockSortingInput
-  ): AkashaContentBlockConnection
+  ): AkashaContentBlockConnection @join__field(graph: COMPOSEDB)
   akashaContentBlockStreamIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2462,7 +2466,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaContentBlockStreamSortingInput
-  ): AkashaContentBlockStreamConnection
+  ): AkashaContentBlockStreamConnection @join__field(graph: COMPOSEDB)
   akashaFollowIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2477,7 +2481,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaFollowSortingInput
-  ): AkashaFollowConnection
+  ): AkashaFollowConnection @join__field(graph: COMPOSEDB)
   akashaInterestsStreamIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2492,7 +2496,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaInterestsStreamSortingInput
-  ): AkashaInterestsStreamConnection
+  ): AkashaInterestsStreamConnection @join__field(graph: COMPOSEDB)
   akashaProfileIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2507,7 +2511,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaProfileSortingInput
-  ): AkashaProfileConnection
+  ): AkashaProfileConnection @join__field(graph: COMPOSEDB)
   akashaProfileInterestsIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2520,7 +2524,7 @@ type Query
 
     """Returns the last n items from the list."""
     last: Int
-  ): AkashaProfileInterestsConnection
+  ): AkashaProfileInterestsConnection @join__field(graph: COMPOSEDB)
   akashaProfileStreamIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2535,7 +2539,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaProfileStreamSortingInput
-  ): AkashaProfileStreamConnection
+  ): AkashaProfileStreamConnection @join__field(graph: COMPOSEDB)
   akashaReflectIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2550,7 +2554,7 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaReflectSortingInput
-  ): AkashaReflectConnection
+  ): AkashaReflectConnection @join__field(graph: COMPOSEDB)
   akashaReflectStreamIndex(
     """Returns the items in the list that come after the specified cursor."""
     after: String
@@ -2565,16 +2569,17 @@ type Query
     """Returns the last n items from the list."""
     last: Int
     sorting: AkashaReflectStreamSortingInput
-  ): AkashaReflectStreamConnection
+  ): AkashaReflectStreamConnection @join__field(graph: COMPOSEDB)
 
   """Fetches an object given its ID"""
   node(
     """The ID of an object"""
     id: ID!
-  ): Node
+  ): Node @join__field(graph: COMPOSEDB)
 
   """Account currently authenticated on the Ceramic instance, if set"""
-  viewer: CeramicAccount
+  viewer: CeramicAccount @join__field(graph: COMPOSEDB)
+  akashaProfileStreamIndexs: Boolean @join__field(graph: STREAMS)
 }
 
 enum SortOrder

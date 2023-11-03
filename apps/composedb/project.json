@@ -1,7 +1,7 @@
 {
-  "name": "@akashaorg/api-gateway",
+  "name": "@akashaorg/api-composedb",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/gateway/src",
+  "sourceRoot": "apps/composedb/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -10,18 +10,16 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/gateway",
+        "outputPath": "dist/apps/composedb",
         "format": ["esm"],
         "bundle": false,
-        "main": "apps/gateway/src/main.ts",
-        "tsConfig": "apps/gateway/tsconfig.app.json",
-        "assets": ["apps/gateway/src/assets",
-          {
+        "main": "apps/composedb/src/main.ts",
+        "tsConfig": "apps/composedb/tsconfig.app.json",
+        "assets": [{
             "input": "config/",
-            "glob": "supergraph.graphql",
+            "glob": "composedb-runtime-definition.json",
             "output": "."
-          }
-        ],
+          }],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -47,14 +45,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "@akashaorg/api-gateway:build"
+        "buildTarget": "@akashaorg/api-composedb:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "@akashaorg/api-gateway:build:development"
+          "buildTarget": "@akashaorg/api-composedb:build:development"
         },
         "production": {
-          "buildTarget": "@akashaorg/api-gateway:build:production"
+          "buildTarget": "@akashaorg/api-composedb:build:production"
         }
       }
     },
@@ -62,14 +60,14 @@
       "executor": "@nx/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["apps/gateway/**/*.ts"]
+        "lintFilePatterns": ["apps/composedb/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/gateway/jest.config.ts",
+        "jestConfig": "apps/composedb/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
@@ -81,7 +79,7 @@
     },
     "docker-build": {
       "dependsOn": ["build"],
-      "command": "docker build -f apps/gateway/Dockerfile . -t gateway"
+      "command": "docker build -f apps/composedb/Dockerfile . -t composedb"
     }
   },
   "tags": []
