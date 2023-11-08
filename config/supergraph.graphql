@@ -1522,6 +1522,49 @@ input BooleanValueFilterInput
   isNull: Boolean
 }
 
+input CACAO_CAPABILITY
+  @join__type(graph: STREAMS)
+{
+  h: CacaoHeader!
+  p: CacaoPayload!
+  s: CacaoSignature
+}
+
+input CacaoHeader
+  @join__type(graph: STREAMS)
+{
+  t: CacaoHeaderT!
+}
+
+scalar CacaoHeaderT
+  @join__type(graph: STREAMS)
+
+input CacaoPayload
+  @join__type(graph: STREAMS)
+{
+  domain: String!
+  iss: String!
+  aud: String!
+  version: String!
+  nonce: String!
+  iat: String!
+  nbf: String
+  exp: String
+  statement: String
+  requestId: String
+  resources: [String]
+}
+
+input CacaoSignature
+  @join__type(graph: STREAMS)
+{
+  t: CacaoSignatureT!
+  s: String!
+}
+
+scalar CacaoSignatureT
+  @join__type(graph: STREAMS)
+
 type CeramicAccount implements Node
   @join__implements(graph: COMPOSEDB, interface: "Node")
   @join__type(graph: COMPOSEDB)
@@ -2098,6 +2141,41 @@ A field whose value conforms to the standard DID format as specified in did-core
 scalar DID
   @join__type(graph: COMPOSEDB)
 
+input DID_JWS
+  @join__type(graph: STREAMS)
+{
+  payload: String!
+  signatures: [JWS_Signature!]!
+}
+
+type IndexBeamPayload
+  @join__type(graph: STREAMS)
+{
+  document: IndexBeamPayloadDocument
+}
+
+type IndexBeamPayloadDocument
+  @join__type(graph: STREAMS)
+{
+  id: String!
+  createdAt: String!
+  beamID: String!
+}
+
+type IndexProfilePayload
+  @join__type(graph: STREAMS)
+{
+  document: IndexProfilePayloadDocument
+}
+
+type IndexProfilePayloadDocument
+  @join__type(graph: STREAMS)
+{
+  id: String!
+  createdAt: String!
+  profileID: String!
+}
+
 """A IPLD CID"""
 scalar InterPlanetaryCID
   @join__type(graph: COMPOSEDB)
@@ -2107,6 +2185,13 @@ scalar join__FieldSet
 enum join__Graph {
   COMPOSEDB @join__graph(name: "composedb", url: "http://localhost:5112/graphql")
   STREAMS @join__graph(name: "streams", url: "http://localhost:4000/")
+}
+
+input JWS_Signature
+  @join__type(graph: STREAMS)
+{
+  protected: String!
+  signature: String!
 }
 
 scalar link__Import
@@ -2157,7 +2242,8 @@ type Mutation
   updateAkashaProfileStream(input: UpdateAkashaProfileStreamInput!): UpdateAkashaProfileStreamPayload @join__field(graph: COMPOSEDB)
   updateAkashaReflect(input: UpdateAkashaReflectInput!): UpdateAkashaReflectPayload @join__field(graph: COMPOSEDB)
   updateAkashaReflectStream(input: UpdateAkashaReflectStreamInput!): UpdateAkashaReflectStreamPayload @join__field(graph: COMPOSEDB)
-  indexProfile(title: String, author: String): String @join__field(graph: STREAMS)
+  indexProfile(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexProfilePayload @join__field(graph: STREAMS)
+  indexBeam(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexBeamPayload @join__field(graph: STREAMS)
 }
 
 """An object with an ID"""
@@ -2579,7 +2665,7 @@ type Query
 
   """Account currently authenticated on the Ceramic instance, if set"""
   viewer: CeramicAccount @join__field(graph: COMPOSEDB)
-  akashaProfileStreamIndexs: Boolean @join__field(graph: STREAMS)
+  serviceStatus: String @join__field(graph: STREAMS)
 }
 
 enum SortOrder

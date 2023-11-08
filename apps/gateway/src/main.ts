@@ -4,6 +4,7 @@ import { ApolloGateway } from '@apollo/gateway';
 import { readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { InMemoryLRUCache } from '@apollo/utils.keyvaluecache';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -17,7 +18,11 @@ const gateway = new ApolloGateway({
 
 
 const server = new ApolloServer({
-  gateway
+  gateway,
+  cache: new InMemoryLRUCache(),
+  persistedQueries: {
+    ttl: 60*60*24, // 24h
+  },
 });
 
 

@@ -1,4 +1,4 @@
-import { GraphQLResolveInfo } from 'graphql';
+import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -13,22 +13,94 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean; }
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
+  CacaoHeaderT: { input: any; output: any; }
+  CacaoSignatureT: { input: any; output: any; }
+};
+
+export type Cacao_Capability = {
+  h: CacaoHeader;
+  p: CacaoPayload;
+  s?: InputMaybe<CacaoSignature>;
+};
+
+export type CacaoHeader = {
+  t: Scalars['CacaoHeaderT']['input'];
+};
+
+export type CacaoPayload = {
+  aud: Scalars['String']['input'];
+  domain: Scalars['String']['input'];
+  exp?: InputMaybe<Scalars['String']['input']>;
+  iat: Scalars['String']['input'];
+  iss: Scalars['String']['input'];
+  nbf?: InputMaybe<Scalars['String']['input']>;
+  nonce: Scalars['String']['input'];
+  requestId?: InputMaybe<Scalars['String']['input']>;
+  resources?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  statement?: InputMaybe<Scalars['String']['input']>;
+  version: Scalars['String']['input'];
+};
+
+export type CacaoSignature = {
+  s: Scalars['String']['input'];
+  t: Scalars['CacaoSignatureT']['input'];
+};
+
+export type Did_Jws = {
+  payload: Scalars['String']['input'];
+  signatures: Array<Jws_Signature>;
+};
+
+export type IndexBeamPayload = {
+  __typename?: 'IndexBeamPayload';
+  document?: Maybe<IndexBeamPayloadDocument>;
+};
+
+export type IndexBeamPayloadDocument = {
+  __typename?: 'IndexBeamPayloadDocument';
+  beamID: Scalars['String']['output'];
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+};
+
+export type IndexProfilePayload = {
+  __typename?: 'IndexProfilePayload';
+  document?: Maybe<IndexProfilePayloadDocument>;
+};
+
+export type IndexProfilePayloadDocument = {
+  __typename?: 'IndexProfilePayloadDocument';
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  profileID: Scalars['String']['output'];
+};
+
+export type Jws_Signature = {
+  protected: Scalars['String']['input'];
+  signature: Scalars['String']['input'];
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
-  indexProfile?: Maybe<Scalars['String']['output']>;
+  indexBeam?: Maybe<IndexBeamPayload>;
+  indexProfile?: Maybe<IndexProfilePayload>;
+};
+
+
+export type MutationIndexBeamArgs = {
+  capability?: InputMaybe<Cacao_Capability>;
+  jws?: InputMaybe<Did_Jws>;
 };
 
 
 export type MutationIndexProfileArgs = {
-  author?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
+  capability?: InputMaybe<Cacao_Capability>;
+  jws?: InputMaybe<Did_Jws>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  akashaProfileStreamIndexs?: Maybe<Scalars['Boolean']['output']>;
+  serviceStatus?: Maybe<Scalars['String']['output']>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -104,6 +176,18 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  CACAO_CAPABILITY: Cacao_Capability;
+  CacaoHeader: CacaoHeader;
+  CacaoHeaderT: ResolverTypeWrapper<Scalars['CacaoHeaderT']['output']>;
+  CacaoPayload: CacaoPayload;
+  CacaoSignature: CacaoSignature;
+  CacaoSignatureT: ResolverTypeWrapper<Scalars['CacaoSignatureT']['output']>;
+  DID_JWS: Did_Jws;
+  IndexBeamPayload: ResolverTypeWrapper<IndexBeamPayload>;
+  IndexBeamPayloadDocument: ResolverTypeWrapper<IndexBeamPayloadDocument>;
+  IndexProfilePayload: ResolverTypeWrapper<IndexProfilePayload>;
+  IndexProfilePayloadDocument: ResolverTypeWrapper<IndexProfilePayloadDocument>;
+  JWS_Signature: Jws_Signature;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
@@ -112,20 +196,71 @@ export type ResolversTypes = ResolversObject<{
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
   Boolean: Scalars['Boolean']['output'];
+  CACAO_CAPABILITY: Cacao_Capability;
+  CacaoHeader: CacaoHeader;
+  CacaoHeaderT: Scalars['CacaoHeaderT']['output'];
+  CacaoPayload: CacaoPayload;
+  CacaoSignature: CacaoSignature;
+  CacaoSignatureT: Scalars['CacaoSignatureT']['output'];
+  DID_JWS: Did_Jws;
+  IndexBeamPayload: IndexBeamPayload;
+  IndexBeamPayloadDocument: IndexBeamPayloadDocument;
+  IndexProfilePayload: IndexProfilePayload;
+  IndexProfilePayloadDocument: IndexProfilePayloadDocument;
+  JWS_Signature: Jws_Signature;
   Mutation: {};
   Query: {};
   String: Scalars['String']['output'];
 }>;
 
+export interface CacaoHeaderTScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['CacaoHeaderT'], any> {
+  name: 'CacaoHeaderT';
+}
+
+export interface CacaoSignatureTScalarConfig extends GraphQLScalarTypeConfig<ResolversTypes['CacaoSignatureT'], any> {
+  name: 'CacaoSignatureT';
+}
+
+export type IndexBeamPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexBeamPayload'] = ResolversParentTypes['IndexBeamPayload']> = ResolversObject<{
+  document?: Resolver<Maybe<ResolversTypes['IndexBeamPayloadDocument']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexBeamPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexBeamPayloadDocument'] = ResolversParentTypes['IndexBeamPayloadDocument']> = ResolversObject<{
+  beamID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexProfilePayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexProfilePayload'] = ResolversParentTypes['IndexProfilePayload']> = ResolversObject<{
+  document?: Resolver<Maybe<ResolversTypes['IndexProfilePayloadDocument']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexProfilePayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexProfilePayloadDocument'] = ResolversParentTypes['IndexProfilePayloadDocument']> = ResolversObject<{
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  profileID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
-  indexProfile?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<MutationIndexProfileArgs>>;
+  indexBeam?: Resolver<Maybe<ResolversTypes['IndexBeamPayload']>, ParentType, ContextType, Partial<MutationIndexBeamArgs>>;
+  indexProfile?: Resolver<Maybe<ResolversTypes['IndexProfilePayload']>, ParentType, ContextType, Partial<MutationIndexProfileArgs>>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  akashaProfileStreamIndexs?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  serviceStatus?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 }>;
 
 export type Resolvers<ContextType = any> = ResolversObject<{
+  CacaoHeaderT?: GraphQLScalarType;
+  CacaoSignatureT?: GraphQLScalarType;
+  IndexBeamPayload?: IndexBeamPayloadResolvers<ContextType>;
+  IndexBeamPayloadDocument?: IndexBeamPayloadDocumentResolvers<ContextType>;
+  IndexProfilePayload?: IndexProfilePayloadResolvers<ContextType>;
+  IndexProfilePayloadDocument?: IndexProfilePayloadDocumentResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 }>;

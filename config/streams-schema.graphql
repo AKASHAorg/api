@@ -1,8 +1,71 @@
 type Query {
-  akashaProfileStreamIndexs: Boolean
+  serviceStatus: String
 }
 
+type IndexProfilePayloadDocument{
+  id: String!
+  createdAt: String!
+  profileID: String!
+}
+
+type IndexBeamPayloadDocument{
+  id: String!
+  createdAt: String!
+  beamID: String!
+}
+
+type IndexProfilePayload{
+  document: IndexProfilePayloadDocument
+}
+
+type IndexBeamPayload{
+  document: IndexBeamPayloadDocument
+}
+
+input JWS_Signature{
+  protected: String!
+  signature: String!
+}
+
+input DID_JWS{
+  payload: String!
+  signatures: [JWS_Signature!]!
+}
+
+scalar CacaoHeaderT
+
+input CacaoHeader{
+  t: CacaoHeaderT!
+}
+
+input CacaoPayload{
+  domain: String!
+  iss: String!
+  aud: String!
+  version: String!
+  nonce: String!
+  iat: String!
+  nbf: String
+  exp: String
+  statement: String
+  requestId: String
+  resources: [String]
+}
+
+scalar CacaoSignatureT
+
+input CacaoSignature{
+  t: CacaoSignatureT!
+  s: String!
+}
+
+input CACAO_CAPABILITY{
+  h: CacaoHeader!
+  p: CacaoPayload!
+  s: CacaoSignature
+}
 
 type Mutation {
-  indexProfile(title: String, author: String): String
+  indexProfile(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexProfilePayload
+  indexBeam(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexBeamPayload
 }

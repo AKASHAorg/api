@@ -1,0 +1,166 @@
+fragment AkashaProfileStreamFragment on AkashaProfileStream{
+  id
+  profileID
+  active
+  createdAt
+  moderationID
+  status
+}
+
+fragment AkashaBeamStreamFragment on AkashaBeamStream{
+  id
+  beamID
+  active
+  createdAt
+  moderationID
+  status
+}
+
+fragment AkashaContentBlockStreamFragment on AkashaContentBlockStream{
+  id
+  beamID
+  active
+  createdAt
+  moderationID
+  blockID
+  status
+}
+
+fragment AkashaReflectStreamFragment on AkashaReflectStream{
+  id
+  beamID
+  active
+  createdAt
+  moderationID
+  reflectionID
+  status
+}
+
+fragment AkashaInterestsStreamFragment on AkashaInterestsStream{
+  id
+  active
+  createdAt
+  moderationID
+  status
+  labelType
+  value
+}
+
+fragment AkashaAppsStreamFragment on AkashaAppsStream{
+  id
+  active
+  createdAt
+  moderationID
+  status
+  applicationID
+}
+
+mutation IndexProfileStream($i: CreateAkashaProfileStreamInput!) {
+  createAkashaProfileStream(input: $i){
+    document {
+      ...AkashaProfileStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation UpdateProfileStream($i: UpdateAkashaProfileStreamInput!) {
+  updateAkashaProfileStream(input: $i){
+    document {
+      ...AkashaProfileStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation IndexBeamStream($i: CreateAkashaBeamStreamInput!) {
+  createAkashaBeamStream(input: $i){
+    document {
+      ...AkashaBeamStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation UpdateBeamStream($i: UpdateAkashaBeamStreamInput!) {
+  updateAkashaBeamStream(input: $i){
+    document {
+      ...AkashaBeamStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+
+mutation IndexContentBlockStream($i: CreateAkashaContentBlockStreamInput!) {
+  createAkashaContentBlockStream(input: $i){
+    document {
+      ...AkashaContentBlockStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation UpdateContentBlockStream($i: UpdateAkashaContentBlockStreamInput!) {
+  updateAkashaContentBlockStream(input: $i){
+    document {
+      ...AkashaContentBlockStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation IndexAkashaReflectStream($i: CreateAkashaReflectStreamInput!) {
+  createAkashaReflectStream(input: $i){
+    document {
+      ...AkashaReflectStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation UpdateAkashaReflectStream($i: UpdateAkashaReflectStreamInput!) {
+  updateAkashaReflectStream(input: $i){
+    document {
+      ...AkashaReflectStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation IndexAkashaInterestsStream($i: CreateAkashaInterestsStreamInput!) {
+  createAkashaInterestsStream(input: $i){
+    document {
+      ...AkashaInterestsStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation UpdateAkashaInterestsStream($i: UpdateAkashaInterestsStreamInput!) {
+  updateAkashaInterestsStream(input: $i){
+    document {
+      ...AkashaInterestsStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation IndexAkashaAppsStream($i: CreateAkashaAppsStreamInput!) {
+  createAkashaAppsStream(input: $i){
+    document {
+      ...AkashaAppsStreamFragment
+    }
+    clientMutationId
+  }
+}
+
+mutation UpdateAkashaAppsStream($i: UpdateAkashaAppsStreamInput!) {
+  updateAkashaAppsStream(input: $i){
+    document {
+      ...AkashaAppsStreamFragment
+    }
+    clientMutationId
+  }
+}
+

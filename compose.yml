@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  composedb-graphql:
+    image: composedb
+    ports:
+      - '5001:5001'
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+  indexing:
+    image: indexing
+    ports:
+      - '7007:7007'
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - composedb-graphql
+    restart: unless-stopped
+  gateway:
+    image: gateway
+    ports:
+      - '5001:4000'
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - composedb-graphql
+      - indexing
+    restart: unless-stopped
