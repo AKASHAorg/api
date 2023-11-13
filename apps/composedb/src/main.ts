@@ -17,7 +17,7 @@ const server = await serveEncodedDefinition({
   port: process.env.COMPOSEDB_GRAPHQL_PORT ? parseInt(process.env.COMPOSEDB_GRAPHQL_PORT) : 5001
 });
 
-console.info(`ComposeDB ffs graphQL service started on http://localhost:${server.port}/graphql`);
+console.info(`ComposeDB graphQL service started on http://localhost:${server.port}/graphql`);
 
 process.on("SIGTERM", async () => {
   await server.stop();
