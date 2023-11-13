@@ -53,6 +53,8 @@ const server = new ApolloServer({
   resolvers,
 });
 
-const { url } = await startStandaloneServer(server);
+const { url } = await startStandaloneServer(server, {
+  listen: { port: parseInt(process.env.GRAPHQL_INDEXING_PORT) || 4000}
+});
 
 console.log(`🚀 Server ready at ${url} ${composeClient.did.id}`);

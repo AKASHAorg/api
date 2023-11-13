@@ -6,6 +6,6 @@ subgraphs:
       file: ./composedb-schema.graphql
       #subgraph_url:
   streams:
-    routing_url: ${env.STREAMS_URL}
+    routing_url: ${env.INDEXING_URL}
     schema:
       file: ./streams-schema.graphql

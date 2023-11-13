@@ -78,6 +78,7 @@
       }
     },
     "docker-build": {
+      "cache": false,
       "dependsOn": ["build"],
       "command": "docker build -f apps/composedb/Dockerfile . -t composedb"
     }

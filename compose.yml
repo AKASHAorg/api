@@ -1,28 +1,43 @@
 version: '3.3'
 services:
-  composedb-graphql:
-    image: composedb
-    ports:
-      - '5001:5001'
+  composedb:
+    image: akashafoundation/composedb-graphql:latest
     environment:
       - NODE_ENV=production
+      - CERAMIC_API_ENDPOINT=${CERAMIC_API_ENDPOINT}
+      - COMPOSEDB_GRAPHQL_PORT=${COMPOSEDB_GRAPHQL_PORT}
+    expose:
+      - "${COMPOSEDB_GRAPHQL_PORT}"
+    networks:
+      - superGraph
     restart: unless-stopped
   indexing:
-    image: indexing
-    ports:
-      - '7007:7007'
+    image: akashafoundation/indexing-graphql:latest
     environment:
       - NODE_ENV=production
+      - CERAMIC_API_ENDPOINT=${CERAMIC_API_ENDPOINT}
+      - GRAPHQL_INDEXING_PORT=${GRAPHQL_INDEXING_PORT}
+      - DID_INDEXING_PRIVATE_KEY=${DID_INDEXING_PRIVATE_KEY}
+    expose:
+      - "${GRAPHQL_INDEXING_PORT}"
     depends_on:
-      - composedb-graphql
+      - composedb
+    networks:
+      - superGraph
     restart: unless-stopped
   gateway:
-    image: gateway
+    image: akashafoundation/gateway-graphql:latest
     ports:
-      - '5001:4000'
+      - "5001:${GRAPHQL_GATEWAY_PORT}"
     environment:
       - NODE_ENV=production
+      - GRAPHQL_GATEWAY_PORT=${GRAPHQL_GATEWAY_PORT}
     depends_on:
-      - composedb-graphql
+      - composedb
       - indexing
+    networks:
+      - superGraph
     restart: unless-stopped
+networks:
+  superGraph:
+    driver: bridge

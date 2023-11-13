@@ -107,6 +107,7 @@
       }
     },
     "docker-build": {
+      "cache": false,
       "dependsOn": [
         "build"
       ],

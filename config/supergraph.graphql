@@ -2183,8 +2183,8 @@ scalar InterPlanetaryCID
 scalar join__FieldSet
 
 enum join__Graph {
-  COMPOSEDB @join__graph(name: "composedb", url: "http://localhost:5112/graphql")
-  STREAMS @join__graph(name: "streams", url: "http://localhost:4000/")
+  COMPOSEDB @join__graph(name: "composedb", url: "http://composedb:5112/graphql")
+  STREAMS @join__graph(name: "streams", url: "http://indexing:4000/graphql")
 }
 
 input JWS_Signature
