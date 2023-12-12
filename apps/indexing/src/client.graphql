@@ -18,7 +18,6 @@ fragment AkashaBeamStreamFragment on AkashaBeamStream{
 
 fragment AkashaContentBlockStreamFragment on AkashaContentBlockStream{
   id
-  beamID
   active
   createdAt
   moderationID
@@ -164,3 +163,15 @@ mutation UpdateAkashaAppsStream($i: UpdateAkashaAppsStreamInput!) {
   }
 }
 
+
+query GetReflectionById($id: ID!){
+  node(id: $id){
+    ... on AkashaReflect{
+      id
+      beamID
+      nsfw
+      createdAt
+      active
+    }
+  }
+}

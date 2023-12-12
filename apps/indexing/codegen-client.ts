@@ -11,7 +11,7 @@ const config: CodegenConfig = {
         dedupeOperationSuffix: true,
         dedupeFragments: true,
         pureMagicComment: true,
-        useIndexSignature: true
+        skipTypename: true,
       },
       plugins: ['typescript', 'typescript-operations', '@graphql-codegen/typescript-generic-sdk'],
     },

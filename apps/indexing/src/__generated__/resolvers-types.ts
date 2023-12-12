@@ -51,6 +51,18 @@ export type Did_Jws = {
   signatures: Array<Jws_Signature>;
 };
 
+export type IndexAppPayload = {
+  __typename?: 'IndexAppPayload';
+  document?: Maybe<IndexAppPayloadDocument>;
+};
+
+export type IndexAppPayloadDocument = {
+  __typename?: 'IndexAppPayloadDocument';
+  applicationID: Scalars['String']['output'];
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+};
+
 export type IndexBeamPayload = {
   __typename?: 'IndexBeamPayload';
   document?: Maybe<IndexBeamPayloadDocument>;
@@ -61,6 +73,31 @@ export type IndexBeamPayloadDocument = {
   beamID: Scalars['String']['output'];
   createdAt: Scalars['String']['output'];
   id: Scalars['String']['output'];
+};
+
+export type IndexContentBlockPayload = {
+  __typename?: 'IndexContentBlockPayload';
+  document?: Maybe<IndexContentBlockPayloadDocument>;
+};
+
+export type IndexContentBlockPayloadDocument = {
+  __typename?: 'IndexContentBlockPayloadDocument';
+  blockID: Scalars['String']['output'];
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+};
+
+export type IndexInterestPayload = {
+  __typename?: 'IndexInterestPayload';
+  document?: Maybe<IndexInterestPayloadDocument>;
+};
+
+export type IndexInterestPayloadDocument = {
+  __typename?: 'IndexInterestPayloadDocument';
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  labelType: Scalars['String']['output'];
+  value: Scalars['String']['output'];
 };
 
 export type IndexProfilePayload = {
@@ -75,6 +112,19 @@ export type IndexProfilePayloadDocument = {
   profileID: Scalars['String']['output'];
 };
 
+export type IndexReflectPayload = {
+  __typename?: 'IndexReflectPayload';
+  document?: Maybe<IndexReflectPayloadDocument>;
+};
+
+export type IndexReflectPayloadDocument = {
+  __typename?: 'IndexReflectPayloadDocument';
+  beamID: Scalars['String']['output'];
+  createdAt: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  reflectionID: Scalars['String']['output'];
+};
+
 export type Jws_Signature = {
   protected: Scalars['String']['input'];
   signature: Scalars['String']['input'];
@@ -82,8 +132,18 @@ export type Jws_Signature = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  indexApp?: Maybe<IndexAppPayload>;
   indexBeam?: Maybe<IndexBeamPayload>;
+  indexContentBlock?: Maybe<IndexContentBlockPayload>;
+  indexInterest?: Maybe<IndexInterestPayload>;
   indexProfile?: Maybe<IndexProfilePayload>;
+  indexReflection?: Maybe<IndexReflectPayload>;
+};
+
+
+export type MutationIndexAppArgs = {
+  capability?: InputMaybe<Cacao_Capability>;
+  jws?: InputMaybe<Did_Jws>;
 };
 
 
@@ -93,7 +153,25 @@ export type MutationIndexBeamArgs = {
 };
 
 
+export type MutationIndexContentBlockArgs = {
+  capability?: InputMaybe<Cacao_Capability>;
+  jws?: InputMaybe<Did_Jws>;
+};
+
+
+export type MutationIndexInterestArgs = {
+  capability?: InputMaybe<Cacao_Capability>;
+  jws?: InputMaybe<Did_Jws>;
+};
+
+
 export type MutationIndexProfileArgs = {
+  capability?: InputMaybe<Cacao_Capability>;
+  jws?: InputMaybe<Did_Jws>;
+};
+
+
+export type MutationIndexReflectionArgs = {
   capability?: InputMaybe<Cacao_Capability>;
   jws?: InputMaybe<Did_Jws>;
 };
@@ -183,10 +261,18 @@ export type ResolversTypes = ResolversObject<{
   CacaoSignature: CacaoSignature;
   CacaoSignatureT: ResolverTypeWrapper<Scalars['CacaoSignatureT']['output']>;
   DID_JWS: Did_Jws;
+  IndexAppPayload: ResolverTypeWrapper<IndexAppPayload>;
+  IndexAppPayloadDocument: ResolverTypeWrapper<IndexAppPayloadDocument>;
   IndexBeamPayload: ResolverTypeWrapper<IndexBeamPayload>;
   IndexBeamPayloadDocument: ResolverTypeWrapper<IndexBeamPayloadDocument>;
+  IndexContentBlockPayload: ResolverTypeWrapper<IndexContentBlockPayload>;
+  IndexContentBlockPayloadDocument: ResolverTypeWrapper<IndexContentBlockPayloadDocument>;
+  IndexInterestPayload: ResolverTypeWrapper<IndexInterestPayload>;
+  IndexInterestPayloadDocument: ResolverTypeWrapper<IndexInterestPayloadDocument>;
   IndexProfilePayload: ResolverTypeWrapper<IndexProfilePayload>;
   IndexProfilePayloadDocument: ResolverTypeWrapper<IndexProfilePayloadDocument>;
+  IndexReflectPayload: ResolverTypeWrapper<IndexReflectPayload>;
+  IndexReflectPayloadDocument: ResolverTypeWrapper<IndexReflectPayloadDocument>;
   JWS_Signature: Jws_Signature;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
@@ -203,10 +289,18 @@ export type ResolversParentTypes = ResolversObject<{
   CacaoSignature: CacaoSignature;
   CacaoSignatureT: Scalars['CacaoSignatureT']['output'];
   DID_JWS: Did_Jws;
+  IndexAppPayload: IndexAppPayload;
+  IndexAppPayloadDocument: IndexAppPayloadDocument;
   IndexBeamPayload: IndexBeamPayload;
   IndexBeamPayloadDocument: IndexBeamPayloadDocument;
+  IndexContentBlockPayload: IndexContentBlockPayload;
+  IndexContentBlockPayloadDocument: IndexContentBlockPayloadDocument;
+  IndexInterestPayload: IndexInterestPayload;
+  IndexInterestPayloadDocument: IndexInterestPayloadDocument;
   IndexProfilePayload: IndexProfilePayload;
   IndexProfilePayloadDocument: IndexProfilePayloadDocument;
+  IndexReflectPayload: IndexReflectPayload;
+  IndexReflectPayloadDocument: IndexReflectPayloadDocument;
   JWS_Signature: Jws_Signature;
   Mutation: {};
   Query: {};
@@ -221,6 +315,18 @@ export interface CacaoSignatureTScalarConfig extends GraphQLScalarTypeConfig<Res
   name: 'CacaoSignatureT';
 }
 
+export type IndexAppPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexAppPayload'] = ResolversParentTypes['IndexAppPayload']> = ResolversObject<{
+  document?: Resolver<Maybe<ResolversTypes['IndexAppPayloadDocument']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexAppPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexAppPayloadDocument'] = ResolversParentTypes['IndexAppPayloadDocument']> = ResolversObject<{
+  applicationID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type IndexBeamPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexBeamPayload'] = ResolversParentTypes['IndexBeamPayload']> = ResolversObject<{
   document?: Resolver<Maybe<ResolversTypes['IndexBeamPayloadDocument']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -230,6 +336,31 @@ export type IndexBeamPayloadDocumentResolvers<ContextType = any, ParentType exte
   beamID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexContentBlockPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexContentBlockPayload'] = ResolversParentTypes['IndexContentBlockPayload']> = ResolversObject<{
+  document?: Resolver<Maybe<ResolversTypes['IndexContentBlockPayloadDocument']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexContentBlockPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexContentBlockPayloadDocument'] = ResolversParentTypes['IndexContentBlockPayloadDocument']> = ResolversObject<{
+  blockID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexInterestPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexInterestPayload'] = ResolversParentTypes['IndexInterestPayload']> = ResolversObject<{
+  document?: Resolver<Maybe<ResolversTypes['IndexInterestPayloadDocument']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexInterestPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexInterestPayloadDocument'] = ResolversParentTypes['IndexInterestPayloadDocument']> = ResolversObject<{
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  labelType?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  value?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -245,9 +376,26 @@ export type IndexProfilePayloadDocumentResolvers<ContextType = any, ParentType e
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type IndexReflectPayloadResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexReflectPayload'] = ResolversParentTypes['IndexReflectPayload']> = ResolversObject<{
+  document?: Resolver<Maybe<ResolversTypes['IndexReflectPayloadDocument']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type IndexReflectPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexReflectPayloadDocument'] = ResolversParentTypes['IndexReflectPayloadDocument']> = ResolversObject<{
+  beamID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  reflectionID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
+  indexApp?: Resolver<Maybe<ResolversTypes['IndexAppPayload']>, ParentType, ContextType, Partial<MutationIndexAppArgs>>;
   indexBeam?: Resolver<Maybe<ResolversTypes['IndexBeamPayload']>, ParentType, ContextType, Partial<MutationIndexBeamArgs>>;
+  indexContentBlock?: Resolver<Maybe<ResolversTypes['IndexContentBlockPayload']>, ParentType, ContextType, Partial<MutationIndexContentBlockArgs>>;
+  indexInterest?: Resolver<Maybe<ResolversTypes['IndexInterestPayload']>, ParentType, ContextType, Partial<MutationIndexInterestArgs>>;
   indexProfile?: Resolver<Maybe<ResolversTypes['IndexProfilePayload']>, ParentType, ContextType, Partial<MutationIndexProfileArgs>>;
+  indexReflection?: Resolver<Maybe<ResolversTypes['IndexReflectPayload']>, ParentType, ContextType, Partial<MutationIndexReflectionArgs>>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
@@ -257,10 +405,18 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 export type Resolvers<ContextType = any> = ResolversObject<{
   CacaoHeaderT?: GraphQLScalarType;
   CacaoSignatureT?: GraphQLScalarType;
+  IndexAppPayload?: IndexAppPayloadResolvers<ContextType>;
+  IndexAppPayloadDocument?: IndexAppPayloadDocumentResolvers<ContextType>;
   IndexBeamPayload?: IndexBeamPayloadResolvers<ContextType>;
   IndexBeamPayloadDocument?: IndexBeamPayloadDocumentResolvers<ContextType>;
+  IndexContentBlockPayload?: IndexContentBlockPayloadResolvers<ContextType>;
+  IndexContentBlockPayloadDocument?: IndexContentBlockPayloadDocumentResolvers<ContextType>;
+  IndexInterestPayload?: IndexInterestPayloadResolvers<ContextType>;
+  IndexInterestPayloadDocument?: IndexInterestPayloadDocumentResolvers<ContextType>;
   IndexProfilePayload?: IndexProfilePayloadResolvers<ContextType>;
   IndexProfilePayloadDocument?: IndexProfilePayloadDocumentResolvers<ContextType>;
+  IndexReflectPayload?: IndexReflectPayloadResolvers<ContextType>;
+  IndexReflectPayloadDocument?: IndexReflectPayloadDocumentResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 }>;

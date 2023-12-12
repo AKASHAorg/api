@@ -22,6 +22,46 @@ type IndexBeamPayload{
   document: IndexBeamPayloadDocument
 }
 
+
+type IndexReflectPayloadDocument {
+  id: String!
+  createdAt: String!
+  reflectionID: String!
+  beamID: String!
+}
+type IndexReflectPayload{
+  document: IndexReflectPayloadDocument
+}
+
+type IndexContentBlockPayloadDocument {
+  id: String!
+  createdAt: String!
+  blockID: String!
+}
+type IndexContentBlockPayload{
+  document: IndexContentBlockPayloadDocument
+}
+
+
+type IndexInterestPayloadDocument {
+  id: String!
+  createdAt: String!
+  labelType: String!
+  value: String!
+}
+type IndexInterestPayload{
+  document: IndexInterestPayloadDocument
+}
+
+type IndexAppPayloadDocument {
+  id: String!
+  applicationID: String!
+  createdAt: String!
+}
+type IndexAppPayload{
+  document: IndexAppPayloadDocument
+}
+
 input JWS_Signature{
   protected: String!
   signature: String!
@@ -68,4 +108,8 @@ input CACAO_CAPABILITY{
 type Mutation {
   indexProfile(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexProfilePayload
   indexBeam(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexBeamPayload
+  indexReflection(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexReflectPayload
+  indexContentBlock(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexContentBlockPayload
+  indexInterest(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexInterestPayload
+  indexApp(jws: DID_JWS, capability: CACAO_CAPABILITY): IndexAppPayload
 }
