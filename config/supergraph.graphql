@@ -1321,7 +1321,7 @@ type AkashaReflect implements Node
   content: [AkashaReflectProviderValue!]!
   createdAt: DateTime!
   id: ID!
-  isReply: Boolean!
+  isReply: Boolean
   mentions: [CeramicStreamID]
   nsfw: Boolean
   reflection: CeramicStreamID
@@ -1369,7 +1369,7 @@ input AkashaReflectInput
   beamID: CeramicStreamID!
   content: [AkashaReflectProviderValueInput]!
   createdAt: DateTime!
-  isReply: Boolean!
+  isReply: Boolean
   mentions: [CeramicStreamID]
   nsfw: Boolean
   reflection: CeramicStreamID
