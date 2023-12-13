@@ -43,6 +43,8 @@ export type AkashaApp = Node & {
   name: Scalars['String']['output'];
   releases: AkashaAppReleaseConnection;
   releasesCount: Scalars['Int']['output'];
+  /** Current version of the document */
+  version: Scalars['CeramicCommitID']['output'];
 };
 
 
@@ -1027,7 +1029,7 @@ export type AkashaReflect = Node & {
   content: Array<AkashaReflectProviderValue>;
   createdAt: Scalars['DateTime']['output'];
   id: Scalars['ID']['output'];
-  isReply: Scalars['Boolean']['output'];
+  isReply?: Maybe<Scalars['Boolean']['output']>;
   mentions?: Maybe<Array<Maybe<Scalars['CeramicStreamID']['output']>>>;
   nsfw?: Maybe<Scalars['Boolean']['output']>;
   reflection?: Maybe<Scalars['CeramicStreamID']['output']>;
@@ -1064,7 +1066,7 @@ export type AkashaReflectInput = {
   beamID: Scalars['CeramicStreamID']['input'];
   content: Array<InputMaybe<AkashaReflectProviderValueInput>>;
   createdAt: Scalars['DateTime']['input'];
-  isReply: Scalars['Boolean']['input'];
+  isReply?: InputMaybe<Scalars['Boolean']['input']>;
   mentions?: InputMaybe<Array<InputMaybe<Scalars['CeramicStreamID']['input']>>>;
   nsfw?: InputMaybe<Scalars['Boolean']['input']>;
   reflection?: InputMaybe<Scalars['CeramicStreamID']['input']>;
