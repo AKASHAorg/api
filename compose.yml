@@ -15,7 +15,7 @@ services:
     volumes:
       - ceramic_daemon:/root/.ceramic
     command:
-      - '--network=testnet-clay'
+      - '--network=inmemory'
     ports:
       - '7007:7007'
     environment:
