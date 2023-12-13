@@ -1,5 +1,26 @@
 version: '3.3'
 services:
+  ipfs:
+    image: ceramicnetwork/go-ipfs-daemon:latest
+    volumes:
+      - ipfs_data:/data/ipfs
+    ports:
+      - '5001:5001'
+      - '8011:8011'
+    restart: 'unless-stopped'
+  ceramic:
+    image: ceramicnetwork/js-ceramic:latest
+    volumes:
+      - ceramic_daemon_new:/root/.ceramic
+    command:
+      - '--network=testnet-clay'
+    ports:
+      - '7007:7007'
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - ipfs
+    restart: unless-stopped
   composedb:
     image: akashafoundation/composedb-graphql:latest
     environment:
@@ -10,6 +31,8 @@ services:
       - "${COMPOSEDB_GRAPHQL_PORT}"
     networks:
       - superGraph
+    depends_on:
+      - ceramic
     restart: unless-stopped
   indexing:
     image: akashafoundation/indexing-graphql:latest
