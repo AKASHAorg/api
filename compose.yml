@@ -7,11 +7,13 @@ services:
     ports:
       - '5001:5001'
       - '8011:8011'
+    networks:
+      - superGraph
     restart: 'unless-stopped'
   ceramic:
     image: ceramicnetwork/js-ceramic:latest
     volumes:
-      - ceramic_daemon_new:/root/.ceramic
+      - ceramic_daemon:/root/.ceramic
     command:
       - '--network=testnet-clay'
     ports:
@@ -20,6 +22,8 @@ services:
       - NODE_ENV=production
     depends_on:
       - ipfs
+    networks:
+      - superGraph
     restart: unless-stopped
   composedb:
     image: akashafoundation/composedb-graphql:latest
@@ -64,3 +68,6 @@ services:
 networks:
   superGraph:
     driver: bridge
+volumes:
+  ipfs_data: {}
+  ceramic_daemon: {}
