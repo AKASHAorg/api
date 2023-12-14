@@ -59,6 +59,7 @@ services:
     environment:
       - NODE_ENV=production
       - GRAPHQL_GATEWAY_PORT=${GRAPHQL_GATEWAY_PORT}
+      - REDIS_CONNECTION_STRING=${REDIS_CONNECTION_STRING}
     depends_on:
       - composedb
       - indexing

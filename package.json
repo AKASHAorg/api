@@ -14,11 +14,12 @@
   "dependencies": {
     "@apollo/gateway": "^2.6.2",
     "@apollo/server": "^4.9.5",
+    "@apollo/utils.keyvadapter": "^3.1.0",
     "@ceramicnetwork/http-client": "2.36.0",
     "@composedb/client": "^0.5.2",
     "@composedb/server": "^0.5.2",
-    "@apollo/utils.keyvadapter": "^3.1.0",
     "@composedb/devtools-node": "^0.5.2",
+    "@keyv/redis": "^2.8.1",
     "@whatwg-node/server": "^0.9.22",
     "dids": "^4.0.4",
     "did-resolver": "^4.1.0",
@@ -26,6 +27,7 @@
     "graphql-tag": "^2.12.6",
     "key-did-provider-ed25519": "^3.0.2",
     "key-did-resolver": "^3.0.0",
+    "keyv": "^4.5.4",
     "pkh-did-resolver": "^1.2.0",
     "tslib": "^2.6.2",
     "uint8arrays": "^5.0.0"
