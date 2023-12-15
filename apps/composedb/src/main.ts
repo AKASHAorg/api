@@ -2,6 +2,7 @@ import { readEncodedComposite, serveEncodedDefinition } from "@composedb/devtool
 import { startGraphQLServer, getViewerID } from '@composedb/server';
 import { CeramicClient } from '@ceramicnetwork/http-client';
 import { createContext, createGraphQLSchema } from '@composedb/runtime';
+import { useResponseCache } from '@graphql-yoga/plugin-response-cache';
 import {
   type YogaInitialContext,
 } from 'graphql-yoga'
@@ -41,11 +42,19 @@ const server = await startGraphQLServer({
       const fallbackViewerID = getViewerID(ctx.request);
       return {
         ...createContext({ ceramic: ceramic, fallbackViewerID }),
-        isAuthenticated: () => !!fallbackViewerID
+        isAuthenticated: () => !!fallbackViewerID,
       };
     },
+    plugins: [
+      useResponseCache({
+        session: (request: Request) => getViewerID(request),
+        ttl: 3_000,
+      }),
+    ],
   },
-  port: process.env.COMPOSEDB_GRAPHQL_PORT ? parseInt(process.env.COMPOSEDB_GRAPHQL_PORT) : 5001,
+  port: process.env.COMPOSEDB_GRAPHQL_PORT
+    ? parseInt(process.env.COMPOSEDB_GRAPHQL_PORT)
+    : 5001,
   schema: createGraphQLSchema({ definition, readonly: true }),
 });
 
