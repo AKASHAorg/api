@@ -59,8 +59,6 @@ export type IndexAppPayload = {
 export type IndexAppPayloadDocument = {
   __typename?: 'IndexAppPayloadDocument';
   applicationID: Scalars['String']['output'];
-  createdAt: Scalars['String']['output'];
-  id: Scalars['String']['output'];
 };
 
 export type IndexBeamPayload = {
@@ -71,8 +69,6 @@ export type IndexBeamPayload = {
 export type IndexBeamPayloadDocument = {
   __typename?: 'IndexBeamPayloadDocument';
   beamID: Scalars['String']['output'];
-  createdAt: Scalars['String']['output'];
-  id: Scalars['String']['output'];
 };
 
 export type IndexContentBlockPayload = {
@@ -83,8 +79,6 @@ export type IndexContentBlockPayload = {
 export type IndexContentBlockPayloadDocument = {
   __typename?: 'IndexContentBlockPayloadDocument';
   blockID: Scalars['String']['output'];
-  createdAt: Scalars['String']['output'];
-  id: Scalars['String']['output'];
 };
 
 export type IndexInterestPayload = {
@@ -94,8 +88,6 @@ export type IndexInterestPayload = {
 
 export type IndexInterestPayloadDocument = {
   __typename?: 'IndexInterestPayloadDocument';
-  createdAt: Scalars['String']['output'];
-  id: Scalars['String']['output'];
   labelType: Scalars['String']['output'];
   value: Scalars['String']['output'];
 };
@@ -107,8 +99,6 @@ export type IndexProfilePayload = {
 
 export type IndexProfilePayloadDocument = {
   __typename?: 'IndexProfilePayloadDocument';
-  createdAt: Scalars['String']['output'];
-  id: Scalars['String']['output'];
   profileID: Scalars['String']['output'];
 };
 
@@ -119,9 +109,6 @@ export type IndexReflectPayload = {
 
 export type IndexReflectPayloadDocument = {
   __typename?: 'IndexReflectPayloadDocument';
-  beamID: Scalars['String']['output'];
-  createdAt: Scalars['String']['output'];
-  id: Scalars['String']['output'];
   reflectionID: Scalars['String']['output'];
 };
 
@@ -322,8 +309,6 @@ export type IndexAppPayloadResolvers<ContextType = any, ParentType extends Resol
 
 export type IndexAppPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexAppPayloadDocument'] = ResolversParentTypes['IndexAppPayloadDocument']> = ResolversObject<{
   applicationID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -334,8 +319,6 @@ export type IndexBeamPayloadResolvers<ContextType = any, ParentType extends Reso
 
 export type IndexBeamPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexBeamPayloadDocument'] = ResolversParentTypes['IndexBeamPayloadDocument']> = ResolversObject<{
   beamID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -346,8 +329,6 @@ export type IndexContentBlockPayloadResolvers<ContextType = any, ParentType exte
 
 export type IndexContentBlockPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexContentBlockPayloadDocument'] = ResolversParentTypes['IndexContentBlockPayloadDocument']> = ResolversObject<{
   blockID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -357,8 +338,6 @@ export type IndexInterestPayloadResolvers<ContextType = any, ParentType extends 
 }>;
 
 export type IndexInterestPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexInterestPayloadDocument'] = ResolversParentTypes['IndexInterestPayloadDocument']> = ResolversObject<{
-  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   labelType?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   value?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -370,8 +349,6 @@ export type IndexProfilePayloadResolvers<ContextType = any, ParentType extends R
 }>;
 
 export type IndexProfilePayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexProfilePayloadDocument'] = ResolversParentTypes['IndexProfilePayloadDocument']> = ResolversObject<{
-  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   profileID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
@@ -382,9 +359,6 @@ export type IndexReflectPayloadResolvers<ContextType = any, ParentType extends R
 }>;
 
 export type IndexReflectPayloadDocumentResolvers<ContextType = any, ParentType extends ResolversParentTypes['IndexReflectPayloadDocument'] = ResolversParentTypes['IndexReflectPayloadDocument']> = ResolversObject<{
-  beamID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   reflectionID?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;

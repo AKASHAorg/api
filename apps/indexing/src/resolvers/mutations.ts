@@ -11,6 +11,8 @@ import {
   IndexBeamStreamMutationVariables, IndexContentBlockStreamMutationVariables,
   IndexProfileStreamMutationVariables
 } from "../__generated__/composedb-client.js";
+import { indexingQueue } from "../queue/index.js";
+import { JobNames } from "../queue/config.js";
 
 
 const mutations: MutationResolvers = {
@@ -28,12 +30,10 @@ const mutations: MutationResolvers = {
         }
       }
     }
-    const response = await gqlClient.IndexProfileStream(data);
+    await indexingQueue.add(JobNames.indexProfile, data);
     return {
       document: {
-        id: response.createAkashaProfileStream.document.id,
-        createdAt: response.createAkashaProfileStream.document.createdAt,
-        profileID: response.createAkashaProfileStream.document.profileID,
+        profileID: validated.payload.ID,
       }
     }
   },
@@ -55,13 +55,10 @@ const mutations: MutationResolvers = {
       }
     }
 
-    const response = await gqlClient.IndexBeamStream(data);
-
+    await indexingQueue.add(JobNames.indexBeam, data);
     return {
       document: {
-        id: response.createAkashaBeamStream.document.id,
-        createdAt: response.createAkashaBeamStream.document.createdAt,
-        beamID: response.createAkashaBeamStream.document.beamID,
+        beamID: validated.payload.ID,
       }
     }
   },
@@ -84,13 +81,9 @@ const mutations: MutationResolvers = {
        }
       }
     }
-    const response = await gqlClient.IndexAkashaReflectStream(data);
-
+    await indexingQueue.add(JobNames.indexReflection, data);
     return {
       document: {
-        id: response.createAkashaReflectStream.document.id,
-        createdAt: response.createAkashaReflectStream.document.createdAt,
-        beamID: response.createAkashaReflectStream.document.beamID,
         reflectionID: validated.payload.ID,
       }
     }
@@ -112,12 +105,9 @@ const mutations: MutationResolvers = {
       }
     }
 
-    const response = await gqlClient.IndexContentBlockStream(data);
-
+    await indexingQueue.add(JobNames.indexContentBlock, data);
     return {
       document: {
-        id: response.createAkashaContentBlockStream.document.id,
-        createdAt: response.createAkashaContentBlockStream.document.createdAt,
         blockID: validated.payload.ID,
       }
     }
@@ -142,12 +132,9 @@ const mutations: MutationResolvers = {
       }
     }
 
-    const response = await gqlClient.IndexAkashaInterestsStream(data);
-
+    await indexingQueue.add(JobNames.indexInterest, data);
     return {
       document: {
-        id: response.createAkashaInterestsStream.document.id,
-        createdAt: response.createAkashaInterestsStream.document.createdAt,
         labelType: labelType,
         value: value
       }
@@ -171,12 +158,9 @@ const mutations: MutationResolvers = {
         }
       }
     }
-    const response = await gqlClient.IndexAkashaAppsStream(data);
-
+    await indexingQueue.add(JobNames.indexApp, data);
     return {
       document: {
-        id: response.createAkashaAppsStream.document.id,
-        createdAt: response.createAkashaAppsStream.document.createdAt,
         applicationID: validated.payload.ID,
       }
     }

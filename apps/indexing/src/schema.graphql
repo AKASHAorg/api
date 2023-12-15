@@ -3,14 +3,10 @@ type Query {
 }
 
 type IndexProfilePayloadDocument{
-  id: String!
-  createdAt: String!
   profileID: String!
 }
 
 type IndexBeamPayloadDocument{
-  id: String!
-  createdAt: String!
   beamID: String!
 }
 
@@ -22,20 +18,14 @@ type IndexBeamPayload{
   document: IndexBeamPayloadDocument
 }
 
-
 type IndexReflectPayloadDocument {
-  id: String!
-  createdAt: String!
   reflectionID: String!
-  beamID: String!
 }
 type IndexReflectPayload{
   document: IndexReflectPayloadDocument
 }
 
 type IndexContentBlockPayloadDocument {
-  id: String!
-  createdAt: String!
   blockID: String!
 }
 type IndexContentBlockPayload{
@@ -44,8 +34,6 @@ type IndexContentBlockPayload{
 
 
 type IndexInterestPayloadDocument {
-  id: String!
-  createdAt: String!
   labelType: String!
   value: String!
 }
@@ -54,9 +42,7 @@ type IndexInterestPayload{
 }
 
 type IndexAppPayloadDocument {
-  id: String!
   applicationID: String!
-  createdAt: String!
 }
 type IndexAppPayload{
   document: IndexAppPayloadDocument
