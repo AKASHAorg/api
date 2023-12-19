@@ -48,7 +48,7 @@ const mutations: MutationResolvers = {
     if (!validated.payload.ID) {
       throw new Error('Invalid or missing ID in payload');
     }
-    const beam = await gqlClient.GetBeamById(validated.payload.ID);
+    const beam = await gqlClient.GetBeamById({ id: validated.payload.ID });
     const data: IndexBeamStreamMutationVariables = {
       i: {
         content: {
@@ -112,7 +112,7 @@ const mutations: MutationResolvers = {
     if (!validated.payload.ID) {
       throw new Error('Invalid or missing ID in payload');
     }
-    const reflection = await gqlClient.GetReflectionById(validated.payload.ID);
+    const reflection = await gqlClient.GetReflectionById({ id: validated.payload.ID });
     if (!('id' in reflection.node)) {
       throw new Error(`Reflection ${validated.payload.ID} was not found.`);
     }
