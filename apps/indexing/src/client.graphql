@@ -163,12 +163,46 @@ mutation UpdateAkashaAppsStream($i: UpdateAkashaAppsStreamInput!) {
   }
 }
 
+mutation CreateAkashaIndexedStream($i: CreateAkashaIndexedStreamInput!) {
+  createAkashaIndexedStream(input: $i){
+    document {
+      id
+    }
+  }
+}
+
+mutation UpdateAkashaIndexedStream($i: UpdateAkashaIndexedStreamInput!) {
+  updateAkashaIndexedStream(input: $i){
+    document {
+      id
+    }
+  }
+}
+
 
 query GetReflectionById($id: ID!){
   node(id: $id){
     ... on AkashaReflect{
       id
       beamID
+      nsfw
+      createdAt
+      active
+    }
+  }
+}
+
+query GetBeamById($id: ID!){
+  node(id: $id){
+    ... on AkashaBeam{
+      id
+      mentions {
+        id
+      }
+      tags{
+        labelType
+        value
+      }
       nsfw
       createdAt
       active

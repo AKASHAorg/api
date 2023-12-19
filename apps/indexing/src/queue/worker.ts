@@ -23,6 +23,9 @@ const indexingWorker = async (job: Job) => {
     case JobNames.indexContentBlock:
       const blockData = await gqlClient.IndexContentBlockStream(job.data);
       return blockData.createAkashaContentBlockStream.document;
+    case JobNames.indexStream:
+      const indexedData = await gqlClient.CreateAkashaIndexedStream(job.data);
+      return indexedData.createAkashaIndexedStream.document;
     default:
       console.warn('Unknown job type');
       break;

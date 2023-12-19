@@ -2947,12 +2947,33 @@ export type UpdateAkashaAppsStreamMutationVariables = Exact<{
 
 export type UpdateAkashaAppsStreamMutation = { updateAkashaAppsStream?: { clientMutationId?: string | null, document: { id: string, active: boolean, createdAt: any, moderationID?: any | null, status?: AkashaAppsStreamModerationStatus | null, applicationID: any } } | null };
 
+export type CreateAkashaIndexedStreamMutationVariables = Exact<{
+  i: CreateAkashaIndexedStreamInput;
+}>;
+
+
+export type CreateAkashaIndexedStreamMutation = { createAkashaIndexedStream?: { document: { id: string } } | null };
+
+export type UpdateAkashaIndexedStreamMutationVariables = Exact<{
+  i: UpdateAkashaIndexedStreamInput;
+}>;
+
+
+export type UpdateAkashaIndexedStreamMutation = { updateAkashaIndexedStream?: { document: { id: string } } | null };
+
 export type GetReflectionByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
 export type GetReflectionByIdQuery = { node?: { id: string, beamID: any, nsfw?: boolean | null, createdAt: any, active: boolean } | {} | null };
+
+export type GetBeamByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetBeamByIdQuery = { node?: { id: string, nsfw?: boolean | null, createdAt: any, active: boolean, mentions?: Array<{ id: string } | null> | null, tags?: Array<{ labelType: string, value: string } | null> | null } | {} | null };
 
 export const AkashaProfileStreamFragmentDoc = /*#__PURE__*/ gql`
     fragment AkashaProfileStreamFragment on AkashaProfileStream {
@@ -3136,12 +3157,49 @@ export const UpdateAkashaAppsStreamDocument = /*#__PURE__*/ gql`
   }
 }
     ${AkashaAppsStreamFragmentDoc}`;
+export const CreateAkashaIndexedStreamDocument = /*#__PURE__*/ gql`
+    mutation CreateAkashaIndexedStream($i: CreateAkashaIndexedStreamInput!) {
+  createAkashaIndexedStream(input: $i) {
+    document {
+      id
+    }
+  }
+}
+    `;
+export const UpdateAkashaIndexedStreamDocument = /*#__PURE__*/ gql`
+    mutation UpdateAkashaIndexedStream($i: UpdateAkashaIndexedStreamInput!) {
+  updateAkashaIndexedStream(input: $i) {
+    document {
+      id
+    }
+  }
+}
+    `;
 export const GetReflectionByIdDocument = /*#__PURE__*/ gql`
     query GetReflectionById($id: ID!) {
   node(id: $id) {
     ... on AkashaReflect {
       id
       beamID
+      nsfw
+      createdAt
+      active
+    }
+  }
+}
+    `;
+export const GetBeamByIdDocument = /*#__PURE__*/ gql`
+    query GetBeamById($id: ID!) {
+  node(id: $id) {
+    ... on AkashaBeam {
+      id
+      mentions {
+        id
+      }
+      tags {
+        labelType
+        value
+      }
       nsfw
       createdAt
       active
@@ -3188,8 +3246,17 @@ export function getSdk<C, E>(requester: Requester<C, E>) {
     UpdateAkashaAppsStream(variables: UpdateAkashaAppsStreamMutationVariables, options?: C): Promise<UpdateAkashaAppsStreamMutation> {
       return requester<UpdateAkashaAppsStreamMutation, UpdateAkashaAppsStreamMutationVariables>(UpdateAkashaAppsStreamDocument, variables, options) as Promise<UpdateAkashaAppsStreamMutation>;
     },
+    CreateAkashaIndexedStream(variables: CreateAkashaIndexedStreamMutationVariables, options?: C): Promise<CreateAkashaIndexedStreamMutation> {
+      return requester<CreateAkashaIndexedStreamMutation, CreateAkashaIndexedStreamMutationVariables>(CreateAkashaIndexedStreamDocument, variables, options) as Promise<CreateAkashaIndexedStreamMutation>;
+    },
+    UpdateAkashaIndexedStream(variables: UpdateAkashaIndexedStreamMutationVariables, options?: C): Promise<UpdateAkashaIndexedStreamMutation> {
+      return requester<UpdateAkashaIndexedStreamMutation, UpdateAkashaIndexedStreamMutationVariables>(UpdateAkashaIndexedStreamDocument, variables, options) as Promise<UpdateAkashaIndexedStreamMutation>;
+    },
     GetReflectionById(variables: GetReflectionByIdQueryVariables, options?: C): Promise<GetReflectionByIdQuery> {
       return requester<GetReflectionByIdQuery, GetReflectionByIdQueryVariables>(GetReflectionByIdDocument, variables, options) as Promise<GetReflectionByIdQuery>;
+    },
+    GetBeamById(variables: GetBeamByIdQueryVariables, options?: C): Promise<GetBeamByIdQuery> {
+      return requester<GetBeamByIdQuery, GetBeamByIdQueryVariables>(GetBeamByIdDocument, variables, options) as Promise<GetBeamByIdQuery>;
     }
   };
 }
