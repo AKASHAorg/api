@@ -1960,6 +1960,7 @@ input CreateAkashaAppInput
 {
   clientMutationId: String
   content: AkashaAppInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaAppPayload
@@ -1983,6 +1984,7 @@ input CreateAkashaAppReleaseInput
 {
   clientMutationId: String
   content: AkashaAppReleaseInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaAppReleasePayload
@@ -2006,6 +2008,7 @@ input CreateAkashaAppsStreamInput
 {
   clientMutationId: String
   content: AkashaAppsStreamInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaAppsStreamPayload
@@ -2029,6 +2032,7 @@ input CreateAkashaBeamInput
 {
   clientMutationId: String
   content: AkashaBeamInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaBeamPayload
@@ -2052,6 +2056,7 @@ input CreateAkashaBeamStreamInput
 {
   clientMutationId: String
   content: AkashaBeamStreamInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaBeamStreamPayload
@@ -2075,6 +2080,7 @@ input CreateAkashaBlockStorageInput
 {
   clientMutationId: String
   content: AkashaBlockStorageInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaBlockStoragePayload
@@ -2098,6 +2104,7 @@ input CreateAkashaContentBlockInput
 {
   clientMutationId: String
   content: AkashaContentBlockInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaContentBlockPayload
@@ -2121,6 +2128,7 @@ input CreateAkashaContentBlockStreamInput
 {
   clientMutationId: String
   content: AkashaContentBlockStreamInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaContentBlockStreamPayload
@@ -2144,6 +2152,7 @@ input CreateAkashaFollowInput
 {
   clientMutationId: String
   content: AkashaFollowInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaFollowPayload
@@ -2167,6 +2176,7 @@ input CreateAkashaIndexedStreamInput
 {
   clientMutationId: String
   content: AkashaIndexedStreamInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaIndexedStreamPayload
@@ -2190,6 +2200,7 @@ input CreateAkashaInterestsStreamInput
 {
   clientMutationId: String
   content: AkashaInterestsStreamInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaInterestsStreamPayload
@@ -2261,6 +2272,7 @@ input CreateAkashaProfileStreamInput
 {
   clientMutationId: String
   content: AkashaProfileStreamInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaProfileStreamPayload
@@ -2284,6 +2296,7 @@ input CreateAkashaReflectInput
 {
   clientMutationId: String
   content: AkashaReflectInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaReflectPayload
@@ -2307,6 +2320,7 @@ input CreateAkashaReflectStreamInput
 {
   clientMutationId: String
   content: AkashaReflectStreamInput!
+  options: CreateOptionsInput
 }
 
 type CreateAkashaReflectStreamPayload
@@ -2323,6 +2337,13 @@ type CreateAkashaReflectStreamPayload
 
   """Account currently authenticated on the Ceramic instance, if set"""
   viewer: CeramicAccount
+}
+
+input CreateOptionsInput
+  @join__type(graph: COMPOSEDB)
+{
+  """Inform indexers if they should index this document or not"""
+  shouldIndex: Boolean
 }
 
 """
@@ -2342,6 +2363,390 @@ input DID_JWS
 {
   payload: String!
   signatures: [JWS_Signature!]!
+}
+
+input EnableIndexingAkashaAppInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaAppPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaApp
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaAppReleaseInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaAppReleasePayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaAppRelease
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaAppsStreamInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaAppsStreamPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaAppsStream
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaBeamInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaBeamPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaBeam
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaBeamStreamInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaBeamStreamPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaBeamStream
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaBlockStorageInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaBlockStoragePayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaBlockStorage
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaContentBlockInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaContentBlockPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaContentBlock
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaContentBlockStreamInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaContentBlockStreamPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaContentBlockStream
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaFollowInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaFollowPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaFollow
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaIndexedStreamInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaIndexedStreamPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaIndexedStream
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaInterestsStreamInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaInterestsStreamPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaInterestsStream
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaProfileInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+input EnableIndexingAkashaProfileInterestsInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaProfileInterestsPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaProfileInterests
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+type EnableIndexingAkashaProfilePayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaProfile
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaProfileStreamInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaProfileStreamPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaProfileStream
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaReflectInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaReflectPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaReflect
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+input EnableIndexingAkashaReflectStreamInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  id: ID!
+  shouldIndex: Boolean!
+}
+
+type EnableIndexingAkashaReflectStreamPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaReflectStream
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
 }
 
 type IndexAppPayload
@@ -2464,11 +2869,29 @@ type Mutation
   createAkashaFollow(input: CreateAkashaFollowInput!): CreateAkashaFollowPayload @join__field(graph: COMPOSEDB)
   createAkashaIndexedStream(input: CreateAkashaIndexedStreamInput!): CreateAkashaIndexedStreamPayload @join__field(graph: COMPOSEDB)
   createAkashaInterestsStream(input: CreateAkashaInterestsStreamInput!): CreateAkashaInterestsStreamPayload @join__field(graph: COMPOSEDB)
-  createAkashaProfile(input: CreateAkashaProfileInput!): CreateAkashaProfilePayload @join__field(graph: COMPOSEDB)
-  createAkashaProfileInterests(input: CreateAkashaProfileInterestsInput!): CreateAkashaProfileInterestsPayload @join__field(graph: COMPOSEDB)
+  createAkashaProfile(input: CreateAkashaProfileInput!): CreateAkashaProfilePayload @join__field(graph: COMPOSEDB) @deprecated(reason: "Replaced by the setAkashaProfile mutation, createAkashaProfile will be removed in a future version of ComposeDB.")
+  createAkashaProfileInterests(input: CreateAkashaProfileInterestsInput!): CreateAkashaProfileInterestsPayload @join__field(graph: COMPOSEDB) @deprecated(reason: "Replaced by the setAkashaProfileInterests mutation, createAkashaProfileInterests will be removed in a future version of ComposeDB.")
   createAkashaProfileStream(input: CreateAkashaProfileStreamInput!): CreateAkashaProfileStreamPayload @join__field(graph: COMPOSEDB)
   createAkashaReflect(input: CreateAkashaReflectInput!): CreateAkashaReflectPayload @join__field(graph: COMPOSEDB)
   createAkashaReflectStream(input: CreateAkashaReflectStreamInput!): CreateAkashaReflectStreamPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaApp(input: EnableIndexingAkashaAppInput!): EnableIndexingAkashaAppPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaAppRelease(input: EnableIndexingAkashaAppReleaseInput!): EnableIndexingAkashaAppReleasePayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaAppsStream(input: EnableIndexingAkashaAppsStreamInput!): EnableIndexingAkashaAppsStreamPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaBeam(input: EnableIndexingAkashaBeamInput!): EnableIndexingAkashaBeamPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaBeamStream(input: EnableIndexingAkashaBeamStreamInput!): EnableIndexingAkashaBeamStreamPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaBlockStorage(input: EnableIndexingAkashaBlockStorageInput!): EnableIndexingAkashaBlockStoragePayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaContentBlock(input: EnableIndexingAkashaContentBlockInput!): EnableIndexingAkashaContentBlockPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaContentBlockStream(input: EnableIndexingAkashaContentBlockStreamInput!): EnableIndexingAkashaContentBlockStreamPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaFollow(input: EnableIndexingAkashaFollowInput!): EnableIndexingAkashaFollowPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaIndexedStream(input: EnableIndexingAkashaIndexedStreamInput!): EnableIndexingAkashaIndexedStreamPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaInterestsStream(input: EnableIndexingAkashaInterestsStreamInput!): EnableIndexingAkashaInterestsStreamPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaProfile(input: EnableIndexingAkashaProfileInput!): EnableIndexingAkashaProfilePayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaProfileInterests(input: EnableIndexingAkashaProfileInterestsInput!): EnableIndexingAkashaProfileInterestsPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaProfileStream(input: EnableIndexingAkashaProfileStreamInput!): EnableIndexingAkashaProfileStreamPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaReflect(input: EnableIndexingAkashaReflectInput!): EnableIndexingAkashaReflectPayload @join__field(graph: COMPOSEDB)
+  enableIndexingAkashaReflectStream(input: EnableIndexingAkashaReflectStreamInput!): EnableIndexingAkashaReflectStreamPayload @join__field(graph: COMPOSEDB)
+  setAkashaProfile(input: SetAkashaProfileInput!): SetAkashaProfilePayload @join__field(graph: COMPOSEDB)
+  setAkashaProfileInterests(input: SetAkashaProfileInterestsInput!): SetAkashaProfileInterestsPayload @join__field(graph: COMPOSEDB)
   updateAkashaApp(input: UpdateAkashaAppInput!): UpdateAkashaAppPayload @join__field(graph: COMPOSEDB)
   updateAkashaAppRelease(input: UpdateAkashaAppReleaseInput!): UpdateAkashaAppReleasePayload @join__field(graph: COMPOSEDB)
   updateAkashaAppsStream(input: UpdateAkashaAppsStreamInput!): UpdateAkashaAppsStreamPayload @join__field(graph: COMPOSEDB)
@@ -2964,9 +3387,60 @@ type Query
   serviceStatus: String @join__field(graph: STREAMS)
 }
 
+input SetAkashaProfileInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  content: AkashaProfileInput!
+  options: SetOptionsInput
+}
+
+input SetAkashaProfileInterestsInput
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  content: AkashaProfileInterestsInput!
+  options: SetOptionsInput
+}
+
+type SetAkashaProfileInterestsPayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaProfileInterests!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
+type SetAkashaProfilePayload
+  @join__type(graph: COMPOSEDB)
+{
+  clientMutationId: String
+  document: AkashaProfile!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+
+  """Account currently authenticated on the Ceramic instance, if set"""
+  viewer: CeramicAccount
+}
+
 input SetOptionsInput
   @join__type(graph: COMPOSEDB)
 {
+  """Inform indexers if they should index this document or not"""
+  shouldIndex: Boolean
+
   """
   Maximum amount of time to lookup the stream over the network, in seconds - see https://developers.ceramic.network/reference/typescript/interfaces/_ceramicnetwork_common.CreateOpts.html#syncTimeoutSeconds
   """
@@ -3401,6 +3875,9 @@ input UpdateOptionsInput
   Fully replace the document contents instead of performing a shallow merge
   """
   replace: Boolean = false
+
+  """Inform indexers if they should index this document or not"""
+  shouldIndex: Boolean
 
   """Only perform mutation if the document matches the provided version"""
   version: CeramicCommitID
