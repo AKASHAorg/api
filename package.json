@@ -16,9 +16,9 @@
     "@apollo/server": "^4.10.0",
     "@apollo/utils.keyvadapter": "^3.1.0",
     "@ceramicnetwork/http-client": "5.2.0",
-    "@composedb/client": "^0.7.0",
-    "@composedb/server": "^0.7.0",
-    "@composedb/devtools-node": "^0.7.0",
+    "@composedb/client": "^0.7.1",
+    "@composedb/server": "^0.7.1",
+    "@composedb/devtools-node": "^0.7.1",
     "@graphql-yoga/plugin-response-cache": "^3.3.0",
     "@keyv/redis": "^2.8.3",
     "@whatwg-node/server": "^0.9.23",
@@ -38,7 +38,7 @@
 
   },
   "devDependencies": {
-    "@composedb/types": "^0.7.0",
+    "@composedb/types": "^0.7.1",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
