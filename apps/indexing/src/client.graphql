@@ -54,8 +54,8 @@ fragment AkashaAppsStreamFragment on AkashaAppsStream{
   applicationID
 }
 
-mutation IndexProfileStream($i: CreateAkashaProfileStreamInput!) {
-  createAkashaProfileStream(input: $i){
+mutation IndexProfileStream($i: SetAkashaProfileStreamInput!) {
+  setAkashaProfileStream(input: $i){
     document {
       ...AkashaProfileStreamFragment
     }
@@ -72,8 +72,8 @@ mutation UpdateProfileStream($i: UpdateAkashaProfileStreamInput!) {
   }
 }
 
-mutation IndexBeamStream($i: CreateAkashaBeamStreamInput!) {
-  createAkashaBeamStream(input: $i){
+mutation IndexBeamStream($i: SetAkashaBeamStreamInput!) {
+  setAkashaBeamStream(input: $i){
     document {
       ...AkashaBeamStreamFragment
     }
@@ -91,8 +91,8 @@ mutation UpdateBeamStream($i: UpdateAkashaBeamStreamInput!) {
 }
 
 
-mutation IndexContentBlockStream($i: CreateAkashaContentBlockStreamInput!) {
-  createAkashaContentBlockStream(input: $i){
+mutation IndexContentBlockStream($i: SetAkashaContentBlockStreamInput!) {
+  setAkashaContentBlockStream(input: $i){
     document {
       ...AkashaContentBlockStreamFragment
     }
@@ -109,8 +109,8 @@ mutation UpdateContentBlockStream($i: UpdateAkashaContentBlockStreamInput!) {
   }
 }
 
-mutation IndexAkashaReflectStream($i: CreateAkashaReflectStreamInput!) {
-  createAkashaReflectStream(input: $i){
+mutation IndexAkashaReflectStream($i: SetAkashaReflectStreamInput!) {
+  setAkashaReflectStream(input: $i){
     document {
       ...AkashaReflectStreamFragment
     }
@@ -127,8 +127,8 @@ mutation UpdateAkashaReflectStream($i: UpdateAkashaReflectStreamInput!) {
   }
 }
 
-mutation IndexAkashaInterestsStream($i: CreateAkashaInterestsStreamInput!) {
-  createAkashaInterestsStream(input: $i){
+mutation IndexAkashaInterestsStream($i: SetAkashaInterestsStreamInput!) {
+  setAkashaInterestsStream(input: $i){
     document {
       ...AkashaInterestsStreamFragment
     }
@@ -145,8 +145,8 @@ mutation UpdateAkashaInterestsStream($i: UpdateAkashaInterestsStreamInput!) {
   }
 }
 
-mutation IndexAkashaAppsStream($i: CreateAkashaAppsStreamInput!) {
-  createAkashaAppsStream(input: $i){
+mutation IndexAkashaAppsStream($i: SetAkashaAppsStreamInput!) {
+  setAkashaAppsStream(input: $i){
     document {
       ...AkashaAppsStreamFragment
     }
@@ -163,8 +163,8 @@ mutation UpdateAkashaAppsStream($i: UpdateAkashaAppsStreamInput!) {
   }
 }
 
-mutation CreateAkashaIndexedStream($i: CreateAkashaIndexedStreamInput!) {
-  createAkashaIndexedStream(input: $i){
+mutation CreateAkashaIndexedStream($i: SetAkashaIndexedStreamInput!) {
+  setAkashaIndexedStream(input: $i){
     document {
       id
     }
