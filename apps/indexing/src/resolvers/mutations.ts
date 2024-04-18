@@ -123,6 +123,8 @@ const mutations: MutationResolvers = {
           reflectionID: validated.payload.ID,
           createdAt: new Date().toISOString(),
           active: true,
+          isReply: reflection.node?.isReply || false,
+          replyTo: reflection.node?.reflection || undefined
         },
       },
     };

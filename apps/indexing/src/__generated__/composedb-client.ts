@@ -1220,9 +1220,11 @@ export type AkashaReflectStream = Node & {
   beamID: Scalars['CeramicStreamID']['output'];
   createdAt: Scalars['DateTime']['output'];
   id: Scalars['ID']['output'];
+  isReply?: Maybe<Scalars['Boolean']['output']>;
   moderationID?: Maybe<Scalars['CeramicStreamID']['output']>;
   reflection?: Maybe<AkashaReflect>;
   reflectionID: Scalars['CeramicStreamID']['output'];
+  replyTo?: Maybe<Scalars['CeramicStreamID']['output']>;
   status?: Maybe<AkashaReflectStreamModerationStatus>;
 };
 
@@ -1253,8 +1255,10 @@ export type AkashaReflectStreamInput = {
   active: Scalars['Boolean']['input'];
   beamID: Scalars['CeramicStreamID']['input'];
   createdAt: Scalars['DateTime']['input'];
+  isReply?: InputMaybe<Scalars['Boolean']['input']>;
   moderationID?: InputMaybe<Scalars['CeramicStreamID']['input']>;
   reflectionID: Scalars['CeramicStreamID']['input'];
+  replyTo?: InputMaybe<Scalars['CeramicStreamID']['input']>;
   status?: InputMaybe<AkashaReflectStreamModerationStatus>;
 };
 
@@ -1279,8 +1283,10 @@ export type AkashaReflectStreamObjectFilterInput = {
   active?: InputMaybe<BooleanValueFilterInput>;
   beamID?: InputMaybe<StringValueFilterInput>;
   createdAt?: InputMaybe<StringValueFilterInput>;
+  isReply?: InputMaybe<BooleanValueFilterInput>;
   moderationID?: InputMaybe<StringValueFilterInput>;
   reflectionID?: InputMaybe<StringValueFilterInput>;
+  replyTo?: InputMaybe<StringValueFilterInput>;
   status?: InputMaybe<AkashaReflectStreamModerationStatusValueFilterInput>;
 };
 
@@ -1288,8 +1294,10 @@ export type AkashaReflectStreamSortingInput = {
   active?: InputMaybe<SortOrder>;
   beamID?: InputMaybe<SortOrder>;
   createdAt?: InputMaybe<SortOrder>;
+  isReply?: InputMaybe<SortOrder>;
   moderationID?: InputMaybe<SortOrder>;
   reflectionID?: InputMaybe<SortOrder>;
+  replyTo?: InputMaybe<SortOrder>;
   status?: InputMaybe<SortOrder>;
 };
 
@@ -2478,7 +2486,9 @@ export type PartialAkashaReflectStreamInput = {
   active?: InputMaybe<Scalars['Boolean']['input']>;
   beamID?: InputMaybe<Scalars['CeramicStreamID']['input']>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
+  isReply?: InputMaybe<Scalars['Boolean']['input']>;
   moderationID?: InputMaybe<Scalars['CeramicStreamID']['input']>;
+  replyTo?: InputMaybe<Scalars['CeramicStreamID']['input']>;
   status?: InputMaybe<AkashaReflectStreamModerationStatus>;
 };
 
@@ -3558,7 +3568,7 @@ export type GetReflectionByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetReflectionByIdQuery = { node?: { id: string, beamID: any, nsfw?: boolean | null, createdAt: any, active: boolean } | {} | null };
+export type GetReflectionByIdQuery = { node?: { id: string, beamID: any, nsfw?: boolean | null, createdAt: any, active: boolean, isReply?: boolean | null, reflection?: any | null } | {} | null };
 
 export type GetBeamByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -3776,6 +3786,8 @@ export const GetReflectionByIdDocument = /*#__PURE__*/ gql`
       nsfw
       createdAt
       active
+      isReply
+      reflection
     }
   }
 }

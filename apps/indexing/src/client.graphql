@@ -188,6 +188,8 @@ query GetReflectionById($id: ID!){
       nsfw
       createdAt
       active
+      isReply
+      reflection
     }
   }
 }
