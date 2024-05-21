@@ -56,7 +56,7 @@ services:
   gateway:
     image: akashafoundation/gateway-graphql:latest
     ports:
-      - "5001:${GRAPHQL_GATEWAY_PORT}"
+      - "5101:${GRAPHQL_GATEWAY_PORT}"
     environment:
       - NODE_ENV=production
       - GRAPHQL_GATEWAY_PORT=${GRAPHQL_GATEWAY_PORT}

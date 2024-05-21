@@ -5,62 +5,118 @@ export const definition: RuntimeCompositeDefinition = {
   models: {
     AkashaApp: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6cb6pcdpdnrlau2rwz0gs5nddo3e5v578s4wstt2kpybrf11byzc',
+      implements: [
+        'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
+      ],
+      id: 'kjzl6hvfrbw6c82w3gtimssknrieiq7j7kcq50g0vinko9jb3z005q72kdw6lpr',
       accountRelation: { type: 'set', fields: ['name'] },
+    },
+    AkashaAppInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
+      accountRelation: { type: 'none' },
     },
     AkashaAppRelease: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6cb03csk8bxuw50irl6m8e0diylhi6euhs9by3ssazl8x5bxhgzj',
+      implements: [
+        'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+      ],
+      id: 'kjzl6hvfrbw6c9qy9sa9h3q7j8t9ovrit1arvo1uc73yglzlusrgtddzzpqfdxq',
       accountRelation: { type: 'set', fields: ['applicationID', 'version'] },
+    },
+    AkashaAppReleaseInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+      accountRelation: { type: 'none' },
     },
     AkashaAppsStream: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c74jj2x5ydoj22ol1srkn8ts5mm8j85svsjs58ff8pfwvvpirhf',
+      implements: [
+        'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
+      ],
+      id: 'kjzl6hvfrbw6c5vvn2fbv3xexrf12wh0isb8h3r1b2s6ov9qmtzazutqyrbrydu',
       accountRelation: { type: 'set', fields: ['applicationID'] },
     },
     AkashaBeam: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c81jn00de1kfzdjtdbbivos4k3f17wa4a0u45c2v26d3j1eve68',
+      implements: [
+        'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
+      ],
+      id: 'kjzl6hvfrbw6c9eqxi4g8esw3rgl88z0enck6ztyk46kyzpj4vxqddfpihkrlty',
       accountRelation: { type: 'list' },
+    },
+    AkashaBeamInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
+      accountRelation: { type: 'none' },
     },
     AkashaBeamStream: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c64u60jzs9nsy8o2csa7cmr76c0cj1odymgqegeqfnbk25mcdse',
+      implements: [
+        'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
+      ],
+      id: 'kjzl6hvfrbw6c8qccbg85z7fd2kyqgrus9opyaeu3h89p1k2qc61oe304fvmq5r',
       accountRelation: { type: 'set', fields: ['beamID'] },
     },
     AkashaBlockStorage: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c7fp2g35zxltb1m63sbkallc5p9pzj2nx0zkomea0pwgusb7lv9',
+      implements: [
+        'kjzl6hvfrbw6c9zxtxl9ou1i86lqo2inne8dqvyi83f26p695s98mhkw40mwwsv',
+      ],
+      id: 'kjzl6hvfrbw6c6q4jju7c94ukn9641bewgtj8481n0thtq1eva9umjqzs9864rj',
       accountRelation: { type: 'set', fields: ['blockID'] },
     },
     AkashaContentBlock: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c7in46qz14j69433lcmldlxqsyrxvayimxaqd62w7wnhkv2p4vd',
+      implements: [
+        'kjzl6hvfrbw6c9zxtxl9ou1i86lqo2inne8dqvyi83f26p695s98mhkw40mwwsv',
+      ],
+      id: 'kjzl6hvfrbw6c7tkatn90maary15xkogg0vrbsn2duxr8muhojvcmq6x1hrctyi',
       accountRelation: { type: 'list' },
+    },
+    AkashaContentBlockInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6c9zxtxl9ou1i86lqo2inne8dqvyi83f26p695s98mhkw40mwwsv',
+      accountRelation: { type: 'none' },
     },
     AkashaContentBlockStream: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c67gv90zl68cu80l4bwnfvu4i8pk5zxke0pvp4y203cuaijqwus',
+      implements: [
+        'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
+      ],
+      id: 'kjzl6hvfrbw6c5ub7csqm5gn2ors08hzvjlkt18kp2jozbgn6vdg9uavsydds7r',
       accountRelation: { type: 'set', fields: ['blockID'] },
     },
     AkashaFollow: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c5jg1zwrvbcvembp7v15kejrry05o2gvv2r4xghzfn2uluglus3',
+      implements: [
+        'kjzl6hvfrbw6calrvwg964obomy7bymp65be4zwpagdjms6bm067pakecsx61st',
+      ],
+      id: 'kjzl6hvfrbw6c9mpseodbq6i7jmmrd6uwv382pfsjmry5j2lmj8opuzu2ykbd6j',
       accountRelation: { type: 'set', fields: ['profileID'] },
+    },
+    AkashaFollowInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6calrvwg964obomy7bymp65be4zwpagdjms6bm067pakecsx61st',
+      accountRelation: { type: 'none' },
+    },
+    AkashaIndexStreamInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
+      accountRelation: { type: 'none' },
     },
     AkashaIndexedStream: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6caxx4dsfzdbgghx2merc27jx8q1aj6knymqyfmlrhek55eia9eh',
+      implements: [
+        'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
+      ],
+      id: 'kjzl6hvfrbw6c6wbu8zpggcuvlejl32zm1ww7pd1zkpkj0d0m612ob8qc0x60af',
       accountRelation: {
         type: 'set',
         fields: ['stream', 'indexType', 'indexValue'],
@@ -68,62 +124,142 @@ export const definition: RuntimeCompositeDefinition = {
     },
     AkashaInterestsStream: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c7con370lhawow0s9hiwrobxkfazyn8fdtzzhid6jytus7xb2tt',
+      implements: [
+        'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
+      ],
+      id: 'kjzl6hvfrbw6c9d7d8tpr8pl6zcwhvp2adkb24p11x2i6ab2embz7p4max3d290',
       accountRelation: { type: 'set', fields: ['labelType', 'value'] },
     },
     AkashaProfile: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c862oulkrdvxh2yfbhc997f7ahqtjppj2ejg8too3j7jmu8gsno',
+      implements: [
+        'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
+      ],
+      id: 'kjzl6hvfrbw6cagktk50tp31ec5nycbhzcpi0mmideporowub9qe7ee3lgml511',
       accountRelation: { type: 'single' },
     },
     AkashaProfileInterests: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c95dq5wbg095i40ylzxkrxcrzhepdfv72vfwzalt311z4lfuyml',
+      implements: [
+        'kjzl6hvfrbw6cb2j6p22bl9x8m2l3hfygn2k0jezbp90d58whdy4nvbwaacg39a',
+      ],
+      id: 'kjzl6hvfrbw6c7ygagqz8epvitmnrgav4xcoipmfiaddskp39c2k93u0k2k6wua',
       accountRelation: { type: 'single' },
+    },
+    AkashaProfileInterestsInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6cb2j6p22bl9x8m2l3hfygn2k0jezbp90d58whdy4nvbwaacg39a',
+      accountRelation: { type: 'none' },
+    },
+    AkashaProfileInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
+      accountRelation: { type: 'none' },
     },
     AkashaProfileStream: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c7almx92k0txlkm2plbo8g8gttxc7koevln0xj9vk028q8f2ryz',
+      implements: [
+        'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
+      ],
+      id: 'kjzl6hvfrbw6c70suqbcajzg6t43i5642sqfy5cj4ujug95nx46znl3ql9bkmod',
       accountRelation: { type: 'set', fields: ['profileID'] },
     },
     AkashaReflect: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c9az8glxdc257r0tgzkjxj01nhwxilaciiidaxwafw4023wimnp',
+      implements: [
+        'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+      ],
+      id: 'kjzl6hvfrbw6c8tz6qbe99qw8niszoq7zv8bvjuw2h8rvqatxq53c08ivhqbmc6',
       accountRelation: { type: 'list' },
+    },
+    AkashaReflectInterface: {
+      interface: true,
+      implements: [],
+      id: 'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+      accountRelation: { type: 'none' },
     },
     AkashaReflectStream: {
       interface: false,
-      implements: [],
-      id: 'kjzl6hvfrbw6c8jl8c7saabmuwx63q4xsx1uvob3lbp2n8fb02ht2i30j5t89np',
+      implements: [
+        'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
+      ],
+      id: 'kjzl6hvfrbw6c7ca8temkvxkp9hqc1qi3aje6snhz7wbzpjnu42j1p53y462qj6',
       accountRelation: { type: 'set', fields: ['reflectionID'] },
     },
   },
   objects: {
     AkashaApp: {
-      name: { type: 'string', required: true, immutable: true, indexed: true },
-      licence: { type: 'string', required: true, immutable: false },
-      keywords: {
+      meta: {
         type: 'list',
         required: false,
         immutable: false,
-        item: { type: 'string', required: false, immutable: false },
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'AppProviderValue',
+          required: false,
+          immutable: false,
+        },
+      },
+      name: { type: 'string', required: true, immutable: true, indexed: true },
+      links: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'AppLinkSource',
+          required: false,
+          immutable: false,
+        },
+      },
+      gallery: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'AppImageSource',
+          required: false,
+          immutable: false,
+        },
+      },
+      license: { type: 'string', required: true, immutable: true },
+      keywords: {
+        type: 'list',
+        required: false,
+        immutable: true,
+        item: { type: 'string', required: false, immutable: true },
       },
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
+      },
+      logoImage: {
+        type: 'reference',
+        refType: 'object',
+        refName: 'AppImageSource',
+        required: false,
+        immutable: false,
+      },
+      coverImage: {
+        type: 'reference',
+        refType: 'object',
+        refName: 'AppImageSource',
+        required: false,
+        immutable: false,
       },
       description: { type: 'string', required: true, immutable: false },
       displayName: {
         type: 'string',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       contributors: {
@@ -148,7 +284,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'queryConnection',
           model:
-            'kjzl6hvfrbw6cb03csk8bxuw50irl6m8e0diylhi6euhs9by3ssazl8x5bxhgzj',
+            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
           property: 'applicationID',
         },
       },
@@ -158,13 +294,96 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'queryCount',
           model:
-            'kjzl6hvfrbw6cb03csk8bxuw50irl6m8e0diylhi6euhs9by3ssazl8x5bxhgzj',
+            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
           property: 'applicationID',
         },
       },
     },
+    AkashaAppInterface: {
+      meta: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'AppProviderValue',
+          required: false,
+          immutable: false,
+        },
+      },
+      name: { type: 'string', required: true, immutable: true },
+      links: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'AppLinkSource',
+          required: false,
+          immutable: false,
+        },
+      },
+      gallery: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'AppImageSource',
+          required: false,
+          immutable: false,
+        },
+      },
+      license: { type: 'string', required: true, immutable: true },
+      keywords: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: { type: 'string', required: false, immutable: false },
+      },
+      createdAt: { type: 'datetime', required: true, immutable: true },
+      logoImage: {
+        type: 'reference',
+        refType: 'object',
+        refName: 'AppImageSource',
+        required: false,
+        immutable: false,
+      },
+      coverImage: {
+        type: 'reference',
+        refType: 'object',
+        refName: 'AppImageSource',
+        required: false,
+        immutable: false,
+      },
+      description: { type: 'string', required: true, immutable: false },
+      displayName: { type: 'string', required: true, immutable: true },
+      contributors: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: { type: 'did', required: false, immutable: false },
+      },
+      author: { type: 'view', viewType: 'documentAccount' },
+      version: { type: 'view', viewType: 'documentVersion' },
+    },
     AkashaAppRelease: {
-      source: { type: 'cid', required: true, immutable: false },
+      meta: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'AppProviderValue',
+          required: false,
+          immutable: false,
+        },
+      },
+      source: { type: 'uri', required: true, immutable: true },
       version: {
         type: 'string',
         required: true,
@@ -174,7 +393,7 @@ export const definition: RuntimeCompositeDefinition = {
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       applicationID: {
@@ -189,7 +408,35 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6cb6pcdpdnrlau2rwz0gs5nddo3e5v578s4wstt2kpybrf11byzc',
+            'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
+          property: 'applicationID',
+        },
+      },
+    },
+    AkashaAppReleaseInterface: {
+      meta: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'AppProviderValue',
+          required: false,
+          immutable: false,
+        },
+      },
+      source: { type: 'uri', required: true, immutable: true },
+      version: { type: 'string', required: true, immutable: true },
+      createdAt: { type: 'datetime', required: true, immutable: true },
+      applicationID: { type: 'streamid', required: true, immutable: false },
+      application: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
           property: 'applicationID',
         },
       },
@@ -212,13 +459,13 @@ export const definition: RuntimeCompositeDefinition = {
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       moderationID: {
         type: 'streamid',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       applicationID: {
@@ -227,13 +474,18 @@ export const definition: RuntimeCompositeDefinition = {
         immutable: true,
         indexed: true,
       },
+      moderation: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'moderationID' },
+      },
       application: {
         type: 'view',
         viewType: 'relation',
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6cb6pcdpdnrlau2rwz0gs5nddo3e5v578s4wstt2kpybrf11byzc',
+            'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
           property: 'applicationID',
         },
       },
@@ -248,13 +500,13 @@ export const definition: RuntimeCompositeDefinition = {
       tags: {
         type: 'list',
         required: false,
-        immutable: false,
+        immutable: true,
         item: {
           type: 'reference',
           refType: 'object',
-          refName: 'AkashaBeamLabeled',
+          refName: 'BeamLabeled',
           required: false,
-          immutable: false,
+          immutable: true,
         },
       },
       active: {
@@ -266,11 +518,80 @@ export const definition: RuntimeCompositeDefinition = {
       content: {
         type: 'list',
         required: true,
+        immutable: true,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'BeamBlockRecord',
+          required: true,
+          immutable: true,
+        },
+      },
+      mentions: {
+        type: 'list',
+        required: false,
+        immutable: true,
+        item: { type: 'did', required: false, immutable: true },
+      },
+      createdAt: {
+        type: 'datetime',
+        required: true,
+        immutable: true,
+        indexed: true,
+      },
+      embeddedStream: {
+        type: 'reference',
+        refType: 'object',
+        refName: 'BeamEmbeddedType',
+        required: false,
+        immutable: true,
+      },
+      author: { type: 'view', viewType: 'documentAccount' },
+      version: { type: 'view', viewType: 'documentVersion' },
+      reflections: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'queryConnection',
+          model:
+            'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+          property: 'beamID',
+        },
+      },
+      reflectionsCount: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'queryCount',
+          model:
+            'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+          property: 'beamID',
+        },
+      },
+    },
+    AkashaBeamInterface: {
+      nsfw: { type: 'boolean', required: false, immutable: false },
+      tags: {
+        type: 'list',
+        required: false,
         immutable: false,
         item: {
           type: 'reference',
           refType: 'object',
-          refName: 'AkashaBeamBlockRecord',
+          refName: 'BeamLabeled',
+          required: false,
+          immutable: false,
+        },
+      },
+      active: { type: 'boolean', required: true, immutable: false },
+      content: {
+        type: 'list',
+        required: true,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'BeamBlockRecord',
           required: true,
           immutable: false,
         },
@@ -281,53 +602,16 @@ export const definition: RuntimeCompositeDefinition = {
         immutable: false,
         item: { type: 'did', required: false, immutable: false },
       },
-      createdAt: {
-        type: 'datetime',
-        required: true,
-        immutable: false,
-        indexed: true,
-      },
+      createdAt: { type: 'datetime', required: true, immutable: true },
       embeddedStream: {
         type: 'reference',
         refType: 'object',
-        refName: 'AkashaBeamEmbeddedType',
+        refName: 'BeamEmbeddedType',
         required: false,
-        immutable: false,
+        immutable: true,
       },
       author: { type: 'view', viewType: 'documentAccount' },
       version: { type: 'view', viewType: 'documentVersion' },
-      reflections: {
-        type: 'view',
-        viewType: 'relation',
-        relation: {
-          source: 'queryConnection',
-          model:
-            'kjzl6hvfrbw6c9az8glxdc257r0tgzkjxj01nhwxilaciiidaxwafw4023wimnp',
-          property: 'beamID',
-        },
-      },
-      reflectionsCount: {
-        type: 'view',
-        viewType: 'relation',
-        relation: {
-          source: 'queryCount',
-          model:
-            'kjzl6hvfrbw6c9az8glxdc257r0tgzkjxj01nhwxilaciiidaxwafw4023wimnp',
-          property: 'beamID',
-        },
-      },
-    },
-    AkashaBeamBlockRecord: {
-      order: { type: 'integer', required: true, immutable: false },
-      blockID: { type: 'streamid', required: true, immutable: false },
-    },
-    AkashaBeamEmbeddedType: {
-      label: { type: 'string', required: true, immutable: false },
-      embeddedID: { type: 'streamid', required: true, immutable: false },
-    },
-    AkashaBeamLabeled: {
-      value: { type: 'string', required: true, immutable: false },
-      labelType: { type: 'string', required: true, immutable: false },
     },
     AkashaBeamStream: {
       active: {
@@ -353,13 +637,13 @@ export const definition: RuntimeCompositeDefinition = {
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       moderationID: {
         type: 'streamid',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       beam: {
@@ -368,18 +652,29 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c81jn00de1kfzdjtdbbivos4k3f17wa4a0u45c2v26d3j1eve68',
+            'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
           property: 'beamID',
         },
+      },
+      moderation: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'moderationID' },
       },
     },
     AkashaBlockStorage: {
       kind: {
         type: 'reference',
         refType: 'enum',
-        refName: 'AkashaBlockStorageBlockStorageDef',
+        refName: 'AkashaBlockStorageBlockDef',
         required: false,
         immutable: false,
+        indexed: true,
+      },
+      nsfw: {
+        type: 'boolean',
+        required: false,
+        immutable: true,
         indexed: true,
       },
       active: {
@@ -388,33 +683,43 @@ export const definition: RuntimeCompositeDefinition = {
         immutable: false,
         indexed: true,
       },
-      blockID: { type: 'streamid', required: true, immutable: true },
+      blockID: {
+        type: 'streamid',
+        required: true,
+        immutable: true,
+        indexed: true,
+      },
       content: {
         type: 'list',
         required: true,
-        immutable: false,
+        immutable: true,
         item: {
           type: 'reference',
           refType: 'object',
-          refName: 'AkashaBlockStorageLabeledValue',
+          refName: 'BlockLabeledValue',
           required: true,
-          immutable: false,
+          immutable: true,
         },
       },
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
-      appVersionID: { type: 'streamid', required: true, immutable: false },
+      appVersionID: {
+        type: 'streamid',
+        required: true,
+        immutable: true,
+        indexed: true,
+      },
       block: {
         type: 'view',
         viewType: 'relation',
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c7in46qz14j69433lcmldlxqsyrxvayimxaqd62w7wnhkv2p4vd',
+            'kjzl6hvfrbw6c7tkatn90maary15xkogg0vrbsn2duxr8muhojvcmq6x1hrctyi',
           property: 'blockID',
         },
       },
@@ -426,19 +731,10 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6cb03csk8bxuw50irl6m8e0diylhi6euhs9by3ssazl8x5bxhgzj',
+            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
           property: 'appVersionID',
         },
       },
-    },
-    AkashaBlockStorageLabeledValue: {
-      label: {
-        type: 'string',
-        required: true,
-        immutable: false,
-      },
-      value: { type: 'string', required: true, immutable: false },
-      propertyType: { type: 'string', required: true, immutable: false },
     },
     AkashaContentBlock: {
       kind: {
@@ -452,7 +748,7 @@ export const definition: RuntimeCompositeDefinition = {
       nsfw: {
         type: 'boolean',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       active: {
@@ -464,25 +760,25 @@ export const definition: RuntimeCompositeDefinition = {
       content: {
         type: 'list',
         required: true,
-        immutable: false,
+        immutable: true,
         item: {
           type: 'reference',
           refType: 'object',
-          refName: 'AkashaContentBlockLabeledValue',
+          refName: 'BlockLabeledValue',
           required: true,
-          immutable: false,
+          immutable: true,
         },
       },
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       appVersionID: {
         type: 'streamid',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       author: { type: 'view', viewType: 'documentAccount' },
@@ -493,19 +789,44 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6cb03csk8bxuw50irl6m8e0diylhi6euhs9by3ssazl8x5bxhgzj',
+            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
           property: 'appVersionID',
         },
       },
     },
-    AkashaContentBlockLabeledValue: {
-      label: {
-        type: 'string',
+    AkashaContentBlockInterface: {
+      nsfw: {
+        type: 'boolean',
+        required: false,
+        immutable: true,
+      },
+      active: { type: 'boolean', required: true, immutable: false },
+      content: {
+        type: 'list',
         required: true,
         immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'BlockLabeledValue',
+          required: true,
+          immutable: false,
+        },
       },
-      value: { type: 'string', required: true, immutable: false },
-      propertyType: { type: 'string', required: true, immutable: false },
+      createdAt: { type: 'datetime', required: true, immutable: true },
+      appVersionID: { type: 'streamid', required: true, immutable: true },
+      author: { type: 'view', viewType: 'documentAccount' },
+      version: { type: 'view', viewType: 'documentVersion' },
+      appVersion: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+          property: 'appVersionID',
+        },
+      },
     },
     AkashaContentBlockStream: {
       active: {
@@ -531,13 +852,13 @@ export const definition: RuntimeCompositeDefinition = {
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       moderationID: {
         type: 'streamid',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       block: {
@@ -546,9 +867,14 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c7in46qz14j69433lcmldlxqsyrxvayimxaqd62w7wnhkv2p4vd',
+            'kjzl6hvfrbw6c9zxtxl9ou1i86lqo2inne8dqvyi83f26p695s98mhkw40mwwsv',
           property: 'blockID',
         },
+      },
+      moderation: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'moderationID' },
       },
     },
     AkashaFollow: {
@@ -571,9 +897,42 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c862oulkrdvxh2yfbhc997f7ahqtjppj2ejg8too3j7jmu8gsno',
+            'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
           property: 'profileID',
         },
+      },
+    },
+    AkashaFollowInterface: {
+      profileID: {
+        type: 'streamid',
+        required: true,
+        immutable: true,
+      },
+      isFollowing: { type: 'boolean', required: true, immutable: false },
+      did: { type: 'view', viewType: 'documentAccount' },
+      profile: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
+          property: 'profileID',
+        },
+      },
+    },
+    AkashaIndexStreamInterface: {
+      active: {
+        type: 'boolean',
+        required: true,
+        immutable: false,
+      },
+      createdAt: { type: 'datetime', required: true, immutable: true },
+      moderationID: { type: 'streamid', required: false, immutable: true },
+      moderation: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'moderationID' },
       },
     },
     AkashaIndexedStream: {
@@ -600,7 +959,7 @@ export const definition: RuntimeCompositeDefinition = {
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       indexType: {
@@ -626,8 +985,18 @@ export const definition: RuntimeCompositeDefinition = {
       moderationID: {
         type: 'streamid',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
+      },
+      moderation: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'moderationID' },
+      },
+      streamView: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'stream' },
       },
     },
     AkashaInterestsStream: {
@@ -654,7 +1023,7 @@ export const definition: RuntimeCompositeDefinition = {
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       labelType: {
@@ -666,8 +1035,13 @@ export const definition: RuntimeCompositeDefinition = {
       moderationID: {
         type: 'streamid',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
+      },
+      moderation: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'moderationID' },
       },
     },
     AkashaProfile: {
@@ -685,7 +1059,7 @@ export const definition: RuntimeCompositeDefinition = {
         item: {
           type: 'reference',
           refType: 'object',
-          refName: 'AkashaProfileLinkSource',
+          refName: 'ProfileLinkSource',
           required: false,
           immutable: false,
         },
@@ -693,20 +1067,20 @@ export const definition: RuntimeCompositeDefinition = {
       avatar: {
         type: 'reference',
         refType: 'object',
-        refName: 'AkashaProfileImageVersions',
+        refName: 'ProfileImageVersions',
         required: false,
         immutable: false,
       },
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       background: {
         type: 'reference',
         refType: 'object',
-        refName: 'AkashaProfileImageVersions',
+        refName: 'ProfileImageVersions',
         required: false,
         immutable: false,
       },
@@ -718,7 +1092,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'queryConnection',
           model:
-            'kjzl6hvfrbw6c5jg1zwrvbcvembp7v15kejrry05o2gvv2r4xghzfn2uluglus3',
+            'kjzl6hvfrbw6calrvwg964obomy7bymp65be4zwpagdjms6bm067pakecsx61st',
           property: 'profileID',
         },
       },
@@ -728,34 +1102,8 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'queryCount',
           model:
-            'kjzl6hvfrbw6c5jg1zwrvbcvembp7v15kejrry05o2gvv2r4xghzfn2uluglus3',
+            'kjzl6hvfrbw6calrvwg964obomy7bymp65be4zwpagdjms6bm067pakecsx61st',
           property: 'profileID',
-        },
-      },
-    },
-    AkashaProfileImageSource: {
-      src: { type: 'uri', required: true, immutable: false },
-      width: { type: 'integer', required: true, immutable: false },
-      height: { type: 'integer', required: true, immutable: false },
-    },
-    AkashaProfileImageVersions: {
-      default: {
-        type: 'reference',
-        refType: 'object',
-        refName: 'AkashaProfileImageSource',
-        required: true,
-        immutable: false,
-      },
-      alternatives: {
-        type: 'list',
-        required: false,
-        immutable: false,
-        item: {
-          type: 'reference',
-          refType: 'object',
-          refName: 'AkashaProfileImageSource',
-          required: false,
-          immutable: false,
         },
       },
     },
@@ -767,24 +1115,60 @@ export const definition: RuntimeCompositeDefinition = {
         item: {
           type: 'reference',
           refType: 'object',
-          refName: 'AkashaProfileInterestsLabeled',
+          refName: 'ProfileLabeled',
           required: true,
           immutable: false,
         },
       },
       did: { type: 'view', viewType: 'documentAccount' },
     },
-    AkashaProfileInterestsLabeled: {
-      value: {
-        type: 'string',
+    AkashaProfileInterestsInterface: {
+      topics: {
+        type: 'list',
         required: true,
         immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'ProfileLabeled',
+          required: true,
+          immutable: false,
+        },
       },
-      labelType: { type: 'string', required: true, immutable: false },
+      did: { type: 'view', viewType: 'documentAccount' },
     },
-    AkashaProfileLinkSource: {
-      href: { type: 'uri', required: true, immutable: false },
-      label: { type: 'string', required: false, immutable: false },
+    AkashaProfileInterface: {
+      name: { type: 'string', required: true, immutable: false },
+      nsfw: { type: 'boolean', required: false, immutable: false },
+      links: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'ProfileLinkSource',
+          required: false,
+          immutable: false,
+        },
+      },
+      avatar: {
+        type: 'reference',
+        refType: 'object',
+        refName: 'ProfileImageVersions',
+        required: false,
+        immutable: false,
+      },
+      createdAt: { type: 'datetime', required: true, immutable: true },
+      background: {
+        type: 'reference',
+        refType: 'object',
+        refName: 'ProfileImageVersions',
+        required: false,
+        immutable: false,
+      },
+      description: { type: 'string', required: false, immutable: false },
+      did: { type: 'view', viewType: 'documentAccount' },
     },
     AkashaProfileStream: {
       active: {
@@ -804,7 +1188,7 @@ export const definition: RuntimeCompositeDefinition = {
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       profileID: {
@@ -816,7 +1200,7 @@ export const definition: RuntimeCompositeDefinition = {
       moderationID: {
         type: 'streamid',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       profile: {
@@ -825,9 +1209,14 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c862oulkrdvxh2yfbhc997f7ahqtjppj2ejg8too3j7jmu8gsno',
+            'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
           property: 'profileID',
         },
+      },
+      moderation: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'moderationID' },
       },
     },
     AkashaReflect: {
@@ -840,8 +1229,8 @@ export const definition: RuntimeCompositeDefinition = {
       tags: {
         type: 'list',
         required: false,
-        immutable: false,
-        item: { type: 'string', required: false, immutable: false },
+        immutable: true,
+        item: { type: 'string', required: false, immutable: true },
       },
       active: {
         type: 'boolean',
@@ -849,41 +1238,46 @@ export const definition: RuntimeCompositeDefinition = {
         immutable: false,
         indexed: true,
       },
-      beamID: { type: 'streamid', required: true, immutable: false },
+      beamID: {
+        type: 'streamid',
+        required: true,
+        immutable: true,
+        indexed: true,
+      },
       content: {
         type: 'list',
         required: true,
-        immutable: false,
+        immutable: true,
         item: {
           type: 'reference',
           refType: 'object',
-          refName: 'AkashaReflectProviderValue',
+          refName: 'ReflectProviderValue',
           required: true,
-          immutable: false,
+          immutable: true,
         },
       },
       isReply: {
         type: 'boolean',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       mentions: {
         type: 'list',
         required: false,
-        immutable: false,
-        item: { type: 'streamid', required: false, immutable: false },
+        immutable: true,
+        item: { type: 'streamid', required: false, immutable: true },
       },
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       reflection: {
         type: 'streamid',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       beam: {
@@ -892,21 +1286,66 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c81jn00de1kfzdjtdbbivos4k3f17wa4a0u45c2v26d3j1eve68',
+            'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
           property: 'beamID',
         },
       },
       author: { type: 'view', viewType: 'documentAccount' },
       version: { type: 'view', viewType: 'documentVersion' },
+      reflectionView: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'reflection' },
+      },
     },
-    AkashaReflectProviderValue: {
-      label: {
-        type: 'string',
+    AkashaReflectInterface: {
+      nsfw: { type: 'boolean', required: false, immutable: false },
+      tags: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: { type: 'string', required: false, immutable: false },
+      },
+      active: { type: 'boolean', required: true, immutable: false },
+      beamID: { type: 'streamid', required: true, immutable: true },
+      content: {
+        type: 'list',
         required: true,
         immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'ReflectProviderValue',
+          required: true,
+          immutable: false,
+        },
       },
-      value: { type: 'string', required: true, immutable: false },
-      propertyType: { type: 'string', required: true, immutable: false },
+      isReply: { type: 'boolean', required: false, immutable: true },
+      mentions: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: { type: 'streamid', required: false, immutable: false },
+      },
+      createdAt: { type: 'datetime', required: true, immutable: true },
+      reflection: { type: 'streamid', required: false, immutable: true },
+      beam: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
+          property: 'beamID',
+        },
+      },
+      author: { type: 'view', viewType: 'documentAccount' },
+      version: { type: 'view', viewType: 'documentVersion' },
+      reflectionView: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'reflection' },
+      },
     },
     AkashaReflectStream: {
       active: {
@@ -944,13 +1383,13 @@ export const definition: RuntimeCompositeDefinition = {
       createdAt: {
         type: 'datetime',
         required: true,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       moderationID: {
         type: 'streamid',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
       reflectionID: {
@@ -959,16 +1398,91 @@ export const definition: RuntimeCompositeDefinition = {
         immutable: true,
         indexed: true,
       },
+      moderation: {
+        type: 'view',
+        viewType: 'relation',
+        relation: { source: 'document', model: null, property: 'moderationID' },
+      },
       reflection: {
         type: 'view',
         viewType: 'relation',
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c9az8glxdc257r0tgzkjxj01nhwxilaciiidaxwafw4023wimnp',
+            'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
           property: 'reflectionID',
         },
       },
+    },
+    AppImageSource: {
+      src: { type: 'uri', required: true, immutable: false },
+      width: { type: 'integer', required: false, immutable: false },
+      height: { type: 'integer', required: false, immutable: false },
+    },
+    AppLinkSource: {
+      href: { type: 'uri', required: true, immutable: false },
+      label: { type: 'string', required: false, immutable: false },
+    },
+    AppProviderValue: {
+      value: { type: 'string', required: true, immutable: false },
+      property: { type: 'string', required: true, immutable: false },
+      provider: { type: 'string', required: true, immutable: false },
+    },
+    BeamBlockRecord: {
+      order: { type: 'integer', required: true, immutable: false },
+      blockID: { type: 'streamid', required: true, immutable: false },
+    },
+    BeamEmbeddedType: {
+      label: { type: 'string', required: true, immutable: false },
+      embeddedID: { type: 'streamid', required: true, immutable: false },
+    },
+    BeamLabeled: {
+      value: { type: 'string', required: true, immutable: false },
+      labelType: { type: 'string', required: true, immutable: false },
+    },
+    BlockLabeledValue: {
+      label: { type: 'string', required: true, immutable: false },
+      value: { type: 'string', required: true, immutable: false },
+      propertyType: { type: 'string', required: true, immutable: false },
+    },
+    ProfileImageSource: {
+      src: { type: 'uri', required: true, immutable: false },
+      width: { type: 'integer', required: true, immutable: false },
+      height: { type: 'integer', required: true, immutable: false },
+    },
+    ProfileImageVersions: {
+      default: {
+        type: 'reference',
+        refType: 'object',
+        refName: 'ProfileImageSource',
+        required: true,
+        immutable: false,
+      },
+      alternatives: {
+        type: 'list',
+        required: false,
+        immutable: false,
+        item: {
+          type: 'reference',
+          refType: 'object',
+          refName: 'ProfileImageSource',
+          required: false,
+          immutable: false,
+        },
+      },
+    },
+    ProfileLabeled: {
+      value: { type: 'string', required: true, immutable: false },
+      labelType: { type: 'string', required: true, immutable: false },
+    },
+    ProfileLinkSource: {
+      href: { type: 'uri', required: true, immutable: false },
+      label: { type: 'string', required: false, immutable: false },
+    },
+    ReflectProviderValue: {
+      label: { type: 'string', required: true, immutable: false },
+      value: { type: 'string', required: true, immutable: false },
+      propertyType: { type: 'string', required: true, immutable: false },
     },
   },
   enums: {
@@ -989,14 +1503,30 @@ export const definition: RuntimeCompositeDefinition = {
       'OK',
       'OTHER',
     ],
-    AkashaBlockStorageBlockStorageDef: [
+    AkashaBlockStorageBlockDef: [
       'TEXT',
+      'RTF',
+      'FORM',
+      'IMAGE',
+      'ANIMATED_IMAGE',
+      'VIDEO',
       'BOOL',
       'EMOJI',
       'FORM_DATA',
       'OTHER',
     ],
-    AkashaContentBlockBlockDef: ['TEXT', 'FORM', 'OTHER'],
+    AkashaContentBlockBlockDef: [
+      'TEXT',
+      'RTF',
+      'FORM',
+      'IMAGE',
+      'ANIMATED_IMAGE',
+      'VIDEO',
+      'BOOL',
+      'EMOJI',
+      'FORM_DATA',
+      'OTHER',
+    ],
     AkashaContentBlockStreamModerationStatus: [
       'REMOVED',
       'IN_REVIEW',
@@ -1050,16 +1580,29 @@ export const definition: RuntimeCompositeDefinition = {
   },
   accountData: {
     akashaApp: { type: 'set', name: 'AkashaApp' },
+    akashaAppInterfaceList: { type: 'connection', name: 'AkashaAppInterface' },
     akashaAppList: { type: 'connection', name: 'AkashaApp' },
     akashaAppRelease: { type: 'set', name: 'AkashaAppRelease' },
+    akashaAppReleaseInterfaceList: {
+      type: 'connection',
+      name: 'AkashaAppReleaseInterface',
+    },
     akashaAppReleaseList: { type: 'connection', name: 'AkashaAppRelease' },
     akashaAppsStream: { type: 'set', name: 'AkashaAppsStream' },
     akashaAppsStreamList: { type: 'connection', name: 'AkashaAppsStream' },
+    akashaBeamInterfaceList: {
+      type: 'connection',
+      name: 'AkashaBeamInterface',
+    },
     akashaBeamList: { type: 'connection', name: 'AkashaBeam' },
     akashaBeamStream: { type: 'set', name: 'AkashaBeamStream' },
     akashaBeamStreamList: { type: 'connection', name: 'AkashaBeamStream' },
     akashaBlockStorage: { type: 'set', name: 'AkashaBlockStorage' },
     akashaBlockStorageList: { type: 'connection', name: 'AkashaBlockStorage' },
+    akashaContentBlockInterfaceList: {
+      type: 'connection',
+      name: 'AkashaContentBlockInterface',
+    },
     akashaContentBlockList: { type: 'connection', name: 'AkashaContentBlock' },
     akashaContentBlockStream: { type: 'set', name: 'AkashaContentBlockStream' },
     akashaContentBlockStreamList: {
@@ -1067,7 +1610,15 @@ export const definition: RuntimeCompositeDefinition = {
       name: 'AkashaContentBlockStream',
     },
     akashaFollow: { type: 'set', name: 'AkashaFollow' },
+    akashaFollowInterfaceList: {
+      type: 'connection',
+      name: 'AkashaFollowInterface',
+    },
     akashaFollowList: { type: 'connection', name: 'AkashaFollow' },
+    akashaIndexStreamInterfaceList: {
+      type: 'connection',
+      name: 'AkashaIndexStreamInterface',
+    },
     akashaIndexedStream: { type: 'set', name: 'AkashaIndexedStream' },
     akashaIndexedStreamList: {
       type: 'connection',
@@ -1080,10 +1631,22 @@ export const definition: RuntimeCompositeDefinition = {
     },
     akashaProfile: { type: 'node', name: 'AkashaProfile' },
     akashaProfileInterests: { type: 'node', name: 'AkashaProfileInterests' },
+    akashaProfileInterestsInterfaceList: {
+      type: 'connection',
+      name: 'AkashaProfileInterestsInterface',
+    },
+    akashaProfileInterfaceList: {
+      type: 'connection',
+      name: 'AkashaProfileInterface',
+    },
     akashaProfileStream: { type: 'set', name: 'AkashaProfileStream' },
     akashaProfileStreamList: {
       type: 'connection',
       name: 'AkashaProfileStream',
+    },
+    akashaReflectInterfaceList: {
+      type: 'connection',
+      name: 'AkashaReflectInterface',
     },
     akashaReflectList: { type: 'connection', name: 'AkashaReflect' },
     akashaReflectStream: { type: 'set', name: 'AkashaReflectStream' },
