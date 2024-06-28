@@ -6,5 +6,6 @@ export const enum JobNames{
   indexContentBlock="indexContentBlock",
   indexInterest="indexInterest",
   indexApp="indexApplication",
+  indexAppRelease = "indexAppRelease",
   indexStream="indexStream",
 }

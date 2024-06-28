@@ -12,6 +12,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { composeClient } from "./composedb/client.js";
 import resolvers from "./resolvers/index.js";
+import { disableDataFeed, enableDataFeed } from "./misc/data-feed.js";
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -51,6 +52,20 @@ const typeDefs = readFileSync(resolve(__dirname, './schema.graphql'), {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  plugins: [
+    {
+      async serverWillStart() {
+        console.info("enabling data feed");
+        await enableDataFeed();
+        return {
+          async serverWillStop() {
+            console.info("stopping data feed");
+            disableDataFeed();
+          },
+        };
+      },
+    },
+  ]
 });
 
 const { url } = await startStandaloneServer(server, {

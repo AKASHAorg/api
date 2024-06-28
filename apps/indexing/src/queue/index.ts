@@ -6,7 +6,7 @@ import worker from "./worker.js";
 
 
 export const getRedisConnection = () => {
-  const connectionString = process.env?.REDIS_CONNECTION_STRING.trim();
+  const connectionString = process.env?.REDIS_CONNECTION_STRING?.trim();
   if(!connectionString) {
     throw new Error("REDIS_CONNECTION_STRING is not set");
   }
