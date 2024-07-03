@@ -3,6 +3,12 @@ import { JobNames } from "../queue/config.js";
 
 
 const { models } = definition;
+/**
+ * Maps a model ID to a corresponding job name for indexing.
+ *
+ * @param modelID - The ID of the model to map to a job name.
+ * @returns The job name corresponding to the given model ID, or `null` if no mapping is found.
+ */
 export default function modelsJobMapper (modelID: string): JobNames | null {
 
   switch (modelID) {
@@ -29,7 +35,6 @@ export default function modelsJobMapper (modelID: string): JobNames | null {
     case models.AkashaReflectInterface.id:
       return JobNames.indexReflection;
     default: {
-      console.warn(`Unknown modelID: ${modelID}`);
       return null;
     }
   }

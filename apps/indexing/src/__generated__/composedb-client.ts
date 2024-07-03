@@ -4323,6 +4323,45 @@ export type GetBeamByIdQueryVariables = Exact<{
 
 export type GetBeamByIdQuery = { node?: { id: string, nsfw?: boolean | null, createdAt: any, active: boolean, mentions?: Array<{ id: string } | null> | null, tags?: Array<{ labelType: string, value: string } | null> | null } | {} | null };
 
+export type GetBeamStreamQueryVariables = Exact<{
+  indexer: Scalars['ID']['input'];
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  filters?: InputMaybe<AkashaBeamStreamFiltersInput>;
+  sorting?: InputMaybe<AkashaBeamStreamSortingInput>;
+}>;
+
+
+export type GetBeamStreamQuery = { node?: { isViewer: boolean, akashaBeamStreamList?: { edges?: Array<{ cursor: string, node?: { id: string, beamID: any, createdAt: any, active: boolean, status?: AkashaBeamStreamModerationStatus | null, moderationID?: any | null } | null } | null> | null, pageInfo: { startCursor?: string | null, endCursor?: string | null, hasPreviousPage: boolean, hasNextPage: boolean } } | null } | {} | null };
+
+export type GetReflectionStreamQueryVariables = Exact<{
+  indexer: Scalars['ID']['input'];
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  filters?: InputMaybe<AkashaReflectStreamFiltersInput>;
+  sorting?: InputMaybe<AkashaReflectStreamSortingInput>;
+}>;
+
+
+export type GetReflectionStreamQuery = { node?: { isViewer: boolean, akashaReflectStreamList?: { edges?: Array<{ cursor: string, node?: { id: string, reflectionID: any, moderationID?: any | null, beamID: any, active: boolean, status?: AkashaReflectStreamModerationStatus | null, createdAt: any, isReply?: boolean | null, replyTo?: any | null } | null } | null> | null, pageInfo: { startCursor?: string | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean } } | null } | {} | null };
+
+export type GetProfileStreamQueryVariables = Exact<{
+  indexer: Scalars['ID']['input'];
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  filters?: InputMaybe<AkashaProfileStreamFiltersInput>;
+  sorting?: InputMaybe<AkashaProfileStreamSortingInput>;
+}>;
+
+
+export type GetProfileStreamQuery = { node?: { akashaProfileStreamList?: { edges?: Array<{ cursor: string, node?: { id: string, profileID: any, active: boolean, createdAt: any, moderationID?: any | null, status?: AkashaProfileStreamModerationStatus | null } | null } | null> | null, pageInfo: { startCursor?: string | null, endCursor?: string | null, hasNextPage: boolean, hasPreviousPage: boolean } } | null } | {} | null };
+
 export const AkashaProfileStreamFragmentDoc = /*#__PURE__*/ gql`
     fragment AkashaProfileStreamFragment on AkashaProfileStream {
   id
@@ -4557,8 +4596,115 @@ export const GetBeamByIdDocument = /*#__PURE__*/ gql`
   }
 }
     `;
-export type Requester<C = {}, E = unknown> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
-export function getSdk<C, E>(requester: Requester<C, E>) {
+export const GetBeamStreamDocument = /*#__PURE__*/ gql`
+    query GetBeamStream($indexer: ID!, $after: String, $before: String, $first: Int, $last: Int, $filters: AkashaBeamStreamFiltersInput, $sorting: AkashaBeamStreamSortingInput) {
+  node(id: $indexer) {
+    ... on CeramicAccount {
+      akashaBeamStreamList(
+        after: $after
+        before: $before
+        first: $first
+        last: $last
+        filters: $filters
+        sorting: $sorting
+      ) {
+        edges {
+          node {
+            id
+            beamID
+            createdAt
+            active
+            status
+            moderationID
+          }
+          cursor
+        }
+        pageInfo {
+          startCursor
+          endCursor
+          hasPreviousPage
+          hasNextPage
+        }
+      }
+      isViewer
+    }
+  }
+}
+    `;
+export const GetReflectionStreamDocument = /*#__PURE__*/ gql`
+    query GetReflectionStream($indexer: ID!, $after: String, $before: String, $first: Int, $last: Int, $filters: AkashaReflectStreamFiltersInput, $sorting: AkashaReflectStreamSortingInput) {
+  node(id: $indexer) {
+    ... on CeramicAccount {
+      akashaReflectStreamList(
+        after: $after
+        before: $before
+        first: $first
+        last: $last
+        filters: $filters
+        sorting: $sorting
+      ) {
+        edges {
+          node {
+            id
+            reflectionID
+            moderationID
+            beamID
+            active
+            status
+            createdAt
+            isReply
+            replyTo
+          }
+          cursor
+        }
+        pageInfo {
+          startCursor
+          endCursor
+          hasNextPage
+          hasPreviousPage
+        }
+      }
+      isViewer
+    }
+  }
+}
+    `;
+export const GetProfileStreamDocument = /*#__PURE__*/ gql`
+    query GetProfileStream($indexer: ID!, $after: String, $before: String, $first: Int, $last: Int, $filters: AkashaProfileStreamFiltersInput, $sorting: AkashaProfileStreamSortingInput) {
+  node(id: $indexer) {
+    ... on CeramicAccount {
+      akashaProfileStreamList(
+        after: $after
+        before: $before
+        first: $first
+        last: $last
+        filters: $filters
+        sorting: $sorting
+      ) {
+        edges {
+          node {
+            id
+            profileID
+            active
+            createdAt
+            moderationID
+            status
+          }
+          cursor
+        }
+        pageInfo {
+          startCursor
+          endCursor
+          hasNextPage
+          hasPreviousPage
+        }
+      }
+    }
+  }
+}
+    `;
+export type Requester<C = {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R> | AsyncIterable<R>
+export function getSdk<C>(requester: Requester<C>) {
   return {
     IndexProfileStream(variables: IndexProfileStreamMutationVariables, options?: C): Promise<IndexProfileStreamMutation> {
       return requester<IndexProfileStreamMutation, IndexProfileStreamMutationVariables>(IndexProfileStreamDocument, variables, options) as Promise<IndexProfileStreamMutation>;
@@ -4607,6 +4753,15 @@ export function getSdk<C, E>(requester: Requester<C, E>) {
     },
     GetBeamById(variables: GetBeamByIdQueryVariables, options?: C): Promise<GetBeamByIdQuery> {
       return requester<GetBeamByIdQuery, GetBeamByIdQueryVariables>(GetBeamByIdDocument, variables, options) as Promise<GetBeamByIdQuery>;
+    },
+    GetBeamStream(variables: GetBeamStreamQueryVariables, options?: C): Promise<GetBeamStreamQuery> {
+      return requester<GetBeamStreamQuery, GetBeamStreamQueryVariables>(GetBeamStreamDocument, variables, options) as Promise<GetBeamStreamQuery>;
+    },
+    GetReflectionStream(variables: GetReflectionStreamQueryVariables, options?: C): Promise<GetReflectionStreamQuery> {
+      return requester<GetReflectionStreamQuery, GetReflectionStreamQueryVariables>(GetReflectionStreamDocument, variables, options) as Promise<GetReflectionStreamQuery>;
+    },
+    GetProfileStream(variables: GetProfileStreamQueryVariables, options?: C): Promise<GetProfileStreamQuery> {
+      return requester<GetProfileStreamQuery, GetProfileStreamQueryVariables>(GetProfileStreamDocument, variables, options) as Promise<GetProfileStreamQuery>;
     }
   };
 }

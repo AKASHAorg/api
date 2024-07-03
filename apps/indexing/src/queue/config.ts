@@ -8,4 +8,13 @@ export const enum JobNames{
   indexApp="indexApplication",
   indexAppRelease = "indexAppRelease",
   indexStream="indexStream",
+  updateBeam = "updateBeam",
+  updateReflection = "updateReflection",
+  updateContentBlock = "updateContentBlock",
+  updateProfile = "updateProfile",
+  updateApp = "updateApp",
+  updateAppRelease = "updateAppRelease",
 }
+
+export const delistJobPrefix = "delist:";
+export const delistJobKey = (jobName: string) => `${delistJobPrefix}${jobName}`;

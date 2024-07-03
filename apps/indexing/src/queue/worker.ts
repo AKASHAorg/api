@@ -1,7 +1,14 @@
 import { Job } from 'bullmq';
 import { JobNames } from "./config.js";
 import { gqlClient } from "../composedb/sdk.js";
+import { composeClient } from "../composedb/client.js";
 
+/**
+ * Handles indexing jobs for various Akasha data streams.
+ *
+ * @param job - The job object containing the job data.
+ * @returns The indexed data document.
+ */
 const indexingWorker = async (job: Job) => {
   console.info(job.name);
   switch (job.name) {
@@ -26,6 +33,26 @@ const indexingWorker = async (job: Job) => {
     case JobNames.indexStream:
       const indexedData = await gqlClient.CreateAkashaIndexedStream(job.data);
       return indexedData.setAkashaIndexedStream.document;
+    case JobNames.updateBeam:
+      if(job.data?.i?.options.hasOwnProperty('shouldIndex')){
+        if(job.data.i.options.shouldIndex === false){
+          const beam = await gqlClient.GetBeamStream({
+            indexer: composeClient.id,
+            last: 1,
+            filters: {
+              where: {
+                beamID: {equalTo: job.data.i.id }
+              }
+            }
+          });
+
+          if('akashaBeamStreamList' in beam.node && beam.node.akashaBeamStreamList.edges.length) {
+            job.data.i.id = beam.node.akashaBeamStreamList.edges[0].node.id;
+          }
+        }
+      }
+      const updateBeamData = await gqlClient.UpdateBeamStream(job.data);
+      return updateBeamData.updateAkashaBeamStream.document;
     default:
       console.warn('Unknown job type');
       break;

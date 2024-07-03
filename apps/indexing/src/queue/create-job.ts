@@ -3,14 +3,18 @@ import {
   AkashaIndexedStreamModerationStatus,
   AkashaIndexedStreamStreamType,
   CreateAkashaIndexedStreamMutationVariables,
-  IndexAkashaAppsStreamMutationVariables, IndexAkashaInterestsStreamMutationVariables,
+  IndexAkashaAppsStreamMutationVariables,
+  IndexAkashaInterestsStreamMutationVariables,
   IndexAkashaReflectStreamMutationVariables,
   IndexBeamStreamMutationVariables,
   IndexContentBlockStreamMutationVariables,
-  IndexProfileStreamMutationVariables
+  IndexProfileStreamMutationVariables,
+  UpdateAkashaBeamStreamInput,
+  UpdateAkashaReflectStreamInput,
+  UpdateBeamStreamMutationVariables
 } from "../__generated__/composedb-client.js";
 import { indexingQueue } from "./index.js";
-import { JobNames } from "./config.js";
+import { delistJobKey, JobNames } from "./config.js";
 import { gqlClient } from "../composedb/sdk.js";
 
 export const indexProfile = async (streamID: string) => {
@@ -175,12 +179,33 @@ export const indexInterest = async (payload: { labelType: string, value: string 
   };
 }
 
+export const delistBeam = async (streamID: string) => {
+  const data: UpdateBeamStreamMutationVariables = {
+    i: {
+      content: {
+        active: false
+      },
+      id: streamID,
+      options: {
+        shouldIndex: false
+      }
+    }
+  };
+  await indexingQueue.add(JobNames.updateBeam, data);
+  return {
+    document: {
+      beamID: streamID
+    }
+  };
+}
+
+
 
 export default {
   [JobNames.indexProfile]: indexProfile,
   [JobNames.indexBeam]: indexBeam,
+  [delistJobKey(JobNames.indexBeam)]: delistBeam,
   [JobNames.indexReflection]: indexReflection,
   [JobNames.indexContentBlock]: indexContentBlock,
   [JobNames.indexApp]: indexApp,
-  [JobNames.indexInterest]: indexInterest,
 }

@@ -211,3 +211,87 @@ query GetBeamById($id: ID!){
     }
   }
 }
+
+query GetBeamStream($indexer: ID!, $after: String, $before: String, $first: Int, $last: Int, $filters: AkashaBeamStreamFiltersInput, $sorting: AkashaBeamStreamSortingInput){
+  node(id: $indexer) {
+    ... on CeramicAccount{
+      akashaBeamStreamList(after: $after, before: $before, first: $first, last: $last, filters: $filters, sorting: $sorting){
+        edges {
+          node {
+            id
+            beamID
+            createdAt
+            active
+            status
+            moderationID
+          }
+          cursor
+        }
+        pageInfo {
+          startCursor
+          endCursor
+          hasPreviousPage
+          hasNextPage
+        }
+      }
+      isViewer
+    }
+  }
+}
+
+query GetReflectionStream($indexer: ID!, $after: String, $before: String, $first: Int, $last: Int, $filters: AkashaReflectStreamFiltersInput, $sorting: AkashaReflectStreamSortingInput){
+  node(id: $indexer){
+    ... on CeramicAccount{
+      akashaReflectStreamList(after: $after, before: $before, first: $first, last: $last, filters: $filters, sorting: $sorting){
+        edges{
+          node{
+            id
+            reflectionID
+            moderationID
+            beamID
+            active
+            status
+            createdAt
+            isReply
+            replyTo
+          }
+          cursor
+        }
+        pageInfo {
+          startCursor
+          endCursor
+          hasNextPage
+          hasPreviousPage
+        }
+      }
+      isViewer
+    }
+  }
+}
+
+query GetProfileStream($indexer: ID!, $after: String, $before: String, $first: Int, $last: Int, $filters: AkashaProfileStreamFiltersInput, $sorting: AkashaProfileStreamSortingInput ){
+  node(id: $indexer){
+    ... on CeramicAccount{
+      akashaProfileStreamList(after: $after, before: $before, first: $first, last: $last, filters: $filters, sorting: $sorting ){
+        edges {
+          node {
+            id
+            profileID
+            active
+            createdAt
+            moderationID
+            status
+          }
+          cursor
+        }
+        pageInfo {
+          startCursor
+          endCursor
+          hasNextPage
+          hasPreviousPage
+        }
+      }
+    }
+  }
+}
+
