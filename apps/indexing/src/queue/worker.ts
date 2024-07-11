@@ -22,6 +22,18 @@ const indexingWorker = async (job: Job) => {
       const interestsData = await gqlClient.IndexAkashaInterestsStream(job.data);
       return interestsData.setAkashaInterestsStream.document;
     case JobNames.indexProfile:
+      const profile = await gqlClient.GetProfileStream({
+        indexer: composeClient.id,
+        last: 1,
+        filters: {
+          where: {
+            profileID: {equalTo: job.data.i.content.profileID }
+          }
+        }
+      });
+      if('akashaProfileStreamList' in profile.node && profile.node.akashaProfileStreamList.edges.length) {
+       return profile.node.akashaProfileStreamList.edges[0].node;
+      }
       const profileData = await gqlClient.IndexProfileStream(job.data);
       return profileData.setAkashaProfileStream.document;
     case JobNames.indexReflection:

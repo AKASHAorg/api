@@ -7,7 +7,7 @@ import { getRedisConnection } from '../queue/index.js';
 import QuickLRU from 'quick-lru';
 import modelsJobMapper from './models-job-mapper.js';
 import createJob from '../queue/create-job.js';
-import { delistJobKey } from "../queue/config.js";
+import { delistJobKey, JobNames } from "../queue/config.js";
 
 if (!process.env?.CERAMIC_API_ENDPOINT) {
   throw new Error('CERAMIC_API_ENDPOINT env var is not set');
@@ -106,6 +106,9 @@ export const enableDataFeed = async () => {
         }
         return;
       }
+      if(indexJob === JobNames.indexProfile){
+        indexStream(indexJob, streamId);
+      }
     }
 
     /**
@@ -117,7 +120,9 @@ export const enableDataFeed = async () => {
         return;
       }
       lru.set(key, true);
-      indexStream(indexJob, streamId);
+      if(parsedData.content !== null && parsedData.content !== undefined) {
+        indexStream(indexJob, streamId);
+      }
     }
 
     /**
