@@ -1,4 +1,4 @@
-export const INDEXING_QUEUE_NAME = "indexing:composedb";
+export const INDEXING_QUEUE_NAME = "indexing-composedb";
 export const enum JobNames{
   indexProfile="indexProfile",
   indexBeam="indexBeam",
