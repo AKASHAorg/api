@@ -208,6 +208,20 @@ query GetBeamById($id: ID!){
       nsfw
       createdAt
       active
+      appID
+      appVersionID
+    }
+  }
+}
+
+query GetProfileById($id: ID!){
+  node(id: $id){
+    ... on AkashaProfile{
+      id
+      appID
+      appVersionID
+      name
+      nsfw
     }
   }
 }

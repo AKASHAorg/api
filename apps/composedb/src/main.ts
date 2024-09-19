@@ -3,6 +3,7 @@ import { startGraphQLServer, getViewerID } from '@composedb/server';
 import { CeramicClient } from '@ceramicnetwork/http-client';
 import { createContext, createGraphQLSchema } from '@composedb/runtime';
 import { useResponseCache } from '@graphql-yoga/plugin-response-cache';
+import type { CeramicAPI } from "@composedb/types";
 import {
   type YogaInitialContext,
 } from 'graphql-yoga'
@@ -17,7 +18,10 @@ const ceramicURL = process.env.CERAMIC_API_ENDPOINT || 'http://localhost:7007';
 const composite = await readEncodedComposite(ceramicURL, path.resolve(__dirname, './composedb-runtime-definition.json'));
 
 const definition = composite.toRuntime();
-const ceramic = new CeramicClient(ceramicURL);
+// temporary solution, the types do not match for CeramicClient
+// from @ceramicnetwork/http-client and devtools-node
+// because it's redefined in the http-client package
+const ceramic = new CeramicClient(ceramicURL) as unknown as CeramicAPI;
 
 /*
  * Starts a GraphQL server for the ComposeDB runtime definition.

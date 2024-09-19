@@ -6,29 +6,29 @@ export const definition: RuntimeCompositeDefinition = {
     AkashaApp: {
       interface: false,
       implements: [
-        'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
+        'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
       ],
-      id: 'kjzl6hvfrbw6c82w3gtimssknrieiq7j7kcq50g0vinko9jb3z005q72kdw6lpr',
+      id: 'kjzl6hvfrbw6c54ufn6whf1z78go3l03fxnmlh8fj4vw90r6q2ugbo8m2yjhj68',
       accountRelation: { type: 'set', fields: ['name'] },
     },
     AkashaAppInterface: {
       interface: true,
       implements: [],
-      id: 'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
+      id: 'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
       accountRelation: { type: 'none' },
     },
     AkashaAppRelease: {
       interface: false,
       implements: [
-        'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+        'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
       ],
-      id: 'kjzl6hvfrbw6c9qy9sa9h3q7j8t9ovrit1arvo1uc73yglzlusrgtddzzpqfdxq',
+      id: 'kjzl6hvfrbw6c6klxamgwsshaebdwysia92wvkh3f3q2nxiwb1h0dyj3r8t6voy',
       accountRelation: { type: 'set', fields: ['applicationID', 'version'] },
     },
     AkashaAppReleaseInterface: {
       interface: true,
       implements: [],
-      id: 'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+      id: 'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
       accountRelation: { type: 'none' },
     },
     AkashaAppsStream: {
@@ -36,21 +36,21 @@ export const definition: RuntimeCompositeDefinition = {
       implements: [
         'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
       ],
-      id: 'kjzl6hvfrbw6c5vvn2fbv3xexrf12wh0isb8h3r1b2s6ov9qmtzazutqyrbrydu',
+      id: 'kjzl6hvfrbw6c6p2p7kup6o31g9is1j2r0nsqnf2q4soe60mtf706yghtu30njd',
       accountRelation: { type: 'set', fields: ['applicationID'] },
     },
     AkashaBeam: {
       interface: false,
       implements: [
-        'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
+        'kjzl6hvfrbw6c5rvaehvw3bo06g91zzskdmqcamf87cou0c3rcjfga8otgn1dmh',
       ],
-      id: 'kjzl6hvfrbw6c9eqxi4g8esw3rgl88z0enck6ztyk46kyzpj4vxqddfpihkrlty',
+      id: 'kjzl6hvfrbw6c7abwbe0gvpjuny4tja628bb73t65imu5k62eg8k3rm2g63v8bw',
       accountRelation: { type: 'list' },
     },
     AkashaBeamInterface: {
       interface: true,
       implements: [],
-      id: 'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
+      id: 'kjzl6hvfrbw6c5rvaehvw3bo06g91zzskdmqcamf87cou0c3rcjfga8otgn1dmh',
       accountRelation: { type: 'none' },
     },
     AkashaBeamStream: {
@@ -58,29 +58,29 @@ export const definition: RuntimeCompositeDefinition = {
       implements: [
         'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
       ],
-      id: 'kjzl6hvfrbw6c8qccbg85z7fd2kyqgrus9opyaeu3h89p1k2qc61oe304fvmq5r',
+      id: 'kjzl6hvfrbw6ca0kmb94buwdyoqmlja4v1t6wfu6vgh8xxp77zqxfrkhy06peps',
       accountRelation: { type: 'set', fields: ['beamID'] },
     },
     AkashaBlockStorage: {
       interface: false,
       implements: [
-        'kjzl6hvfrbw6c9zxtxl9ou1i86lqo2inne8dqvyi83f26p695s98mhkw40mwwsv',
+        'kjzl6hvfrbw6camingc354x7fs0zfvcdntuls7514mom4gpzntbv0gtyaeqduwg',
       ],
-      id: 'kjzl6hvfrbw6c6q4jju7c94ukn9641bewgtj8481n0thtq1eva9umjqzs9864rj',
+      id: 'kjzl6hvfrbw6c9t2hdrbp268359gqowq992ze623w08hmyxrnxhndusx16ok0tq',
       accountRelation: { type: 'set', fields: ['blockID'] },
     },
     AkashaContentBlock: {
       interface: false,
       implements: [
-        'kjzl6hvfrbw6c9zxtxl9ou1i86lqo2inne8dqvyi83f26p695s98mhkw40mwwsv',
+        'kjzl6hvfrbw6camingc354x7fs0zfvcdntuls7514mom4gpzntbv0gtyaeqduwg',
       ],
-      id: 'kjzl6hvfrbw6c7tkatn90maary15xkogg0vrbsn2duxr8muhojvcmq6x1hrctyi',
+      id: 'kjzl6hvfrbw6c9zkwodo2ez8d5ja8poazi1fcq3krhk1g8l26lhpm5e4ktxd49w',
       accountRelation: { type: 'list' },
     },
     AkashaContentBlockInterface: {
       interface: true,
       implements: [],
-      id: 'kjzl6hvfrbw6c9zxtxl9ou1i86lqo2inne8dqvyi83f26p695s98mhkw40mwwsv',
+      id: 'kjzl6hvfrbw6camingc354x7fs0zfvcdntuls7514mom4gpzntbv0gtyaeqduwg',
       accountRelation: { type: 'none' },
     },
     AkashaContentBlockStream: {
@@ -88,21 +88,21 @@ export const definition: RuntimeCompositeDefinition = {
       implements: [
         'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
       ],
-      id: 'kjzl6hvfrbw6c5ub7csqm5gn2ors08hzvjlkt18kp2jozbgn6vdg9uavsydds7r',
+      id: 'kjzl6hvfrbw6c9f6k00s3dy07afm5lug78irvkpisu24djousz7hhyiiq0pqni0',
       accountRelation: { type: 'set', fields: ['blockID'] },
     },
     AkashaFollow: {
       interface: false,
       implements: [
-        'kjzl6hvfrbw6calrvwg964obomy7bymp65be4zwpagdjms6bm067pakecsx61st',
+        'kjzl6hvfrbw6cb893zwezpclu033att8nq0oatc21cns6ryr1dubpfeczla9xml',
       ],
-      id: 'kjzl6hvfrbw6c9mpseodbq6i7jmmrd6uwv382pfsjmry5j2lmj8opuzu2ykbd6j',
+      id: 'kjzl6hvfrbw6cb9imwgspb0nunnnd587ofchw0g4elod2gqgpo7f8yt5ac9ptbd',
       accountRelation: { type: 'set', fields: ['profileID'] },
     },
     AkashaFollowInterface: {
       interface: true,
       implements: [],
-      id: 'kjzl6hvfrbw6calrvwg964obomy7bymp65be4zwpagdjms6bm067pakecsx61st',
+      id: 'kjzl6hvfrbw6cb893zwezpclu033att8nq0oatc21cns6ryr1dubpfeczla9xml',
       accountRelation: { type: 'none' },
     },
     AkashaIndexStreamInterface: {
@@ -116,7 +116,7 @@ export const definition: RuntimeCompositeDefinition = {
       implements: [
         'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
       ],
-      id: 'kjzl6hvfrbw6c6wbu8zpggcuvlejl32zm1ww7pd1zkpkj0d0m612ob8qc0x60af',
+      id: 'kjzl6hvfrbw6cb6f62hy1dkat0frfanf0gy3u28flt3kwsn32ykl82agexkfzkv',
       accountRelation: {
         type: 'set',
         fields: ['stream', 'indexType', 'indexValue'],
@@ -127,15 +127,15 @@ export const definition: RuntimeCompositeDefinition = {
       implements: [
         'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
       ],
-      id: 'kjzl6hvfrbw6c9d7d8tpr8pl6zcwhvp2adkb24p11x2i6ab2embz7p4max3d290',
+      id: 'kjzl6hvfrbw6c5458b2fiese44oevx64q156su51uj42mpokx2o8su1h5d6j5mu',
       accountRelation: { type: 'set', fields: ['labelType', 'value'] },
     },
     AkashaProfile: {
       interface: false,
       implements: [
-        'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
+        'kjzl6hvfrbw6c8iuza101yr8ovi9pu4qub5ghbeqhr1g15xv6xm1bkeuof4dxxd',
       ],
-      id: 'kjzl6hvfrbw6cagktk50tp31ec5nycbhzcpi0mmideporowub9qe7ee3lgml511',
+      id: 'kjzl6hvfrbw6c95s98ss8nidzuteyvjy5eipc0ov71gpt7wt6e4za6qnzqt3ccd',
       accountRelation: { type: 'single' },
     },
     AkashaProfileInterests: {
@@ -155,7 +155,7 @@ export const definition: RuntimeCompositeDefinition = {
     AkashaProfileInterface: {
       interface: true,
       implements: [],
-      id: 'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
+      id: 'kjzl6hvfrbw6c8iuza101yr8ovi9pu4qub5ghbeqhr1g15xv6xm1bkeuof4dxxd',
       accountRelation: { type: 'none' },
     },
     AkashaProfileStream: {
@@ -163,21 +163,21 @@ export const definition: RuntimeCompositeDefinition = {
       implements: [
         'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
       ],
-      id: 'kjzl6hvfrbw6c70suqbcajzg6t43i5642sqfy5cj4ujug95nx46znl3ql9bkmod',
+      id: 'kjzl6hvfrbw6c9k01k3l5nzghx7lc95xbwj2c0fijrrjzywtjqqv6tvpvhuwic8',
       accountRelation: { type: 'set', fields: ['profileID'] },
     },
     AkashaReflect: {
       interface: false,
       implements: [
-        'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+        'kjzl6hvfrbw6c9aglcacfejq5fxzy0pxc8eraoyy03b9lv2mlx5o9u85zqnrhf5',
       ],
-      id: 'kjzl6hvfrbw6c8tz6qbe99qw8niszoq7zv8bvjuw2h8rvqatxq53c08ivhqbmc6',
+      id: 'kjzl6hvfrbw6c964tbjdm53xvp2f984g5p8d2cbiqavz3tbqkp9y3luqtf128o6',
       accountRelation: { type: 'list' },
     },
     AkashaReflectInterface: {
       interface: true,
       implements: [],
-      id: 'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+      id: 'kjzl6hvfrbw6c9aglcacfejq5fxzy0pxc8eraoyy03b9lv2mlx5o9u85zqnrhf5',
       accountRelation: { type: 'none' },
     },
     AkashaReflectStream: {
@@ -185,7 +185,7 @@ export const definition: RuntimeCompositeDefinition = {
       implements: [
         'kjzl6hvfrbw6c549224gv8opbzydltjnidsxe8u2juj3f5n04zvlv23xli1pp2u',
       ],
-      id: 'kjzl6hvfrbw6c7ca8temkvxkp9hqc1qi3aje6snhz7wbzpjnu42j1p53y462qj6',
+      id: 'kjzl6hvfrbw6c5h5mmvmzicfgz4v1xxxxw6ulcekhjdg62okuw6x56vietsx809',
       accountRelation: { type: 'set', fields: ['reflectionID'] },
     },
   },
@@ -204,6 +204,7 @@ export const definition: RuntimeCompositeDefinition = {
         },
       },
       name: { type: 'string', required: true, immutable: true, indexed: true },
+      nsfw: { type: 'boolean', required: false, immutable: true },
       links: {
         type: 'list',
         required: false,
@@ -284,7 +285,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'queryConnection',
           model:
-            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
           property: 'applicationID',
         },
       },
@@ -294,7 +295,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'queryCount',
           model:
-            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
           property: 'applicationID',
         },
       },
@@ -313,6 +314,7 @@ export const definition: RuntimeCompositeDefinition = {
         },
       },
       name: { type: 'string', required: true, immutable: true },
+      nsfw: { type: 'boolean', required: false, immutable: true },
       links: {
         type: 'list',
         required: false,
@@ -408,7 +410,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
+            'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
           property: 'applicationID',
         },
       },
@@ -436,7 +438,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
+            'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
           property: 'applicationID',
         },
       },
@@ -485,7 +487,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c86gj8z6avu2zk6ykczk5t1sgb8waul05g4lr5nd5zy1l7t3ajt',
+            'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
           property: 'applicationID',
         },
       },
@@ -509,6 +511,7 @@ export const definition: RuntimeCompositeDefinition = {
           immutable: true,
         },
       },
+      appID: { type: 'streamid', required: true, immutable: true },
       active: {
         type: 'boolean',
         required: true,
@@ -539,6 +542,7 @@ export const definition: RuntimeCompositeDefinition = {
         immutable: true,
         indexed: true,
       },
+      appVersionID: { type: 'streamid', required: true, immutable: true },
       embeddedStream: {
         type: 'reference',
         refType: 'object',
@@ -546,15 +550,35 @@ export const definition: RuntimeCompositeDefinition = {
         required: false,
         immutable: true,
       },
+      app: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
+          property: 'appID',
+        },
+      },
       author: { type: 'view', viewType: 'documentAccount' },
       version: { type: 'view', viewType: 'documentVersion' },
+      appVersion: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
+          property: 'appVersionID',
+        },
+      },
       reflections: {
         type: 'view',
         viewType: 'relation',
         relation: {
           source: 'queryConnection',
           model:
-            'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+            'kjzl6hvfrbw6c9aglcacfejq5fxzy0pxc8eraoyy03b9lv2mlx5o9u85zqnrhf5',
           property: 'beamID',
         },
       },
@@ -564,7 +588,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'queryCount',
           model:
-            'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+            'kjzl6hvfrbw6c9aglcacfejq5fxzy0pxc8eraoyy03b9lv2mlx5o9u85zqnrhf5',
           property: 'beamID',
         },
       },
@@ -583,6 +607,7 @@ export const definition: RuntimeCompositeDefinition = {
           immutable: false,
         },
       },
+      appID: { type: 'streamid', required: true, immutable: true },
       active: { type: 'boolean', required: true, immutable: false },
       content: {
         type: 'list',
@@ -603,6 +628,7 @@ export const definition: RuntimeCompositeDefinition = {
         item: { type: 'did', required: false, immutable: false },
       },
       createdAt: { type: 'datetime', required: true, immutable: true },
+      appVersionID: { type: 'streamid', required: true, immutable: true },
       embeddedStream: {
         type: 'reference',
         refType: 'object',
@@ -610,10 +636,31 @@ export const definition: RuntimeCompositeDefinition = {
         required: false,
         immutable: true,
       },
+      app: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
+          property: 'appID',
+        },
+      },
       author: { type: 'view', viewType: 'documentAccount' },
       version: { type: 'view', viewType: 'documentVersion' },
+      appVersion: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
+          property: 'appVersionID',
+        },
+      },
     },
     AkashaBeamStream: {
+      appID: { type: 'streamid', required: false, immutable: true },
       active: {
         type: 'boolean',
         required: true,
@@ -652,7 +699,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
+            'kjzl6hvfrbw6c5rvaehvw3bo06g91zzskdmqcamf87cou0c3rcjfga8otgn1dmh',
           property: 'beamID',
         },
       },
@@ -719,7 +766,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c7tkatn90maary15xkogg0vrbsn2duxr8muhojvcmq6x1hrctyi',
+            'kjzl6hvfrbw6c9zkwodo2ez8d5ja8poazi1fcq3krhk1g8l26lhpm5e4ktxd49w',
           property: 'blockID',
         },
       },
@@ -731,7 +778,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
           property: 'appVersionID',
         },
       },
@@ -789,7 +836,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
           property: 'appVersionID',
         },
       },
@@ -823,7 +870,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c5shugmcfmrivuunrdzvrnku3ktetuvz6zzv69fnktunigc2lgj',
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
           property: 'appVersionID',
         },
       },
@@ -867,7 +914,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c9zxtxl9ou1i86lqo2inne8dqvyi83f26p695s98mhkw40mwwsv',
+            'kjzl6hvfrbw6camingc354x7fs0zfvcdntuls7514mom4gpzntbv0gtyaeqduwg',
           property: 'blockID',
         },
       },
@@ -897,7 +944,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
+            'kjzl6hvfrbw6c8iuza101yr8ovi9pu4qub5ghbeqhr1g15xv6xm1bkeuof4dxxd',
           property: 'profileID',
         },
       },
@@ -916,7 +963,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
+            'kjzl6hvfrbw6c8iuza101yr8ovi9pu4qub5ghbeqhr1g15xv6xm1bkeuof4dxxd',
           property: 'profileID',
         },
       },
@@ -1049,9 +1096,10 @@ export const definition: RuntimeCompositeDefinition = {
       nsfw: {
         type: 'boolean',
         required: false,
-        immutable: false,
+        immutable: true,
         indexed: true,
       },
+      appID: { type: 'streamid', required: true, immutable: true },
       links: {
         type: 'list',
         required: false,
@@ -1085,14 +1133,35 @@ export const definition: RuntimeCompositeDefinition = {
         immutable: false,
       },
       description: { type: 'string', required: false, immutable: false },
+      appVersionID: { type: 'streamid', required: true, immutable: true },
+      app: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
+          property: 'appID',
+        },
+      },
       did: { type: 'view', viewType: 'documentAccount' },
+      appVersion: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
+          property: 'appVersionID',
+        },
+      },
       followers: {
         type: 'view',
         viewType: 'relation',
         relation: {
           source: 'queryConnection',
           model:
-            'kjzl6hvfrbw6calrvwg964obomy7bymp65be4zwpagdjms6bm067pakecsx61st',
+            'kjzl6hvfrbw6cb893zwezpclu033att8nq0oatc21cns6ryr1dubpfeczla9xml',
           property: 'profileID',
         },
       },
@@ -1102,7 +1171,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'queryCount',
           model:
-            'kjzl6hvfrbw6calrvwg964obomy7bymp65be4zwpagdjms6bm067pakecsx61st',
+            'kjzl6hvfrbw6cb893zwezpclu033att8nq0oatc21cns6ryr1dubpfeczla9xml',
           property: 'profileID',
         },
       },
@@ -1139,7 +1208,8 @@ export const definition: RuntimeCompositeDefinition = {
     },
     AkashaProfileInterface: {
       name: { type: 'string', required: true, immutable: false },
-      nsfw: { type: 'boolean', required: false, immutable: false },
+      nsfw: { type: 'boolean', required: false, immutable: true },
+      appID: { type: 'streamid', required: true, immutable: true },
       links: {
         type: 'list',
         required: false,
@@ -1168,9 +1238,31 @@ export const definition: RuntimeCompositeDefinition = {
         immutable: false,
       },
       description: { type: 'string', required: false, immutable: false },
+      appVersionID: { type: 'streamid', required: true, immutable: true },
+      app: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c7mp2kgev6yk8hrxqkwj28l92a74x3p6wi1gcms00yx9ckxsokn',
+          property: 'appID',
+        },
+      },
       did: { type: 'view', viewType: 'documentAccount' },
+      appVersion: {
+        type: 'view',
+        viewType: 'relation',
+        relation: {
+          source: 'document',
+          model:
+            'kjzl6hvfrbw6c8lieadu4bugco13jdp0j9agrrsflezai2uuhtzkv97xnantmdu',
+          property: 'appVersionID',
+        },
+      },
     },
     AkashaProfileStream: {
+      appID: { type: 'streamid', required: false, immutable: true },
       active: {
         type: 'boolean',
         required: true,
@@ -1209,7 +1301,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6caajs6qkzc286dy6slgraq9dcgfw0m681dq5nh52djd0p9ngbct',
+            'kjzl6hvfrbw6c8iuza101yr8ovi9pu4qub5ghbeqhr1g15xv6xm1bkeuof4dxxd',
           property: 'profileID',
         },
       },
@@ -1286,7 +1378,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
+            'kjzl6hvfrbw6c5rvaehvw3bo06g91zzskdmqcamf87cou0c3rcjfga8otgn1dmh',
           property: 'beamID',
         },
       },
@@ -1335,7 +1427,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c8yiu45yc60bmqlqcrxomepric4o8tr6rr8nzr3o30s3ay9izlr',
+            'kjzl6hvfrbw6c5rvaehvw3bo06g91zzskdmqcamf87cou0c3rcjfga8otgn1dmh',
           property: 'beamID',
         },
       },
@@ -1409,7 +1501,7 @@ export const definition: RuntimeCompositeDefinition = {
         relation: {
           source: 'document',
           model:
-            'kjzl6hvfrbw6c6qb11x4adb625uyxl7zmrd947qdhidxppkhk56atsjtjh3tv28',
+            'kjzl6hvfrbw6c9aglcacfejq5fxzy0pxc8eraoyy03b9lv2mlx5o9u85zqnrhf5',
           property: 'reflectionID',
         },
       },

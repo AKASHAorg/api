@@ -119,8 +119,8 @@ export const enableDataFeed = async () => {
       if (lru.has(key)) {
         return;
       }
-      lru.set(key, true);
       if(parsedData.content !== null && parsedData.content !== undefined) {
+        lru.set(key, true);
         indexStream(indexJob, streamId);
       }
     }
