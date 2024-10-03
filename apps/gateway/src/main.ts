@@ -5,11 +5,10 @@ import { readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { InMemoryLRUCache, PrefixingKeyValueCache } from '@apollo/utils.keyvaluecache';
-import Keyv from "keyv";
 import { KeyvAdapter } from "@apollo/utils.keyvadapter";
 import { ApolloServerPluginCacheControl } from '@apollo/server/plugin/cacheControl';
-//this is just a reference to the @keyv/redis package, so that the redis package is included in the bundle.
-import _ from "@keyv/redis";
+import Keyv from 'keyv';
+import KeyvRedis from '@keyv/redis';
 
 import { ComposeDBDataSource } from "./headers.propagate.js";
 import { VIEWER_ID_HEADER } from '@composedb/constants';
@@ -30,7 +29,10 @@ const gateway = new ApolloGateway({
 
 let cache: PersistedQueryOptions['cache'];
 if(!!process.env?.REDIS_CONNECTION_STRING?.trim()){
-  cache = new KeyvAdapter(new Keyv(process.env.REDIS_CONNECTION_STRING));
+  const keyv = new Keyv({ store: new KeyvRedis({ uri: process.env.REDIS_CONNECTION_STRING }), namespace: 'compose-db-gateway' });
+  // The typings are wrong on the upstream KeyvAdapter, so we need to ignore this
+  // @ts-ignore
+  cache = new KeyvAdapter(keyv);
   console.info("Using Redis cache");
 }else {
   cache = new InMemoryLRUCache({
