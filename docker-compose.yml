@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.9'
 services:
   ipfs:
     image: ceramicnetwork/go-ipfs-daemon:latest
@@ -53,23 +53,75 @@ services:
     networks:
       - superGraph
     restart: unless-stopped
-  gateway:
-    image: akashafoundation/gateway-graphql:latest
-    ports:
-      - "5101:${GRAPHQL_GATEWAY_PORT}"
+#  gateway:
+#    image: akashafoundation/gateway-graphql:latest
+#    ports:
+#      - "5101:${GRAPHQL_GATEWAY_PORT}"
+#    environment:
+#      - NODE_ENV=production
+#      - GRAPHQL_GATEWAY_PORT=${GRAPHQL_GATEWAY_PORT}
+#      - REDIS_CONNECTION_STRING=${REDIS_CONNECTION_STRING}
+#    depends_on:
+#      - composedb
+#      - indexing
+#    networks:
+#      - superGraph
+#    restart: unless-stopped
+  router:
+    image: ghcr.io/apollographql/router:v1.56.0
     environment:
-      - NODE_ENV=production
-      - GRAPHQL_GATEWAY_PORT=${GRAPHQL_GATEWAY_PORT}
-      - REDIS_CONNECTION_STRING=${REDIS_CONNECTION_STRING}
+      - APOLLO_ROUTER_LOG=warn
+      - APOLLO_TELEMETRY_DISABLED=true
+    volumes:
+      - type: bind
+        source: ./config/router.yaml
+        target: /dist/config/router.yaml
+        read_only: true
+      - type: bind
+        source: ./config/supergraph.graphql
+        target: /dist/schema/supergraph.graphql
+        read_only: true
+    command: [
+        "-c",
+        "/dist/config/router.yaml",
+        "-s",
+        "/dist/schema/supergraph.graphql"
+      ]
     depends_on:
       - composedb
       - indexing
     networks:
       - superGraph
+      - metrics
+    ports:
+      - "5101:4000"
+      - "8088:8088"
+    restart: unless-stopped
+  scraper:
+    image: prom/prometheus:latest
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+    volumes:
+      - type: bind
+        source: ./config/prometheus.yml
+        target: /etc/prometheus/prometheus.yml
+        read_only: true
+      - prometheus-data:/prometheus
+    networks:
+      - metrics
+    ports:
+      - "9090:9090"
+    depends_on:
+      - router
     restart: unless-stopped
 networks:
   superGraph:
     driver: bridge
+  metrics:
+    driver: bridge
 volumes:
   ipfs_data: {}
   ceramic_daemon: {}
+  prometheus-data: {}

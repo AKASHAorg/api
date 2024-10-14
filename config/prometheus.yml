@@ -1,0 +1,28 @@
+scrape_configs:
+  - job_name: 'supergraph'
+
+    scrape_interval: 5s
+
+    static_configs:
+      - targets: ['router:9090']
+        labels:
+          group: 'staging'
+
+#  - job_name: 'supergraph_health'
+#    metrics_path: '/health'
+#    static_configs:
+#      - targets: ['router:8088']
+#        labels:
+#          group: 'staging'
+
+#groups:
+#  - name: api_alerts
+#    rules:
+#      - alert: APIHealthCheckFailed
+#        expr: up{job="supergraph_health"} == 0
+#        for: 5m
+#        labels:
+#          severity: critical
+#        annotations:
+#          summary: "Supergraph API health check failed"
+#          description: "The Supergraph API health check has been failing for 5 minutes."

@@ -1,0 +1,50 @@
+cors:
+  # Set to true to allow any origin
+  # (Defaults to false)
+  allow_any_origin: true
+telemetry:
+  exporters:
+    metrics:
+      prometheus:
+        enabled: true
+        listen: 0.0.0.0:9090
+        path: /metrics
+    logging:
+      stdout:
+        enabled: true
+        rate_limit:
+          capacity: 10
+          interval: 3s
+supergraph:
+  listen: 0.0.0.0:4000
+  early_cancel: true
+  query_planning:
+    experimental_parallelism: 2
+    cache:
+      in_memory:
+        limit: 1024
+    warmed_up_queries: 200
+limits:
+  http_max_request_bytes: 2000000
+  parser_max_tokens: 15000
+  parser_max_recursion: 500
+csrf:
+  unsafe_disabled: true
+traffic_shaping:
+  router: # Rules applied to requests from clients to the router
+    global_rate_limit:
+      capacity: 10
+      interval: 5s
+apq:
+  enabled: true
+  subgraph:
+    all:
+      enabled: true
+  router:
+    cache:
+      in_memory:
+        limit: 1024
+health_check:
+  listen: 0.0.0.0:8088
+  enabled: true
+  path: /health
