@@ -70,7 +70,7 @@ services:
   router:
     image: ghcr.io/apollographql/router:v1.56.0
     environment:
-      - APOLLO_ROUTER_LOG=warn
+      - APOLLO_ROUTER_LOG=info
       - APOLLO_TELEMETRY_DISABLED=true
     volumes:
       - type: bind
@@ -92,36 +92,17 @@ services:
       - indexing
     networks:
       - superGraph
-      - metrics
+      - metrics-proxy
     ports:
       - "5101:4000"
       - "8088:8088"
     restart: unless-stopped
-  scraper:
-    image: prom/prometheus:latest
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--storage.tsdb.retention.time=30d'
-    volumes:
-      - type: bind
-        source: ./config/prometheus.yml
-        target: /etc/prometheus/prometheus.yml
-        read_only: true
-      - prometheus-data:/prometheus
-    networks:
-      - metrics
-    ports:
-      - "9090:9090"
-    depends_on:
-      - router
-    restart: unless-stopped
 networks:
   superGraph:
     driver: bridge
-  metrics:
-    driver: bridge
+  metrics-proxy:
+    external: true
+    name: metrics-network
 volumes:
   ipfs_data: {}
   ceramic_daemon: {}
-  prometheus-data: {}

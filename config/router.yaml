@@ -2,28 +2,52 @@ cors:
   # Set to true to allow any origin
   # (Defaults to false)
   allow_any_origin: true
+  methods:
+    - GET
+    - POST
+    - OPTIONS
+  max_age: 2h
 telemetry:
+  instrumentation:
+    spans:
+      mode: spec_compliant
   exporters:
     metrics:
       prometheus:
         enabled: true
         listen: 0.0.0.0:9090
         path: /metrics
+      common:
+        views:
+          - name: apollo_router_http_request_duration_seconds
+            aggregation:
+              histogram:
+                buckets:
+                  - 0.1
+                  - 0.5
+                  - 1
+                  - 2
+                  - 3
+                  - 4
+                  - 5
+                  - 100
     logging:
       stdout:
         enabled: true
+        format: text
         rate_limit:
           capacity: 10
           interval: 3s
 supergraph:
   listen: 0.0.0.0:4000
   early_cancel: true
+  generate_query_fragments: true
   query_planning:
     experimental_parallelism: 2
     cache:
       in_memory:
-        limit: 1024
-    warmed_up_queries: 200
+        limit: 4096
+    warmed_up_queries: 500
 limits:
   http_max_request_bytes: 2000000
   parser_max_tokens: 15000
@@ -33,18 +57,20 @@ csrf:
 traffic_shaping:
   router: # Rules applied to requests from clients to the router
     global_rate_limit:
-      capacity: 10
+      capacity: 50
       interval: 5s
 apq:
-  enabled: true
-  subgraph:
-    all:
-      enabled: true
   router:
     cache:
       in_memory:
-        limit: 1024
+        limit: 2000
 health_check:
   listen: 0.0.0.0:8088
   enabled: true
   path: /health
+headers:
+  all:
+    request:
+      - propagate:
+          matching: ^ComposeDB-.*
+
