@@ -62,7 +62,7 @@ traffic_shaping:
     timeout: 20s
   all:
     deduplicate_query: true
-    compression: gzip
+#    compression: gzip
 apq:
   router:
     cache:
