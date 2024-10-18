@@ -77,6 +77,3 @@ headers:
     request:
       - propagate:
           matching: ^ComposeDB-.*
-batching:
-  enabled: true
-  mode: batch_http_link
