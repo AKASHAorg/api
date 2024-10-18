@@ -57,8 +57,12 @@ csrf:
 traffic_shaping:
   router: # Rules applied to requests from clients to the router
     global_rate_limit:
-      capacity: 50
-      interval: 5s
+      capacity: 6000
+      interval: 3s
+    timeout: 20s
+  all:
+    deduplicate_query: true
+    compression: gzip
 apq:
   router:
     cache:
@@ -73,4 +77,6 @@ headers:
     request:
       - propagate:
           matching: ^ComposeDB-.*
-
+batching:
+  enabled: true
+  mode: batch_http_link

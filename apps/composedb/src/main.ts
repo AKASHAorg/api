@@ -51,8 +51,8 @@ const server = await startGraphQLServer({
     },
     plugins: [
       useResponseCache({
-        session: (request: Request) => getViewerID(request),
-        ttl: 3_000,
+        session: (request: Request) => getViewerID(request) || null,
+        ttl: 10_000,
       }),
     ],
   },
