@@ -1,4 +1,4 @@
-import { definition } from "../config/runtime-definition.js";
+import { definition } from "@akashaorg/composedb-models/lib/runtime-definition.js";
 import { JobNames } from "../queue/config.js";
 
 
