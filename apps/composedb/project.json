@@ -15,11 +15,7 @@
         "bundle": false,
         "main": "apps/composedb/src/main.ts",
         "tsConfig": "apps/composedb/tsconfig.app.json",
-        "assets": [{
-            "input": "config/",
-            "glob": "composedb-runtime-definition.json",
-            "output": "."
-          }],
+        "assets": [],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,

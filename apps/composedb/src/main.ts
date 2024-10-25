@@ -1,23 +1,18 @@
-import { readEncodedComposite, serveEncodedDefinition } from "@composedb/devtools-node";
 import { startGraphQLServer, getViewerID } from '@composedb/server';
 import { CeramicClient } from '@ceramicnetwork/http-client';
 import { createContext, createGraphQLSchema } from '@composedb/runtime';
 import { useResponseCache } from '@graphql-yoga/plugin-response-cache';
 import type { CeramicAPI } from "@composedb/types";
+import { definition } from "@akashaorg/composedb-models/lib/runtime-definition.js";
+
 import {
   type YogaInitialContext,
 } from 'graphql-yoga'
-import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
 
-const __dirname = path.dirname(__filename);
 
 const ceramicURL = process.env.CERAMIC_API_ENDPOINT || 'http://localhost:7007';
-const composite = await readEncodedComposite(ceramicURL, path.resolve(__dirname, './composedb-runtime-definition.json'));
 
-const definition = composite.toRuntime();
 // temporary solution, the types do not match for CeramicClient
 // from @ceramicnetwork/http-client and devtools-node
 // because it's redefined in the http-client package
