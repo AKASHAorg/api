@@ -4364,7 +4364,7 @@ export type GetReflectionByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetReflectionByIdQuery = { node?: { id: string, beamID: any, nsfw?: boolean | null, createdAt: any, active: boolean, isReply?: boolean | null, reflection?: any | null } | {} | null };
+export type GetReflectionByIdQuery = { node?: { id: string, beamID: any, nsfw?: boolean | null, createdAt: any, active: boolean, isReply?: boolean | null, reflection?: any | null, beam?: { appID: any, author: { id: string } } | null, author: { id: string, akashaProfile?: { name: string } | null } } | {} | null };
 
 export type GetBeamByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -4379,6 +4379,13 @@ export type GetProfileByIdQueryVariables = Exact<{
 
 
 export type GetProfileByIdQuery = { node?: { id: string, appID: any, appVersionID: any, name: string, nsfw?: boolean | null } | {} | null };
+
+export type GetFollowByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type GetFollowByIdQuery = { node?: { id: string, isFollowing: boolean, did: { id: string, akashaProfile?: { name: string } | null }, profile?: { id: string, appID: any, did: { id: string } } | null } | {} | null };
 
 export type GetBeamStreamQueryVariables = Exact<{
   indexer: Scalars['ID']['input'];
@@ -4625,11 +4632,23 @@ export const GetReflectionByIdDocument = /*#__PURE__*/ gql`
     ... on AkashaReflect {
       id
       beamID
+      beam {
+        author {
+          id
+        }
+        appID
+      }
       nsfw
       createdAt
       active
       isReply
       reflection
+      author {
+        id
+        akashaProfile {
+          name
+        }
+      }
     }
   }
 }
@@ -4664,6 +4683,29 @@ export const GetProfileByIdDocument = /*#__PURE__*/ gql`
       appVersionID
       name
       nsfw
+    }
+  }
+}
+    `;
+export const GetFollowByIdDocument = /*#__PURE__*/ gql`
+    query GetFollowById($id: ID!) {
+  node(id: $id) {
+    ... on AkashaFollow {
+      id
+      isFollowing
+      did {
+        id
+        akashaProfile {
+          name
+        }
+      }
+      profile {
+        id
+        did {
+          id
+        }
+        appID
+      }
     }
   }
 }
@@ -4828,6 +4870,9 @@ export function getSdk<C>(requester: Requester<C>) {
     },
     GetProfileById(variables: GetProfileByIdQueryVariables, options?: C): Promise<GetProfileByIdQuery> {
       return requester<GetProfileByIdQuery, GetProfileByIdQueryVariables>(GetProfileByIdDocument, variables, options) as Promise<GetProfileByIdQuery>;
+    },
+    GetFollowById(variables: GetFollowByIdQueryVariables, options?: C): Promise<GetFollowByIdQuery> {
+      return requester<GetFollowByIdQuery, GetFollowByIdQueryVariables>(GetFollowByIdDocument, variables, options) as Promise<GetFollowByIdQuery>;
     },
     GetBeamStream(variables: GetBeamStreamQueryVariables, options?: C): Promise<GetBeamStreamQuery> {
       return requester<GetBeamStreamQuery, GetBeamStreamQueryVariables>(GetBeamStreamDocument, variables, options) as Promise<GetBeamStreamQuery>;

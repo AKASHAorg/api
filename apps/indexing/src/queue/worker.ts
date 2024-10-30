@@ -1,7 +1,12 @@
 import { Job } from 'bullmq';
-import { JobNames } from "./config.js";
-import { gqlClient } from "../composedb/sdk.js";
-import { composeClient } from "../composedb/client.js";
+import { JobNames } from './config.js';
+import { gqlClient } from '../composedb/sdk.js';
+import { composeClient } from '../composedb/client.js';
+import {
+  getPushClient,
+  NotificationPayload,
+  notificationTTL,
+} from './notifications.js';
 
 /**
  * Handles indexing jobs for various Akasha data streams.
@@ -19,7 +24,9 @@ const indexingWorker = async (job: Job) => {
       const beamData = await gqlClient.IndexBeamStream(job.data);
       return beamData.setAkashaBeamStream.document;
     case JobNames.indexInterest:
-      const interestsData = await gqlClient.IndexAkashaInterestsStream(job.data);
+      const interestsData = await gqlClient.IndexAkashaInterestsStream(
+        job.data,
+      );
       return interestsData.setAkashaInterestsStream.document;
     case JobNames.indexProfile:
       const profile = await gqlClient.GetProfileStream({
@@ -27,12 +34,15 @@ const indexingWorker = async (job: Job) => {
         last: 1,
         filters: {
           where: {
-            profileID: {equalTo: job.data.i.content.profileID }
-          }
-        }
+            profileID: { equalTo: job.data.i.content.profileID },
+          },
+        },
       });
-      if('akashaProfileStreamList' in profile.node && profile.node.akashaProfileStreamList.edges.length) {
-       return profile.node.akashaProfileStreamList.edges[0].node;
+      if (
+        'akashaProfileStreamList' in profile.node &&
+        profile.node.akashaProfileStreamList.edges.length
+      ) {
+        return profile.node.akashaProfileStreamList.edges[0].node;
       }
       const profileData = await gqlClient.IndexProfileStream(job.data);
       return profileData.setAkashaProfileStream.document;
@@ -46,29 +56,52 @@ const indexingWorker = async (job: Job) => {
       const indexedData = await gqlClient.CreateAkashaIndexedStream(job.data);
       return indexedData.setAkashaIndexedStream.document;
     case JobNames.updateBeam:
-      if(job.data?.i?.options.hasOwnProperty('shouldIndex')){
-        if(job.data.i.options.shouldIndex === false){
+      if (job.data?.i?.options.hasOwnProperty('shouldIndex')) {
+        if (job.data.i.options.shouldIndex === false) {
           const beam = await gqlClient.GetBeamStream({
             indexer: composeClient.id,
             last: 1,
             filters: {
               where: {
-                beamID: {equalTo: job.data.i.id }
-              }
-            }
+                beamID: { equalTo: job.data.i.id },
+              },
+            },
           });
 
-          if('akashaBeamStreamList' in beam.node && beam.node.akashaBeamStreamList.edges.length) {
+          if (
+            'akashaBeamStreamList' in beam.node &&
+            beam.node.akashaBeamStreamList.edges.length
+          ) {
             job.data.i.id = beam.node.akashaBeamStreamList.edges[0].node.id;
           }
         }
       }
       const updateBeamData = await gqlClient.UpdateBeamStream(job.data);
       return updateBeamData.updateAkashaBeamStream.document;
+    case JobNames.sendNotification:
+      const pushClient = await getPushClient();
+      const data: NotificationPayload = job.data;
+      await pushClient.channel.send([data.to], {
+        channel: process.env.PUSH_CHANNEL_ID,
+        notification: {
+          title: data.title,
+          body: data.body,
+        },
+        payload: {
+          category: data.category,
+          meta: data.meta,
+        },
+        config: {
+          expiry: Math.round(
+            new Date(Date.now() + notificationTTL).getTime() / 1000,
+          ),
+        },
+      });
+      return;
     default:
       console.warn('Unknown job type');
       break;
   }
-}
+};
 
 export default indexingWorker;

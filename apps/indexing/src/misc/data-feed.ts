@@ -1,5 +1,5 @@
 import { EventSource } from 'cross-eventsource';
-import { JsonAsString, AggregationDocument } from '@ceramicnetwork/codecs';
+import { AggregationDocument, JsonAsString } from '@ceramicnetwork/codecs';
 import { EventType } from '@ceramicnetwork/common';
 import { decode } from 'codeco';
 import path from 'path';
@@ -7,7 +7,7 @@ import { getRedisConnection } from '../queue/index.js';
 import QuickLRU from 'quick-lru';
 import modelsJobMapper from './models-job-mapper.js';
 import createJob from '../queue/create-job.js';
-import { delistJobKey, JobNames } from "../queue/config.js";
+import { delistJobKey, JobNames } from '../queue/config.js';
 
 if (!process.env?.CERAMIC_API_ENDPOINT) {
   throw new Error('CERAMIC_API_ENDPOINT env var is not set');
@@ -27,10 +27,14 @@ export const RESUME_DATA_FEED_TOKEN = 'ceramic:resume-data-feed:token';
 
 const indexStreamKey = (streamId: string) => `ceramic:index-stream:${streamId}`;
 
-const lru = new QuickLRU<string, string|boolean>({ maxSize: 1000, maxAge: 1000 * 60 * 60 * 24 * 2 });
-const updateLRU = new QuickLRU({ maxSize: 1000,  maxAge: 1000 * 60 * 60 * 24 * 7});
-
-
+const lru = new QuickLRU<string, string | boolean>({
+  maxSize: 1000,
+  maxAge: 1000 * 60 * 60 * 24 * 2,
+});
+const updateLRU = new QuickLRU({
+  maxSize: 1000,
+  maxAge: 1000 * 60 * 60 * 24 * 7,
+});
 
 /**
  * Indexes a stream for the specified indexJob.
@@ -39,7 +43,7 @@ const updateLRU = new QuickLRU({ maxSize: 1000,  maxAge: 1000 * 60 * 60 * 24 * 7
  * @param streamId - The ID of the stream to index.
  * @returns - void
  */
-const indexStream = (indexJob: string, streamId: string)=>{
+const indexStream = (indexJob: string, streamId: string) => {
   if (!createJob.hasOwnProperty(indexJob)) {
     console.warn(`no indexStream handler for job ${indexJob}`);
     return;
@@ -49,7 +53,7 @@ const indexStream = (indexJob: string, streamId: string)=>{
     console.error(e);
   });
   console.log('finished', indexJob, streamId);
-}
+};
 
 /**
  * Removes a stream from the indexing job.
@@ -61,8 +65,7 @@ const indexStream = (indexJob: string, streamId: string)=>{
 const delistStream = (indexJob: string, streamId: string) => {
   const delistIndexJob = delistJobKey(indexJob);
   return indexStream(delistIndexJob, streamId);
-}
-
+};
 
 /**
  * Enables the data feed by setting up an event source connection and handling incoming events.
@@ -100,13 +103,16 @@ export const enableDataFeed = async () => {
       }
       updateLRU.set(key, true);
 
-      if('shouldIndex' in parsedData.metadata){
+      if ('shouldIndex' in parsedData.metadata) {
         if (parsedData.metadata.shouldIndex === false) {
           delistStream(indexJob, streamId);
         }
         return;
       }
-      if(indexJob === JobNames.indexProfile){
+      if (
+        indexJob === JobNames.indexProfile ||
+        indexJob === JobNames.notifyFollow
+      ) {
         indexStream(indexJob, streamId);
       }
     }
@@ -119,7 +125,7 @@ export const enableDataFeed = async () => {
       if (lru.has(key)) {
         return;
       }
-      if(parsedData.content !== null && parsedData.content !== undefined) {
+      if (parsedData.content !== null && parsedData.content !== undefined) {
         lru.set(key, true);
         indexStream(indexJob, streamId);
       }
@@ -154,8 +160,8 @@ export const disableDataFeed = () => {
     return;
   }
   const resumeToken = lru.get(RESUME_DATA_FEED_TOKEN);
-  if (resumeToken && typeof resumeToken === "string") {
-    console.log("saving resume token", resumeToken);
+  if (resumeToken && typeof resumeToken === 'string') {
+    console.log('saving resume token', resumeToken);
     getRedisConnection().set(RESUME_DATA_FEED_TOKEN, resumeToken);
   }
   lru.clear();

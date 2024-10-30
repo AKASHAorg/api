@@ -14,6 +14,10 @@ export const enum JobNames{
   updateProfile = "updateProfile",
   updateApp = "updateApp",
   updateAppRelease = "updateAppRelease",
+
+  notifyFollow = "notifyFollow",
+  notifyReflection = "notifyReflection",
+  sendNotification = "sendNotification",
 }
 
 export const delistJobPrefix = "delist:";

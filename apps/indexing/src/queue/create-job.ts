@@ -16,6 +16,7 @@ import {
 import { indexingQueue } from './index.js';
 import { delistJobKey, JobNames } from './config.js';
 import { gqlClient } from '../composedb/sdk.js';
+import { NotificationPayload } from "./notifications.js";
 
 export const indexProfile = async (streamID: string) => {
   const profile = await gqlClient.GetProfileById({ id: streamID });
@@ -126,6 +127,7 @@ export const indexReflection = async (streamID: string) => {
     },
   };
   await indexingQueue.add(JobNames.indexReflection, data);
+  await notifyReflection(streamID);
   return {
     document: {
       reflectionID: streamID,
@@ -215,6 +217,80 @@ export const delistBeam = async (streamID: string) => {
   };
 };
 
+export const notifyFollow = async(streamID: string) =>{
+ const data = await gqlClient.GetFollowById({ id: streamID });
+ if (!('node' in data) || !('did' in data.node)) {
+   console.warn(`Follow ${streamID} was not found.`);
+   return;
+  }
+
+ if(!data.node.isFollowing){
+   // not a follow event
+   return;
+ }
+
+  const follower = data.node.did?.akashaProfile?.name ?? data.node.did.id;
+
+ if(!data.node.profile?.did?.id.startsWith("did:pkh:")){
+   console.warn(`Cannot send notification to ${data.node.profile?.did?.id}`);
+   return;
+ }
+  const notification: NotificationPayload = {
+    title: "New follow",
+    body: `${follower} started following you.`,
+    to: data.node.profile?.did?.id.replace("did:pkh:", ""),
+    // index of the channel used to send the notification
+    category: 2,
+    meta: {
+      // 0 custom meta
+      // 2 notification channel/category(profile)
+      type: "0+2",
+      data: JSON.stringify({
+        follower: data.node?.did?.id,
+        appID: data.node.profile.appID
+      })
+    }
+  };
+  await indexingQueue.add(JobNames.sendNotification, notification);
+}
+
+
+export const notifyReflection = async(streamID: string) =>{
+  const data = await gqlClient.GetReflectionById({ id: streamID });
+  if (!('node' in data) || !('author' in data.node)) {
+    console.warn(`Reflection ${streamID} was not found.`);
+    return;
+  }
+
+  const author = data.node.author?.akashaProfile?.name ?? data.node.author.id;
+
+  if(!data.node.beam?.author?.id.startsWith("did:pkh:")){
+    console.warn(`Cannot send notification to ${data.node.beam?.author?.id}`);
+    return;
+  }
+  if(data.node.beam?.author?.id === data.node.author.id){
+    // same author, no need to send notification
+    return;
+  }
+  const notification: NotificationPayload = {
+    title: "New reflection",
+    body: `${author} left a reflection on your beam.`,
+    to: data.node.beam?.author?.id.replace("did:pkh:", ""),
+    // index of the channel used to send the notification
+    category: 1,
+    meta: {
+      // 0 custom meta
+      // 1 notification channel/category(antenna)
+      type: "0+1",
+      data: JSON.stringify({
+        author: data.node.author.id,
+        appID: data.node.beam?.appID
+      })
+    }
+  };
+  await indexingQueue.add(JobNames.sendNotification, notification);
+}
+
 export default {
   [JobNames.indexProfile]: indexProfile,
   [JobNames.indexBeam]: indexBeam,
@@ -222,4 +298,6 @@ export default {
   [JobNames.indexReflection]: indexReflection,
   [JobNames.indexContentBlock]: indexContentBlock,
   [JobNames.indexApp]: indexApp,
+  [JobNames.notifyFollow]: notifyFollow,
+  [JobNames.notifyReflection]: notifyReflection,
 };

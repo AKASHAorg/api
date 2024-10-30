@@ -185,11 +185,23 @@ query GetReflectionById($id: ID!){
     ... on AkashaReflect{
       id
       beamID
+      beam {
+        author {
+          id
+        }
+        appID
+      }
       nsfw
       createdAt
       active
       isReply
       reflection
+      author {
+        id
+        akashaProfile {
+          name
+        }
+      }
     }
   }
 }
@@ -222,6 +234,28 @@ query GetProfileById($id: ID!){
       appVersionID
       name
       nsfw
+    }
+  }
+}
+
+query GetFollowById($id: ID!){
+  node(id: $id){
+    ... on AkashaFollow{
+      id
+      isFollowing
+      did {
+        id
+        akashaProfile {
+          name
+        }
+      }
+      profile {
+        id
+        did {
+          id
+        }
+        appID
+      }
     }
   }
 }

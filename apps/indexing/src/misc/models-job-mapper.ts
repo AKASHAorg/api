@@ -34,6 +34,8 @@ export default function modelsJobMapper (modelID: string): JobNames | null {
       return JobNames.indexReflection;
     case models.AkashaReflectInterface.id:
       return JobNames.indexReflection;
+    case models.AkashaFollow.id:
+      return JobNames.notifyFollow;
     default: {
       return null;
     }
