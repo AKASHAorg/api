@@ -4371,7 +4371,7 @@ export type GetBeamByIdQueryVariables = Exact<{
 }>;
 
 
-export type GetBeamByIdQuery = { node?: { id: string, nsfw?: boolean | null, createdAt: any, active: boolean, appID: any, appVersionID: any, mentions?: Array<{ id: string } | null> | null, tags?: Array<{ labelType: string, value: string } | null> | null } | {} | null };
+export type GetBeamByIdQuery = { node?: { id: string, nsfw?: boolean | null, createdAt: any, active: boolean, appID: any, appVersionID: any, mentions?: Array<{ id: string } | null> | null, tags?: Array<{ labelType: string, value: string } | null> | null, author: { id: string, akashaProfile?: { name: string } | null } } | {} | null };
 
 export type GetProfileByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -4664,6 +4664,12 @@ export const GetBeamByIdDocument = /*#__PURE__*/ gql`
       tags {
         labelType
         value
+      }
+      author {
+        id
+        akashaProfile {
+          name
+        }
       }
       nsfw
       createdAt

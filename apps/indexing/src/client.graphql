@@ -217,6 +217,12 @@ query GetBeamById($id: ID!){
         labelType
         value
       }
+      author {
+        id
+        akashaProfile {
+          name
+        }
+      }
       nsfw
       createdAt
       active
