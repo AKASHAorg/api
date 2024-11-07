@@ -244,7 +244,7 @@ export const notifyFollow = async (streamID: string) => {
   const follower = data.node.did?.akashaProfile?.name ?? data.node.did.id;
 
   if (!data.node.profile?.did?.id.startsWith('did:pkh:')) {
-    console.warn(`Cannot send notification to ${data.node.profile?.did?.id}`);
+    console.warn(`Cannot send follow notification to ${data.node.profile?.did?.id}`);
     return;
   }
   const notification: NotificationPayload = {
@@ -276,7 +276,7 @@ export const notifyReflection = async (streamID: string) => {
   const author = data.node.author?.akashaProfile?.name ?? data.node.author.id;
 
   if (!data.node.beam?.author?.id.startsWith('did:pkh:')) {
-    console.warn(`Cannot send notification to ${data.node.beam?.author?.id}`);
+    console.warn(`Cannot send reflect notification to ${data.node.beam?.author?.id}`);
     return;
   }
   if (data.node.beam?.author?.id === data.node.author.id) {
@@ -314,12 +314,13 @@ export type MentionNotificationPayload = {
 
 export const notifyMention = async (opts: MentionNotificationPayload) => {
   if (!opts.mentionDID.startsWith('did:pkh:')) {
-    console.warn(`Cannot send notification to ${opts.mentionDID}`);
+    console.warn(`Cannot send mention notification to ${opts.mentionDID}`);
     return;
   }
+  const sub = opts.authorName || opts.authorDID;
   const notification: NotificationPayload = {
     title: 'New mention',
-    body: `${opts.authorName} mentioned you in a beam.`,
+    body: `${sub} mentioned you in a beam.`,
     to: opts.mentionDID.replace('did:pkh:', ''),
     category: 1,
     meta: {
