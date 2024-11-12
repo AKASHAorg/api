@@ -1,12 +1,16 @@
 version: '3.9'
 services:
-  ipfs:
-    image: ceramicnetwork/go-ipfs-daemon:latest
+  ceramic-one:
+    image: public.ecr.aws/r5b3e0r5/3box/ceramic-one:latest
     volumes:
-      - ipfs_data:/data/ipfs
+      - ceramic-one-data:/root/.ceramic-one
+    environment:
+      - CERAMIC_ONE_BIND_ADDRESS=0.0.0.0:5001
+      - CERAMIC_ONE_CORS_ALLOW_ORIGINS=*
+      - CERAMIC_ONE_NETWORK=in-memory
     ports:
       - '5001:5001'
-      - '8011:8011'
+      - '9464:9464'
     networks:
       - superGraph
     restart: 'unless-stopped'
@@ -14,14 +18,17 @@ services:
     image: ceramicnetwork/js-ceramic:latest
     volumes:
       - ceramic_daemon:/root/.ceramic
-    command:
-      - '--network=inmemory'
+    command: [
+      "--network=inmemory",
+      "--ipfs-api=http://ceramic-one:5001"
+    ]
     ports:
       - '7007:7007'
     environment:
       - NODE_ENV=production
+      - CERAMIC_RECON_MODE=true
     depends_on:
-      - ipfs
+      - ceramic-one
     networks:
       - superGraph
     restart: unless-stopped
@@ -108,3 +115,4 @@ networks:
 volumes:
   ipfs_data: {}
   ceramic_daemon: {}
+  ceramic-one-data: {}
