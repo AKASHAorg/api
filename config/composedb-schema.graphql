@@ -2934,7 +2934,7 @@ type AkashaWorld implements Node & AkashaWorldInterface {
 
   """Account controlling the document"""
   creator: CeramicAccount!
-  config(
+  configInfo(
     """Returns the items in the list that come after the specified cursor."""
     after: String
 
@@ -2949,10 +2949,10 @@ type AkashaWorld implements Node & AkashaWorldInterface {
 
     """Returns only documents created by the provided account"""
     account: ID
-    filters: AkashaWorldInterfaceFiltersInput
-    sorting: AkashaWorldInterfaceSortingInput
-  ): AkashaWorldInterfaceConnection!
-  meta(
+    filters: AkashaWorldConfigInterfaceFiltersInput
+    sorting: AkashaWorldConfigInterfaceSortingInput
+  ): AkashaWorldConfigInterfaceConnection!
+  metaInfo(
     """Returns the items in the list that come after the specified cursor."""
     after: String
 
@@ -2973,42 +2973,46 @@ type AkashaWorld implements Node & AkashaWorldInterface {
 }
 
 """A connection to a list of items."""
-type AkashaWorldInterfaceConnection {
+type AkashaWorldConfigInterfaceConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [AkashaWorldInterfaceEdge]
+  edges: [AkashaWorldConfigInterfaceEdge]
 }
 
 """An edge in a connection."""
-type AkashaWorldInterfaceEdge {
+type AkashaWorldConfigInterfaceEdge {
   """The item at the end of the edge"""
-  node: AkashaWorldInterface
+  node: AkashaWorldConfigInterface
 
   """A cursor for use in pagination"""
   cursor: String!
 }
 
-input AkashaWorldInterfaceFiltersInput {
-  where: AkashaWorldInterfaceObjectFilterInput
-  and: [AkashaWorldInterfaceFiltersInput!]
-  or: [AkashaWorldInterfaceFiltersInput!]
-  not: AkashaWorldInterfaceFiltersInput
+input AkashaWorldConfigInterfaceFiltersInput {
+  where: AkashaWorldConfigInterfaceObjectFilterInput
+  and: [AkashaWorldConfigInterfaceFiltersInput!]
+  or: [AkashaWorldConfigInterfaceFiltersInput!]
+  not: AkashaWorldConfigInterfaceFiltersInput
 }
 
-input AkashaWorldInterfaceObjectFilterInput {
-  name: StringValueFilterInput
+input AkashaWorldConfigInterfaceObjectFilterInput {
   active: BooleanValueFilterInput
+  worldID: StringValueFilterInput
   createdAt: StringValueFilterInput
-  instanceURL: StringValueFilterInput
+  layoutExtension: StringValueFilterInput
+  homepageExtension: StringValueFilterInput
+  registryExtension: StringValueFilterInput
 }
 
-input AkashaWorldInterfaceSortingInput {
-  name: SortOrder
+input AkashaWorldConfigInterfaceSortingInput {
   active: SortOrder
+  worldID: SortOrder
   createdAt: SortOrder
-  instanceURL: SortOrder
+  layoutExtension: SortOrder
+  homepageExtension: SortOrder
+  registryExtension: SortOrder
 }
 
 """A connection to a list of items."""
@@ -3065,7 +3069,6 @@ input AkashaWorldMetaInfoInterfaceSortingInput {
 
 input WithAkashaWorldInput {
   name: String!
-  active: Boolean!
 }
 
 type AkashaWorldConfig implements Node & AkashaWorldConfigInterface {
@@ -3102,7 +3105,6 @@ type AkashaWorldConfig implements Node & AkashaWorldConfigInterface {
 
 input WithAkashaWorldConfigInput {
   worldID: CeramicStreamID!
-  active: Boolean!
 }
 
 type AkashaWorldConfigExtension implements Node & AkashaWorldConfigExtensionInterface {
@@ -3124,7 +3126,6 @@ type AkashaWorldConfigExtension implements Node & AkashaWorldConfigExtensionInte
 input WithAkashaWorldConfigExtensionInput {
   extensionID: CeramicStreamID!
   worldConfigID: CeramicStreamID!
-  active: Boolean!
 }
 
 """A connection to a list of items."""
@@ -3173,49 +3174,6 @@ input AkashaWorldConfigExtensionSortingInput {
 }
 
 """A connection to a list of items."""
-type AkashaWorldConfigInterfaceConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [AkashaWorldConfigInterfaceEdge]
-}
-
-"""An edge in a connection."""
-type AkashaWorldConfigInterfaceEdge {
-  """The item at the end of the edge"""
-  node: AkashaWorldConfigInterface
-
-  """A cursor for use in pagination"""
-  cursor: String!
-}
-
-input AkashaWorldConfigInterfaceFiltersInput {
-  where: AkashaWorldConfigInterfaceObjectFilterInput
-  and: [AkashaWorldConfigInterfaceFiltersInput!]
-  or: [AkashaWorldConfigInterfaceFiltersInput!]
-  not: AkashaWorldConfigInterfaceFiltersInput
-}
-
-input AkashaWorldConfigInterfaceObjectFilterInput {
-  active: BooleanValueFilterInput
-  worldID: StringValueFilterInput
-  createdAt: StringValueFilterInput
-  layoutExtension: StringValueFilterInput
-  homepageExtension: StringValueFilterInput
-  registryExtension: StringValueFilterInput
-}
-
-input AkashaWorldConfigInterfaceSortingInput {
-  active: SortOrder
-  worldID: SortOrder
-  createdAt: SortOrder
-  layoutExtension: SortOrder
-  homepageExtension: SortOrder
-  registryExtension: SortOrder
-}
-
-"""A connection to a list of items."""
 type AkashaWorldConfigConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
@@ -3256,6 +3214,45 @@ input AkashaWorldConfigSortingInput {
   layoutExtension: SortOrder
   homepageExtension: SortOrder
   registryExtension: SortOrder
+}
+
+"""A connection to a list of items."""
+type AkashaWorldInterfaceConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [AkashaWorldInterfaceEdge]
+}
+
+"""An edge in a connection."""
+type AkashaWorldInterfaceEdge {
+  """The item at the end of the edge"""
+  node: AkashaWorldInterface
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input AkashaWorldInterfaceFiltersInput {
+  where: AkashaWorldInterfaceObjectFilterInput
+  and: [AkashaWorldInterfaceFiltersInput!]
+  or: [AkashaWorldInterfaceFiltersInput!]
+  not: AkashaWorldInterfaceFiltersInput
+}
+
+input AkashaWorldInterfaceObjectFilterInput {
+  name: StringValueFilterInput
+  active: BooleanValueFilterInput
+  createdAt: StringValueFilterInput
+  instanceURL: StringValueFilterInput
+}
+
+input AkashaWorldInterfaceSortingInput {
+  name: SortOrder
+  active: SortOrder
+  createdAt: SortOrder
+  instanceURL: SortOrder
 }
 
 """A connection to a list of items."""
@@ -4838,6 +4835,7 @@ input UpdateAkashaWorldInput {
 
 input PartialAkashaWorldInput {
   icon: AkashaWorldImageVersionsInput
+  active: Boolean
   instanceURL: URI
   extensionPublishers: [DID]
 }
@@ -4910,6 +4908,7 @@ input UpdateAkashaWorldConfigInput {
 }
 
 input PartialAkashaWorldConfigInput {
+  active: Boolean
   layoutExtension: CeramicStreamID
   homepageExtension: CeramicStreamID
   registryExtension: CeramicStreamID
@@ -4985,6 +4984,7 @@ input UpdateAkashaWorldConfigExtensionInput {
 
 input PartialAkashaWorldConfigExtensionInput {
   type: String
+  active: Boolean
   optional: Boolean
   position: Int
 }

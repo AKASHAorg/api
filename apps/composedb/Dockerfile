@@ -17,6 +17,7 @@ RUN addgroup --system org && \
 COPY ../../dist/apps/composedb .
 RUN chown -R org:org .
 
+RUN apk add --update --no-cache python3 py-setuptools build-base gcc
 # You can remove this install step if you build with `--bundle` option.
 # The bundled output will include external dependencies.
 RUN npm --omit=dev -f install
